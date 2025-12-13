@@ -1,5 +1,8 @@
 # **Neural Studio**
 
+
+FUCK GIT
+
 ### *Next-Generation 3D + VR Broadcasting Suite*
 
 *The successor to OBS — built for spatial computing, AI-native workflows, and immersive livestreaming.*

@@ -53,7 +53,7 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.margins: 16
-        icon.source: showingBlueprint ? "qrc:/icons/active.svg" : "qrc:/icons/blueprint.svg"
+        iconName: showingBlueprint ? "play_circle" : "account_tree"
         ToolTip.visible: hovered
         ToolTip.text: showingBlueprint ? "Switch to Active Frame" : "Switch to Blueprint Frame"
         onClicked: {
@@ -72,7 +72,7 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: 16
-        icon.source: "qrc:/icons/settings.svg"
+        iconName: "settings"
         ToolTip.visible: hovered
         ToolTip.text: "Settings"
         onClicked: settingsPanel.toggle()
@@ -84,7 +84,7 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.margins: 16
-        icon.source: "qrc:/icons/ai.svg"
+        iconName: "smart_toy"
         ToolTip.visible: hovered
         ToolTip.text: "AI Assistant"
         onClicked: aiChatPanel.toggle()
@@ -96,7 +96,7 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.margins: 16
-        icon.source: "qrc:/icons/chat.svg"
+        iconName: "forum"
         ToolTip.visible: hovered
         ToolTip.text: "Dock Chat"
         onClicked: dockChatPanel.toggle()

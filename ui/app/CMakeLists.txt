@@ -5,6 +5,7 @@ set(QML_FILES
     MainWindow.qml
     CornerButton.qml
     SlidingPanel.qml
+    MaterialIcon.qml
 )
 
 qt_add_qml_module(neural-studio-app

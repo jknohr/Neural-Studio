@@ -1,0 +1,6 @@
+module NeuralStudio.App
+singleton FrameContext 1.0 FrameContext.qml
+MainWindow 1.0 MainWindow.qml
+CornerButton 1.0 CornerButton.qml
+SlidingPanel 1.0 SlidingPanel.qml
+MaterialIcon 1.0 MaterialIcon.qml

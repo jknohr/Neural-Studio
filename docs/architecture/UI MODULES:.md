@@ -35,3 +35,5 @@ Manager Broadcasting + Relevant Nodes for Broadcasting.
 Manager IncomingStreams + Relevant Nodes for IncomingStreams.
 
 Please Remember 3D and Spatial for everything... And keep it modular.
+
+Managers are moved to shared_ui.

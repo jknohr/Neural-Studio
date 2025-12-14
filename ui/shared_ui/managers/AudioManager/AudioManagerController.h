@@ -2,6 +2,7 @@
 #include "../BaseManagerController.h"
 #include <QStringList>
 #include <QVariantList>
+#include <QUuid>
 
 namespace NeuralStudio {
     namespace Blueprint {
@@ -10,6 +11,7 @@ namespace NeuralStudio {
         {
             Q_OBJECT
             Q_PROPERTY(QVariantList availableAudio READ availableAudio NOTIFY availableAudioChanged)
+            Q_PROPERTY(QStringList audioVariants READ audioVariants CONSTANT)
 
               public:
             explicit AudioManagerController(QObject *parent = nullptr);
@@ -17,7 +19,7 @@ namespace NeuralStudio {
 
             QString title() const override
             {
-                return "Audio Files";
+                return "Audio Assets";
             }
             QString nodeType() const override
             {
@@ -28,6 +30,12 @@ namespace NeuralStudio {
             {
                 return m_availableAudio;
             }
+
+            QStringList audioVariants() const
+            {
+                return m_audioVariants;
+            }
+
             Q_INVOKABLE QVariantList getAudio() const
             {
                 return m_availableAudio;
@@ -35,7 +43,12 @@ namespace NeuralStudio {
 
               public slots:
             void scanAudio();
-            void createAudioNode(const QString &audioPath);
+
+            // Create node with specific variant type and generate UUID
+            void createAudioNode(const QString &audioPath, const QString &variantType = "audioclip");
+
+            // Create node without audio file (e.g., for microphone/stream variants)
+            void createAudioNodeVariant(const QString &variantType, float x = 0.0f, float y = 0.0f);
 
               signals:
             void availableAudioChanged();
@@ -44,6 +57,13 @@ namespace NeuralStudio {
               private:
             QString m_audioDirectory;
             QVariantList m_availableAudio;
+            QStringList m_audioVariants;  // List of available variant types
+
+            // Helper to generate unique node ID
+            QString generateNodeId();
+
+            // Helper to detect audio file type/category
+            QString detectAudioCategory(const QString &filePath);
         };
 
     }  // namespace Blueprint

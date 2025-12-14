@@ -24,6 +24,130 @@ Neural Studio's nodes use a **variant pattern** where each node type (AudioNode,
 
 ---
 
+## Naming Conventions
+
+### ⚠️ CRITICAL: Ultra-Specific Naming Required
+
+> **ALL FILES, CLASSES, AND COMPONENTS MUST HAVE LONG, ULTRA-SPECIFIC, CONTEXT-RICH NAMES**
+> 
+> **WHY**: Prevents naming conflicts, enables grep-ability, improves LLM-assisted development
+
+### Naming Rules
+
+#### ✅ DO: Long, Specific, Contextual Names
+```
+✅ audioclipplayerwidget.qml       (Context: Audio + Clip + Player + Widget)
+✅ videosegmentationonnxwidget.qml (Context: Video + Segmentation + ONNX + Widget)
+✅ llmstreamdescriptionview.qml    (Context: LLM + Stream + Description + View)
+✅ AudioClipPlayerController       (C++ class with full context)
+```
+
+#### ❌ DON'T: Short, Generic Names
+```
+❌ player.qml           (Too generic - player for what?)
+❌ widget.qml           (Meaningless - which widget?)
+❌ view.qml             (No context)
+❌ controller.h         (Impossible to search for)
+❌ settings.qml         (Settings for what?)
+❌ PlayerWidget         (Player of what type?)
+```
+
+### Naming Pattern Formula
+
+**For QML Files**:
+```
+<NodeType><VariantFunction><ComponentType><Purpose>.qml
+
+Examples:
+- audiofileplaybackwidget.qml          (Audio + FilePlayback + Widget)
+- videovr360playbackcontrolswidget.qml (Video + VR360Playback + Controls + Widget)
+- mlgesturerecognitiononnxwidget.qml   (ML + GestureRecognition + ONNX + Widget)
+```
+
+**For C++ Classes**:
+```
+<NodeType><VariantFunction><ComponentType>
+
+Examples:
+- AudioFilePlaybackController
+- VideoVR360PlaybackWidget  
+- MLGestureRecognitionONNXProcessor
+```
+
+### Examples by Node Type
+
+#### AudioNode
+```
+✅ audiofileplaybacknode.qml
+✅ audiostreamcapturenode.qml
+✅ audioclipplayerwidget.qml
+✅ audioclipsettingswidget.qml
+✅ audiomicrophoneinputcontrolswidget.qml
+```
+
+#### VideoNode
+```
+✅ videofileplaybacknode.qml
+✅ videovr360playbacknode.qml
+✅ videovr360equirectangularprojectionwidget.qml
+✅ videoscreencaptureregionselectorwidget.qml
+```
+
+#### MLNode
+```
+✅ mlvideosegmentationnode.qml
+✅ mlvideosegmentationonnxwidget.qml
+✅ mlgesturerecognitiontensorflowwidget.qml
+✅ mlbackgroundremovalresultpreviewwidget.qml
+```
+
+### Benefits of Ultra-Specific Naming
+
+1. **No Collisions**: `audioclipplayerwidget.qml` vs `videoclipplayerwidget.qml` are clearly different
+2. **Grep-able**: `grep -r "audiofileplayback"` finds ALL related files
+3. **Self-Documenting**: Name tells you exactly what it is and where it belongs
+4. **LLM-Friendly**: LLMs can generate correct names without conflicts
+5. **Refactoring-Safe**: Moving files doesn't break semantic meaning
+6. **Searchable Logs**: Error messages with long names are easy to trace
+
+### Anti-Pattern Example (Bad)
+
+```
+❌ BAD STRUCTURE:
+AudioNode/
+├── player.qml              (Which player? For what?)
+├── controls.qml            (Which controls?)
+├── settings.qml            (Settings for what?)
+└── widget.qml              (Meaningless)
+
+Result: Impossible to distinguish, conflicts everywhere
+```
+
+### Correct Pattern Example (Good)
+
+```
+✅ GOOD STRUCTURE:
+AudioNode/
+├── AudioFilePlayback/
+│   └── audiofileplaybacknode.qml
+├── AudioClipPlayerWidget/
+│   └── audioclipplayerwidget.qml
+└── AudioClipSettingsWidget/
+    └── audioclipsettingswidget.qml
+
+Result: Each file is uniquely identifiable by name alone
+```
+
+### LLM Interaction Note
+
+When working with LLMs (including this assistant):
+- ✅ Specify full context in names: "Create audioclipplayerwidget.qml"
+- ❌ Avoid generic requests: "Create a player widget" (too vague)
+- ✅ Use full names in prompts to prevent lazy generic naming
+- ✅ Reject any suggestions with short generic names
+
+---
+
 ## Folder Structure Pattern
 
 ### General Pattern

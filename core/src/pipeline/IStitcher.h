@@ -2,7 +2,7 @@
 
 #include "common/frame.h"
 
-namespace libvr {
+namespace neural_studio {
 
     struct StitchConfig {
         const char *stmap_path;  // Path to STMap file
@@ -26,4 +26,4 @@ namespace libvr {
     // Factory
     extern "C" IStitcher *CreateStitcher();
 
-}  // namespace libvr
+}  // namespace neural_studio

@@ -11,13 +11,14 @@ LLMNode::LLMNode(const std::string &id) : BaseNodeBackend(id, "LLMNode")
 
 LLMNode::~LLMNode() {}
 
-void LLMNode::execute(const ExecutionContext &context)
+ExecutionResult LLMNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_prompt.empty()) {
 		std::cout << "LLMNode: Sending prompt to " << m_model << std::endl;
 		// TODO: Call appropriate LLM API (Gemini, GPT, Claude, etc.)
 		m_dirty = false;
 	}
+	return ExecutionResult::success();
 }
 
 void LLMNode::setPrompt(const std::string &prompt)

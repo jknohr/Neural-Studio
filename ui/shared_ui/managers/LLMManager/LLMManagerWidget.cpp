@@ -43,7 +43,7 @@ QWidget *LLMManagerWidget::createContent()
 	layout->addLayout(topBar);
 
 	// Model list
-	m_model List = new QListWidget(content);
+	m_modelList = new QListWidget(content);
 	m_modelList->setSpacing(5);
 	layout->addWidget(m_modelList, 1);
 

@@ -1,7 +1,10 @@
 #pragma once
 
 #include <QObject>
-#include <QRhiTexture>
+// #include <QRhiTexture>
+class QRhiTexture;
+class QRhiShaderResourceBindings;
+class QRhiComputePipeline;
 #include <memory>
 
 namespace NeuralStudio {

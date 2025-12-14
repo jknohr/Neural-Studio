@@ -10,7 +10,7 @@
 #include <memory>
 #include <functional>
 
-namespace libvr {
+namespace neural_studio {
 
 class OpenXRRuntime {
 public:
@@ -80,4 +80,4 @@ private:
 
 };
 
-} // namespace libvr
+} // namespace neural_studio

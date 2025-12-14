@@ -1,39 +1,46 @@
 #pragma once
 
-#include "libvr/IRenderEngine.h"
-#include "libvr/IEncoderAdapter.h"
+// Forward declarations (replaced legacy libvr includes)
+#include <cstdint>
 #include <vector>
 #include <memory>
 
-namespace libvr {
+// Forward declare interfaces
+namespace neural_studio {
+    class IRenderEngine;
+    class IEncoderAdapter;
+}  // namespace neural_studio
 
-class FrameRouter {
-public:
-    FrameRouter(IRenderEngine* renderer);
-    ~FrameRouter();
+namespace neural_studio {
 
-    void AddEncoder(IEncoderAdapter* encoder);
-    void RemoveEncoder(IEncoderAdapter* encoder);
-    
-    // Add Virtual Cam Output
-    void AddVirtualCam(void* virtualCam); // void* to avoid cyclical deps in header for now, or forward decl
+    class FrameRouter
+    {
+          public:
+        FrameRouter(IRenderEngine *renderer);
+        ~FrameRouter();
 
-    // ML/Stitch pipeline setup (for Phase 10)
-    void SetStitcher(void* stitcher); // void* to avoid pulling headers yet, or strict include
-    void SetSuperRes(void* superRes);
-    
-    // Main Pipeline Entry Point
-    // presentationTarget: Optional handle (e.g. VkImage) to blit the final frame to (for OpenXR).
-    void ProcessFrame(void* presentationTarget = nullptr);
+        void AddEncoder(IEncoderAdapter *encoder);
+        void RemoveEncoder(IEncoderAdapter *encoder);
 
-private:
-    IRenderEngine* renderer;
-    std::vector<IEncoderAdapter*> encoders;
-    std::vector<void*> virtualCams; // Store VirtualCamOutput*
-    
-    // Pipeline components
-    void* stitcher = nullptr;
-    void* superRes = nullptr;
-};
+        // Add Virtual Cam Output
+        void AddVirtualCam(void *virtualCam);  // void* to avoid cyclical deps in header for now, or forward decl
 
-} // namespace libvr
+        // ML/Stitch pipeline setup (for Phase 10)
+        void SetStitcher(void *stitcher);  // void* to avoid pulling headers yet, or strict include
+        void SetSuperRes(void *superRes);
+
+        // Main Pipeline Entry Point
+        // presentationTarget: Optional handle (e.g. VkImage) to blit the final frame to (for OpenXR).
+        void ProcessFrame(void *presentationTarget = nullptr);
+
+          private:
+        IRenderEngine *renderer;
+        std::vector<IEncoderAdapter *> encoders;
+        std::vector<void *> virtualCams;  // Store VirtualCamOutput*
+
+        // Pipeline components
+        void *stitcher = nullptr;
+        void *superRes = nullptr;
+    };
+
+}  // namespace neural_studio

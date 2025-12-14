@@ -15,7 +15,7 @@ ImageNode::~ImageNode()
 	// Cleanup texture resources
 }
 
-void ImageNode::execute(const ExecutionContext &context)
+ExecutionResult ImageNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_imagePath.empty()) {
 		// Load image from disk
@@ -32,6 +32,7 @@ void ImageNode::execute(const ExecutionContext &context)
 	if (m_textureId > 0) {
 		// setOutputData("visual_out", m_textureId);
 	}
+	return ExecutionResult::success();
 }
 
 void ImageNode::setImagePath(const std::string &path)

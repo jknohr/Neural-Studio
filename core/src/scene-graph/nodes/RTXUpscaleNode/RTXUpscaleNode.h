@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../BaseNodeBackend.h"
-#include "../../rendering/RTXUpscaler.h"
+#include "BaseNodeBackend.h"
+#include "RTXUpscaler.h"
 
 namespace NeuralStudio {
     namespace SceneGraph {

@@ -1,0 +1,35 @@
+_deps/openxr-build/src/loader/openxr_loader_autogen/timestamp: \
+  _deps/openxr-src/src/common/filesystem_utils.cpp \
+  _deps/openxr-src/src/common/filesystem_utils.hpp \
+  _deps/openxr-src/src/common/hex_and_handles.h \
+  _deps/openxr-src/src/common/object_info.cpp \
+  _deps/openxr-src/src/common/object_info.h \
+  _deps/openxr-src/src/common/platform_utils.hpp \
+  _deps/openxr-src/src/loader/CMakeLists.txt \
+  _deps/openxr-src/src/loader/OpenXRConfig.cmake.in \
+  _deps/openxr-src/src/loader/android_utilities.cpp \
+  _deps/openxr-src/src/loader/android_utilities.h \
+  _deps/openxr-src/src/loader/api_layer_interface.cpp \
+  _deps/openxr-src/src/loader/api_layer_interface.hpp \
+  _deps/openxr-src/src/loader/loader_core.cpp \
+  _deps/openxr-src/src/loader/loader_init_data.cpp \
+  _deps/openxr-src/src/loader/loader_init_data.hpp \
+  _deps/openxr-src/src/loader/loader_instance.cpp \
+  _deps/openxr-src/src/loader/loader_instance.hpp \
+  _deps/openxr-src/src/loader/loader_logger.cpp \
+  _deps/openxr-src/src/loader/loader_logger.hpp \
+  _deps/openxr-src/src/loader/loader_logger_recorders.cpp \
+  _deps/openxr-src/src/loader/loader_logger_recorders.hpp \
+  _deps/openxr-src/src/loader/manifest_file.cpp \
+  _deps/openxr-src/src/loader/manifest_file.hpp \
+  _deps/openxr-src/src/loader/openxr.pc.in \
+  _deps/openxr-src/src/loader/runtime_interface.cpp \
+  _deps/openxr-src/src/loader/runtime_interface.hpp \
+  _deps/openxr-src/src/loader/xr_generated_loader.cpp \
+  _deps/openxr-src/src/loader/xr_generated_loader.hpp \
+  _deps/openxr-src/src/xr_generated_dispatch_table_core.c \
+  _deps/openxr-src/src/xr_generated_dispatch_table_core.h \
+  /usr/bin/cmake \
+  /usr/share/cmake-3.28/Modules/BasicConfigVersion-SameMajorVersion.cmake.in \
+  /usr/share/cmake-3.28/Modules/CMakePackageConfigHelpers.cmake \
+  /usr/share/cmake-3.28/Modules/WriteBasicConfigVersionFile.cmake

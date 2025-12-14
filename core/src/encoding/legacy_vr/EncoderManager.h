@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-namespace libvr {
+namespace neural_studio {
 
 class EncoderManager {
 public:
@@ -27,4 +27,4 @@ private:
     std::vector<IEncoderAdapter*> active_encoders;
 };
 
-} // namespace libvr
+} // namespace neural_studio

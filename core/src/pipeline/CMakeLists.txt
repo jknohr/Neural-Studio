@@ -10,6 +10,8 @@ set(PIPELINE_HEADERS
     IStitcher.h
 )
 
+find_package(Qt6 REQUIRED COMPONENTS Core)
+
 add_library(nstudio-pipeline STATIC
     ${PIPELINE_SOURCES}
     ${PIPELINE_HEADERS}
@@ -17,7 +19,7 @@ add_library(nstudio-pipeline STATIC
 
 target_link_libraries(nstudio-pipeline
     PRIVATE
-        Qt6::Core
+    Qt6::Core
 )
 
 target_include_directories(nstudio-pipeline PUBLIC

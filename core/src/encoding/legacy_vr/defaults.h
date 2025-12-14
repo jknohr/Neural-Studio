@@ -1,6 +1,6 @@
 #pragma once
 
-namespace libvr {
+namespace neural_studio {
 namespace defaults {
 
     static const int VR_BITRATE_8K = 50000; // 50 Mbps

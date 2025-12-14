@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -9,7 +9,7 @@ namespace NeuralStudio {
               public:
             ScriptNode(const std::string &id);
             ~ScriptNode() override;
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &context) override;
             void setScriptPath(const std::string &path);
             std::string getScriptPath() const;
             void setScriptLanguage(const std::string &lang);  // "lua", "python"

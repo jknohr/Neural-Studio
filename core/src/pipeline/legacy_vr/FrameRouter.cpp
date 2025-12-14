@@ -5,7 +5,7 @@
 #include "libvr/ISuperResolutionAdapter.h"
 #include "libvr/VirtualCamOutput.h"
 
-namespace libvr {
+namespace neural_studio {
 
 FrameRouter::FrameRouter(IRenderEngine* renderer) : renderer(renderer) {}
 
@@ -95,4 +95,4 @@ void FrameRouter::ProcessFrame(void* presentationTarget) {
     // 10. End Frame (Implicit in renderer cleanup usually, or add EndFrame() method)
 }
 
-} // namespace libvr
+} // namespace neural_studio

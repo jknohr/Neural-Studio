@@ -8,12 +8,13 @@ TextureNode::TextureNode(const std::string &id) : BaseNodeBackend(id, "TextureNo
 	addOutput("texture_out", "Texture Output", DataType::Texture2D());
 }
 TextureNode::~TextureNode() {}
-void TextureNode::execute(const ExecutionContext &context)
+ExecutionResult TextureNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_texturePath.empty()) {
 		std::cout << "TextureNode: Loading " << m_texturePath << std::endl;
 		m_dirty = false;
 	}
+	return ExecutionResult::success();
 }
 void TextureNode::setTexturePath(const std::string &path)
 {

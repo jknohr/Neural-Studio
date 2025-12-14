@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -13,7 +13,7 @@ namespace NeuralStudio {
             ~ImageNode() override;
 
             // Execution
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &context) override;
 
             // Properties
             void setImagePath(const std::string &path);

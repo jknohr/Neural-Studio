@@ -1,4 +1,5 @@
 #include "FramebufferManager.h"
+#include "ShimQRhi.h"
 #include <QDebug>
 #include <algorithm>
 

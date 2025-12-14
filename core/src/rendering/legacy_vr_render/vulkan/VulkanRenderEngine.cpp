@@ -6,7 +6,7 @@
 #include <fstream>
 #include "gpu/vulkan_utils.h"
 
-namespace libvr {
+namespace neural_studio {
 
 // Helper macros for error checking
 #define VK_CHECK(x) \
@@ -371,4 +371,4 @@ std::unique_ptr<IRenderEngine> CreateVulkanRenderEngine() {
     return std::make_unique<VulkanRenderEngine>();
 }
 
-} // namespace libvr
+} // namespace neural_studio

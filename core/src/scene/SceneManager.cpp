@@ -1,10 +1,18 @@
 #include "SceneManager.h"
+#include "../usd_manager/UsdStageManager.h"
 #include <algorithm>
 
-namespace libvr {
+namespace neural_studio {
 
-SceneManager::SceneManager() = default;
-SceneManager::~SceneManager() = default;
+SceneManager::SceneManager()
+{
+	m_usdManager = new NeuralStudio::USD::UsdStageManager();
+}
+
+SceneManager::~SceneManager()
+{
+	delete m_usdManager;
+}
 
 uint32_t SceneManager::AddNode(const Transform &transform)
 {
@@ -56,6 +64,7 @@ uint32_t SceneManager::AddVideoNode(const std::string &externalId, const Transfo
 	uint32_t id = next_id++;
 	SceneNode node;
 	node.id = id;
+	node.externalId = externalId; // Store key
 	node.transform = transform;
 	node.mesh_id = mesh_id;
 	node.material_id = 0;
@@ -108,6 +117,28 @@ void SceneManager::SetTransform(uint32_t id, const Transform &transform)
 	for (auto &node : nodes) {
 		if (node.id == id) {
 			node.transform = transform;
+
+			// Sync with USD
+			if (!node.externalId.empty() && m_usdManager) {
+				// Convert Transform to PrimTransform
+				NeuralStudio::USD::PrimTransform pt;
+				pt.position[0] = transform.position[0];
+				pt.position[1] = transform.position[1];
+				pt.position[2] = transform.position[2];
+
+				pt.rotation[0] = transform.rotation[0]; // w
+				pt.rotation[1] = transform.rotation[1]; // x
+				pt.rotation[2] = transform.rotation[2]; // y
+				pt.rotation[3] =
+					transform.rotation
+						[3]; // z (Note: Need to check if this matches USD expectations, previously I wrote dummy euler)
+
+				pt.scale[0] = transform.scale[0];
+				pt.scale[1] = transform.scale[1];
+				pt.scale[2] = transform.scale[2];
+
+				m_usdManager->setPrimTransform(node.externalId, pt);
+			}
 			break;
 		}
 	}
@@ -196,4 +227,86 @@ const std::vector<SemanticEdge> &SceneManager::GetRelations() const
 	return edges;
 }
 
-} // namespace libvr
+bool SceneManager::OpenUsdStage(const std::string &filePath)
+{
+	if (m_usdManager) {
+		if (m_usdManager->openStage(QString::fromStdString(filePath))) {
+			// Mapping Logic: Retrieve structure and populate SceneNodes
+			auto prims = m_usdManager->getStageStructure();
+
+			// Clear existing logical nodes created from previous stage?
+			// For now, we append.
+
+			for (const auto &prim : prims) {
+				// Determine Type Mapping
+				// UsdGeomMesh -> MeshNode
+				// UsdLuxLight -> LightNode
+				// UsdGeomCamera ->                // For this pass, we just create a logical node representation
+				// In a full implementation, we would extract the transform and data
+				Transform transform;
+				auto usdXform = m_usdManager->getPrimTransform(prim.path.toStdString());
+
+				transform.position[0] = static_cast<float>(usdXform.position[0]);
+				transform.position[1] = static_cast<float>(usdXform.position[1]);
+				transform.position[2] = static_cast<float>(usdXform.position[2]);
+
+				transform.rotation[0] = static_cast<float>(usdXform.rotation[0]); // w
+				transform.rotation[1] = static_cast<float>(usdXform.rotation[1]); // x
+				transform.rotation[2] = static_cast<float>(usdXform.rotation[2]); // y
+				transform.rotation[3] = static_cast<float>(usdXform.rotation[3]);
+				std::fill_n(transform.scale, 3, 1.0f); // Default scale
+
+				uint32_t meshId = 0;
+				// Check if it is a Mesh
+				if (prim.type == "Mesh") {
+					auto meshData = m_usdManager->getPrimMesh(prim.path);
+					if (meshData.isValid) {
+						Mesh newMesh;
+						newMesh.name = prim.name.toStdString();
+
+						// Convert Flat Vectors to LibVR Structs
+						for (size_t i = 0; i < meshData.vertices.size(); i += 3) {
+							Vertex v;
+							v.position[0] = meshData.vertices[i];
+							v.position[1] = meshData.vertices[i + 1];
+							v.position[2] = meshData.vertices[i + 2];
+
+							// Naive Normal mapping (if exists)
+							if (i < meshData.normals.size()) {
+								v.normal[0] = meshData.normals[i];
+								v.normal[1] = meshData.normals[i + 1];
+								v.normal[2] = meshData.normals[i + 2];
+							} else {
+								v.normal[0] = 0;
+								v.normal[1] = 1;
+								v.normal[2] = 0;
+							}
+							v.uv[0] = 0;
+							v.uv[1] = 0; // Placeholder UVs
+							newMesh.vertices.push_back(v);
+						}
+
+						// Indices
+						for (auto idx : meshData.indices) {
+							newMesh.indices.push_back(idx);
+						}
+
+						meshId = AddMesh(newMesh);
+					}
+				}
+
+				// Use the Prim Path as the External ID (convert QString to std::string)
+				std::string primPathStr = prim.path.toStdString();
+				if (meshId > 0) {
+					AddMeshNode(primPathStr, transform, meshId);
+				} else {
+					AddNode(primPathStr, transform);
+				}
+			}
+			return true;
+		}
+	}
+	return false;
+}
+
+} // namespace neural_studio

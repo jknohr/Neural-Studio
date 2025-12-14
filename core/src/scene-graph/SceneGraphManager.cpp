@@ -27,7 +27,7 @@ bool SceneGraphManager::initialize(Rendering::IRenderEngine *renderer)
 	// If it was passed in externally, we would use that.
 	// For now, we create one if not provided (though architecture suggests it might come from App)
 	if (!m_sceneManager) {
-		m_sceneManager = std::make_shared<libvr::SceneManager>();
+		m_sceneManager = std::make_shared<neural_studio::SceneManager>();
 	}
 
 	// Initialize Execution Context
@@ -73,7 +73,7 @@ NodeExecutionGraph *SceneGraphManager::getNodeGraph() const
 	return m_nodeGraph.get();
 }
 
-libvr::SceneManager *SceneGraphManager::getSceneManager() const
+neural_studio::SceneManager *SceneGraphManager::getSceneManager() const
 {
 	return m_sceneManager.get();
 }

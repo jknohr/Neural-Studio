@@ -1,7 +1,7 @@
 #include "AudioManager.h"
 #include <iostream>
 
-namespace libvr {
+namespace neural_studio {
 
 AudioManager::AudioManager() {
     std::cout << "[AudioManager] Subsystem initialized." << std::endl;
@@ -27,4 +27,4 @@ void AudioManager::Update() {
     // Mix logic
 }
 
-} // namespace libvr
+} // namespace neural_studio

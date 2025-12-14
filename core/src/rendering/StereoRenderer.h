@@ -1,5 +1,12 @@
 #pragma once
 
+// #include <QRhi>
+class QRhi;
+class QRhiTexture;
+class QRhiSwapChain;
+class QRhiRenderTarget;
+class QRhiShaderResourceBindings;
+class QRhiGraphicsPipeline;
 #include <QObject>
 #include "VulkanRenderer.h"
 #include <memory>

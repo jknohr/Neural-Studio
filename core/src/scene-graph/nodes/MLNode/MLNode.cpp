@@ -14,7 +14,7 @@ MLNode::~MLNode()
 	// TODO: Cleanup model session (ONNX/TensorFlow/PyTorch)
 }
 
-void MLNode::execute(const ExecutionContext &context)
+ExecutionResult MLNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_modelPath.empty()) {
 		std::cout << "MLNode: Loading AI model " << m_modelPath << std::endl;
@@ -22,6 +22,7 @@ void MLNode::execute(const ExecutionContext &context)
 		m_dirty = false;
 	}
 	// TODO: Run inference
+	return ExecutionResult::success();
 }
 
 void MLNode::setModelPath(const std::string &path)

@@ -8,7 +8,7 @@
 // but usually we need the types unless we pimpl. 
 // For simplicity, we'll expose a clean C++ API and hide implementation.
 
-namespace libvr {
+namespace neural_studio {
 
 class MLRuntime {
 public:
@@ -27,4 +27,4 @@ private:
     std::unique_ptr<Impl> impl;
 };
 
-} // namespace libvr
+} // namespace neural_studio

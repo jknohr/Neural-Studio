@@ -1,7 +1,9 @@
 #pragma once
 
 #include <QObject>
-#include <QRhiTexture>
+#include <QObject>
+// #include <QRhiTexture>
+class QRhiTexture;
 #include <memory>
 
 // Forward declarations for NVIDIA SDK types

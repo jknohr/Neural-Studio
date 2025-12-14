@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -10,7 +10,7 @@ namespace NeuralStudio {
               public:
             LLMNode(const std::string &id);
             ~LLMNode() override;
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &context) override;
             void setPrompt(const std::string &prompt);
             void setModel(const std::string &model);
             std::string getPrompt() const;

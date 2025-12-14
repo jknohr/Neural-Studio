@@ -31,30 +31,39 @@ ThreeDModelNode (concrete implementation)
 ### Key Components
 
 #### Properties
-- **`m_modelPath`** (std::string): Path to 3D model file
-- **`m_sceneObjectId`** (uint32_t): Reference to loaded model in SceneManager
+- **`m_modelPath`** (std::string): Path to 3D model file (supports .usd, .usda, .usdc, .usdz, .glb, .gltf, .obj, .fbx)
+- **`m_sceneObjectId`** (uint32_t): Reference to loaded model root in SceneManager
 - **`m_dirty`** (bool): Marks when model needs reload
 
 #### Pins
 **Outputs**:
-- `visual_out`: Mesh data type - Loaded 3D model geometry
+- `visual_out`: Mesh data type - Loaded 3D model geometry (or USD Stage ref)
 
 **Inputs**: None (source node for 3D geometry)
 
 ### Data Flow
 
 ```
-[3D Model File (.obj, .glb, .fbx)]
+[3D Model File (.usd, .glb, .obj)]
         ↓
    ThreeDModelNode::execute()
         ↓
-   [Load via SceneManager]
+   [Check Extension]
+   |-- if USD: SceneManager::OpenUsdStage() -> UsdStageManager
+   |-- else:   SceneManager::LoadModel() (Legacy/Assimp)
         ↓
-   m_sceneObjectId (reference)
+   UsdStageManager (Hybrid Backend)
         ↓
-   visual_out (Mesh output)
+   1. Parses Stage Structure (Prims)
+   2. Extracts Transforms (Xformable)
+   3. Extracts Meshes (UsdGeomMesh) -> libvr::Mesh
+        ↓
+   SceneManager (Logical Graph)
+        ↓
+   SceneNode created with `externalId` = USD Prim Path
         ↓
    [Render Pipeline]
+   (Renders extracted meshes at derived transforms)
 ```
 
 ## Implementation Details
@@ -75,13 +84,21 @@ void ThreeDModelNode::execute(const ExecutionContext& context)
 {
     if (m_dirty && !m_modelPath.empty()) {
         std::cout << "Loading 3D model: " << m_modelPath << std::endl;
-        // Future: m_sceneObjectId = SceneManager::loadModel(m_modelPath);
+        
+        // Detect USD
+        if (isUsdFile(m_modelPath)) {
+             // Hybrid Path
+             bool success = SceneManager::instance()->OpenUsdStage(m_modelPath);
+             if (success) {
+                 // The stage is now live in UsdStageManager.
+                 // SceneManager has populated SceneNodes for each Prim.
+             }
+        } else {
+             // Legacy Path (Assimp/Other)
+             // m_sceneObjectId = SceneManager::loadModel(m_modelPath);
+        }
+        
         m_dirty = false;
-    }
-
-    // Output loaded model reference
-    if (m_sceneObjectId > 0) {
-        // setOutputData("visual_out", m_sceneObjectId);
     }
 }
 ```

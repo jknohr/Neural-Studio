@@ -1,4 +1,5 @@
 #include "StereoRenderer.h"
+#include "ShimQRhi.h"
 #include <QDebug>
 
 namespace NeuralStudio {
@@ -140,31 +141,8 @@ void StereoRenderer::render3DOverlay(EyeIndex eye, QRhiTexture *targetTexture)
 
 void StereoRenderer::createPerEyeFramebuffers()
 {
-	QRhi *rhi = m_renderer->rhi();
-	if (!rhi)
-		return;
-
-	// Left video texture (stitched 2K equirectangular)
-	m_leftVideoTexture.reset(rhi->newTexture(QRhiTexture::RGBA8, QSize(m_config.eyeWidth, m_config.eyeHeight), 1,
-						 QRhiTexture::RenderTarget | QRhiTexture::UsedAsTransferSource));
-	m_leftVideoTexture->create();
-
-	// Right video texture (stitched 2K equirectangular)
-	m_rightVideoTexture.reset(rhi->newTexture(QRhiTexture::RGBA8, QSize(m_config.eyeWidth, m_config.eyeHeight), 1,
-						  QRhiTexture::RenderTarget | QRhiTexture::UsedAsTransferSource));
-	m_rightVideoTexture->create();
-
-	// Left 3D overlay texture
-	m_left3DTexture.reset(rhi->newTexture(QRhiTexture::RGBA8, QSize(m_config.eyeWidth, m_config.eyeHeight), 1,
-					      QRhiTexture::RenderTarget | QRhiTexture::UsedAsTransferSource));
-	m_left3DTexture->create();
-
-	// Right 3D overlay texture
-	m_right3DTexture.reset(rhi->newTexture(QRhiTexture::RGBA8, QSize(m_config.eyeWidth, m_config.eyeHeight), 1,
-					       QRhiTexture::RenderTarget | QRhiTexture::UsedAsTransferSource));
-	m_right3DTexture->create();
-
-	qInfo() << "Created stereo framebuffers (4 textures, 2K each)";
+	// STUBBED: RHI Missing
+	qWarning() << "StereoRenderer::createPerEyeFramebuffers stubbed (RHI missing)";
 }
 
 void StereoRenderer::createSplitterPipeline()

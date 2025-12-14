@@ -1,4 +1,4 @@
-#include "../NodeFactory.h"
+#include "NodeFactory.h"
 #include "ThreeDModelNode.h"
 #include <memory>
 

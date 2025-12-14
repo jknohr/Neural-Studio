@@ -3,7 +3,7 @@
 #include "libvr/frame.h"
 #include <vulkan/vulkan.h>
 
-namespace libvr {
+namespace neural_studio {
 
 // Helper to fill GPUFrameView from a known VkImage
 inline void FillGPUFrameView(GPUFrameView& view, VkImage image, uint32_t width, uint32_t height, VkFormat format) {
@@ -44,4 +44,4 @@ bool LoadInteropFunctions(VkDevice device);
 bool ExportImageFd(VkDevice device, VkDeviceMemory memory, int* out_fd);
 uint32_t FindMemoryType(VkPhysicalDevice physicalDevice, uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
-} // namespace libvr
+} // namespace neural_studio

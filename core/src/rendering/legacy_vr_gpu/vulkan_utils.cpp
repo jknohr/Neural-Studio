@@ -6,7 +6,7 @@
 // Usually provided by dynamic loader, but we need to fetch it if not static
 static PFN_vkGetMemoryFdKHR fpGetMemoryFdKHR = nullptr;
 
-namespace libvr {
+namespace neural_studio {
 
 bool LoadInteropFunctions(VkDevice device) {
     fpGetMemoryFdKHR = (PFN_vkGetMemoryFdKHR)vkGetDeviceProcAddr(device, "vkGetMemoryFdKHR");
@@ -45,4 +45,4 @@ uint32_t FindMemoryType(VkPhysicalDevice physicalDevice, uint32_t typeFilter, Vk
     return -1;
 }
 
-} // namespace libvr
+} // namespace neural_studio

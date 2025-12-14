@@ -22,7 +22,7 @@ static const char* PREFERRED_CODECS[] = {
     nullptr
 };
 
-namespace libvr {
+namespace neural_studio {
 
 class FFmpegEncoderAdapter : public IEncoderAdapter {
 public:
@@ -192,4 +192,4 @@ extern "C" IEncoderAdapter* CreateFFmpegAdapter() {
     return new FFmpegEncoderAdapter();
 }
 
-} // namespace libvr
+} // namespace neural_studio

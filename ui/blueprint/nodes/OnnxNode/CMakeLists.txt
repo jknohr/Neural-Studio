@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core Quick)
+
 add_library(ui-onnxnode STATIC
     OnnxNodeController.cpp
     OnnxNodeController.h

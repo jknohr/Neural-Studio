@@ -3,13 +3,15 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QVariantList>
 #include <QVariantMap>
 #include <QMap>
 
+// Include outside namespace to avoid polluting it
+#include "../../blueprint/core/NodeGraphController.h"
+
 namespace NeuralStudio {
     namespace UI {
-
-        class NodeGraphController;
 
         /**
      * @brief Base Manager Controller - Hub for managing multiple nodes

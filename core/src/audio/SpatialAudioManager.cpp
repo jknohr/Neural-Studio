@@ -1,9 +1,20 @@
 #include "SpatialAudioManager.h"
+#include <QtSpatialAudio/QAudioEngine>
+#include <QtSpatialAudio/QAudioListener>
 #include <QDebug>
+#include <QVector3D>
+#include <QMap>
+#include <QString>
 
 namespace NeuralStudio {
 
-SpatialAudioManager::SpatialAudioManager() : m_audioEngine(nullptr), m_virtualRoom(nullptr), m_initialized(false) {}
+SpatialAudioManager::SpatialAudioManager()
+	: m_audioEngine(nullptr),
+	  m_listener(nullptr),
+	  m_virtualRoom(nullptr),
+	  m_initialized(false)
+{
+}
 
 SpatialAudioManager::~SpatialAudioManager()
 {
@@ -18,6 +29,7 @@ void SpatialAudioManager::initialize()
 	}
 
 	m_audioEngine = new QAudioEngine();
+	m_listener = new QAudioListener(m_audioEngine);
 	m_audioEngine->start();
 
 	m_initialized = true;
@@ -112,15 +124,15 @@ void SpatialAudioManager::removeAmbientSound(const QString &id)
 
 void SpatialAudioManager::updateListenerPosition(const QVector3D &position)
 {
-	if (m_audioEngine) {
-		m_audioEngine->setListenerPosition(position);
+	if (m_listener) {
+		m_listener->setPosition(position);
 	}
 }
 
 void SpatialAudioManager::updateListenerOrientation(const QVector3D &forward, const QVector3D &up)
 {
-	if (m_audioEngine) {
-		m_audioEngine->setListenerRotation(QQuaternion::fromDirection(forward, up));
+	if (m_listener) {
+		m_listener->setRotation(QQuaternion::fromDirection(forward, up));
 	}
 }
 

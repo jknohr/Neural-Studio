@@ -6,13 +6,13 @@ namespace SceneGraph {
 ScriptNode::ScriptNode(const std::string &id) : BaseNodeBackend(id, "ScriptNode")
 {
 	// Scripts can have inputs/outputs dynamically defined
-	addInput("trigger_in", "Trigger", DataType(DataCategory::Flow, "Trigger"));
+	addInput("trigger_in", "Trigger", DataType(DataCategory::Primitive, "Trigger"));
 	addOutput("result_out", "Result", DataType::Any());
 }
 ScriptNode::~ScriptNode()
 { /* Cleanup script engine */
 }
-void ScriptNode::execute(const ExecutionContext &context)
+ExecutionResult ScriptNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_scriptPath.empty()) {
 		std::cout << "ScriptNode: Loading " << m_scriptLanguage << " script " << m_scriptPath << std::endl;
@@ -20,6 +20,7 @@ void ScriptNode::execute(const ExecutionContext &context)
 		m_dirty = false;
 	}
 	// Execute script logic
+	return ExecutionResult::success();
 }
 void ScriptNode::setScriptPath(const std::string &path)
 {

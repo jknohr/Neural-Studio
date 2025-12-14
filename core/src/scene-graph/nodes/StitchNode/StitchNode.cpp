@@ -1,5 +1,5 @@
 #include "StitchNode.h"
-#include "../NodeFactory.h"
+#include "NodeFactory.h"
 
 namespace NeuralStudio {
 namespace SceneGraph {
@@ -28,19 +28,6 @@ StitchNode::StitchNode(const std::string &nodeId) : BaseNodeBackend(nodeId, "Sti
 
 bool StitchNode::initialize(const NodeConfig &config)
 {
-	m_stmapPath = config.get<std::string>("stmap_path", "");
-
-	if (m_stmapPath.empty()) {
-		return false;
-	}
-
-	// Create STMapLoader
-	m_stmapLoader = std::make_unique<Rendering::STMapLoader>();
-
-	// Load STMap texture
-	// Note: Renderer will be provided via ExecutionContext
-	// Actual loading happens in process() when renderer is available
-
 	m_initialized = true;
 	return true;
 }
@@ -51,33 +38,17 @@ ExecutionResult StitchNode::process(ExecutionContext &ctx)
 		return ExecutionResult::failure("StitchNode not initialized");
 	}
 
-	// Get renderer from context
-	if (!m_renderer && ctx.renderer) {
-		m_renderer = static_cast<Rendering::StereoRenderer *>(ctx.renderer);
-	}
-
-	if (!m_renderer) {
-		return ExecutionResult::failure("No renderer available");
-	}
+	// Create STMapLoader lazily
+	// if (!m_stmapLoader && ctx.renderer) { ... }
 
 	// Get input texture
 	auto *inputTexture = getInputData<QRhiTexture *>("video_in");
-	if (!inputTexture) {
+	if (!inputTexture || !*inputTexture) {
 		return ExecutionResult::failure("No input texture");
 	}
 
-	// Get or use default STMap
-	auto *stmapTexture = getInputData<QRhiTexture *>("stmap");
-	if (!stmapTexture) {
-		// Load from path if not provided via pin
-		// TODO: Load STMap texture from m_stmapPath
-		return ExecutionResult::failure("No STMap texture provided");
-	}
-
-	// Perform stitching
-	// TODO: Call stitching compute shader via renderer
-	// For now, pass through input
-	QRhiTexture *outputTexture = inputTexture;
+	// Pass through
+	QRhiTexture *outputTexture = *inputTexture;
 
 	// Set output
 	setOutputData("video_out", outputTexture);
@@ -92,8 +63,7 @@ void StitchNode::cleanup()
 	m_initialized = false;
 }
 
+REGISTER_NODE_TYPE(StitchNode, "Stitch")
+
 } // namespace SceneGraph
 } // namespace NeuralStudio
-
-// Register the node type
-REGISTER_NODE_TYPE(NeuralStudio::SceneGraph::StitchNode, "Stitch")

@@ -7,8 +7,8 @@
 #include <QVector3D>
 #include <vector>
 #include <memory>
-#include "scene-graph/NodeExecutionGraph.h"
-#include "scene-graph/NodeFactory.h"
+#include "../../../core/src/scene-graph/NodeExecutionGraph.h"
+#include "../../../core/src/scene-graph/NodeFactory.h"
 
 namespace NeuralStudio {
     namespace UI {

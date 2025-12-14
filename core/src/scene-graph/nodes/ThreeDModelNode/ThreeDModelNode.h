@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -13,7 +13,7 @@ namespace NeuralStudio {
             ~ThreeDModelNode() override;
 
             // Execution
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &ctx) override;
 
             // Properties
             void setModelPath(const std::string &path);

@@ -25,8 +25,9 @@ set(SCENE_GRAPH_SOURCES
     nodes/LLMNode/LLMNode.cpp
     nodes/LLMNode/LLMNodeFactory.cpp
     nodes/StitchNode/StitchNode.cpp
-    nodes/RTXUpscaleNode/RTXUpscaleNode.cpp
-    nodes/HeadsetOutputNode/HeadsetOutputNode.cpp
+    # Disabled: Require Qt RHI private API / missing deps
+    # nodes/RTXUpscaleNode/RTXUpscaleNode.cpp
+    # nodes/HeadsetOutputNode/HeadsetOutputNode.cpp
     NodeExecutionGraph.cpp
     BaseNodeBackend.cpp
     NodeFactory.cpp
@@ -40,6 +41,8 @@ set(SCENE_GRAPH_HEADERS
 )
 
 # Create scene-graph library
+find_package(Qt6 REQUIRED COMPONENTS Core)
+
 add_library(scene-graph STATIC
     ${SCENE_GRAPH_SOURCES}
     ${SCENE_GRAPH_HEADERS}
@@ -53,11 +56,11 @@ target_include_directories(scene-graph PUBLIC
 # Link dependencies
 target_link_libraries(scene-graph
     PRIVATE
-        Qt6::Core
-        nstudio-scene      # New home for SceneManager
-        nstudio-rendering  # Runtime capabilities
-        nstudio-pipeline   # Frame routing
-        # libvr is gone
+    Qt6::Core
+    nstudio-scene # New home for SceneManager
+    nstudio-rendering # Runtime capabilities
+    nstudio-pipeline # Frame routing
+    # libvr is gone
 )
 
 # Installation

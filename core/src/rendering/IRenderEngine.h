@@ -1,10 +1,19 @@
 #pragma once
 
-#include "common/frame.h" mon / frame.h "
+#include <cstdint>
+#include <string>
 #include <vector>
 #include <memory>
 
-namespace libvr {
+namespace neural_studio {
+
+    // GPU Frame reference for zero-copy frame sharing
+    struct GPUFrameView {
+        void *handle = nullptr;  // Platform-specific handle (VkImage, GLuint, etc.)
+        uint32_t width = 0;
+        uint32_t height = 0;
+        uint32_t format = 0;  // Platform-specific format enum
+    };
 
     struct RenderConfig {
         uint32_t width;
@@ -48,4 +57,4 @@ namespace libvr {
     // Factory
     std::unique_ptr<IRenderEngine> CreateVulkanRenderEngine();
 
-}  // namespace libvr
+}  // namespace neural_studio

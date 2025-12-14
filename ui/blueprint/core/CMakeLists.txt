@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core Quick)
+
 add_library(blueprint-core
     NodeGraphController.cpp
     NodeGraphController.h

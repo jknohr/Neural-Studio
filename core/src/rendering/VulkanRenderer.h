@@ -1,17 +1,27 @@
+
 #pragma once
 
 #include <QObject>
-#include <QRhi>
-#include <QRhiCommandBuffer>
-#include <QRhiRenderTarget>
-#include <QRhiSwapChain>
+#include <QWindow>
+// #include <QRhi>
+class QRhi;
+// #include <QRhiCommandBuffer>
+class QRhiCommandBuffer;
+// #include <QRhiRenderTarget>
+class QRhiRenderTarget;
+// #include <QRhiSwapChain>
+class QRhiSwapChain;
+// #include <QRhiTexture>
+class QRhiTexture;
+class QRhiRenderPassDescriptor;
+class QRhiTextureRenderTarget;
 #include <memory>
 #include <vector>
 
 namespace NeuralStudio {
-namespace Rendering {
+    namespace Rendering {
 
-/**
+        /**
  * @brief VulkanRenderer - Core VR180/360 rendering engine using Qt RHI
  * 
  * This renderer provides hardware-accelerated 3D rendering using Qt's RHI
@@ -24,69 +34,72 @@ namespace Rendering {
  * - HDR support (Rec.2020 PQ/HLG)
  * - Preview rendering for Blueprint/ActiveFrame
  */
-class VulkanRenderer : public QObject
-{
-    Q_OBJECT
+        class VulkanRenderer : public QObject
+        {
+            Q_OBJECT
 
-public:
-    struct RenderConfig {
-        uint32_t eyeWidth = 1920;
-        uint32_t eyeHeight = 1920;
-        float fovHorizontal = 110.0f;
-        float fovVertical = 96.0f;
-        float ipd = 63.0f;  // mm
-        bool stereoEnabled = true;
-        bool hdrEnabled = false;
-    };
+              public:
+            struct RenderConfig {
+                uint32_t eyeWidth = 1920;
+                uint32_t eyeHeight = 1920;
+                float fovHorizontal = 110.0f;
+                float fovVertical = 96.0f;
+                float ipd = 63.0f;  // mm
+                bool stereoEnabled = true;
+                bool hdrEnabled = false;
+            };
 
-    explicit VulkanRenderer(QObject *parent = nullptr);
-    ~VulkanRenderer() override;
+            explicit VulkanRenderer(QObject *parent = nullptr);
+            ~VulkanRenderer() override;
 
-    /**
+            /**
      * @brief Initialize the Vulkan rendering context
      * @param window Native window handle for swap chain
      * @return true if initialization succeeded
      */
-    bool initialize(QWindow *window);
+            bool initialize(QWindow *window);
 
-    /**
+            /**
      * @brief Set rendering configuration
      */
-    void setConfig(const RenderConfig &config);
+            void setConfig(const RenderConfig &config);
 
-    /**
+            /**
      * @brief Render a frame
      * @param deltaTime Time since last frame (seconds)
      */
-    void renderFrame(float deltaTime);
+            void renderFrame(float deltaTime);
 
-    /**
+            /**
      * @brief Get the RHI instance
      */
-    QRhi* rhi() const { return m_rhi.get(); }
+            QRhi *rhi() const
+            {
+                return m_rhi.get();
+            }
 
-signals:
-    void frameRendered();
-    void errorOccurred(const QString &error);
+              signals:
+            void frameRendered();
+            void errorOccurred(const QString &error);
 
-private:
-    void createResources();
-    void releaseResources();
-    void createFramebuffers();
-    void createCommandBuffers();
+              private:
+            void createResources();
+            void releaseResources();
+            void createFramebuffers();
+            void createCommandBuffers();
 
-    // Qt RHI resources
-    std::unique_ptr<QRhi> m_rhi;
-    std::unique_ptr<QRhiSwapChain> m_swapChain;
-    std::unique_ptr<QRhiRenderPassDescriptor> m_renderPass;
-    
-    std::vector<std::unique_ptr<QRhiTextureRenderTarget>> m_eyeFramebuffers;
-    std::vector<std::unique_ptr<QRhiCommandBuffer>> m_commandBuffers;
+            // Qt RHI resources
+            std::unique_ptr<QRhi> m_rhi;
+            std::unique_ptr<QRhiSwapChain> m_swapChain;
+            std::unique_ptr<QRhiRenderPassDescriptor> m_renderPass;
 
-    RenderConfig m_config;
-    bool m_initialized = false;
-    QWindow *m_window = nullptr;
-};
+            std::vector<std::unique_ptr<QRhiTextureRenderTarget>> m_eyeFramebuffers;
+            std::vector<std::unique_ptr<QRhiCommandBuffer>> m_commandBuffers;
 
-} // namespace Rendering
-} // namespace NeuralStudio
+            RenderConfig m_config;
+            bool m_initialized = false;
+            QWindow *m_window = nullptr;
+        };
+
+    }  // namespace Rendering
+}  // namespace NeuralStudio

@@ -1,7 +1,7 @@
 #include "EncoderManager.h"
 #include <iostream>
 
-namespace libvr {
+namespace neural_studio {
 
 // Forward declaration of factory from FFmpegEncoderAdapter.cpp
 extern "C" IEncoderAdapter* CreateFFmpegAdapter();
@@ -68,4 +68,4 @@ void EncoderManager::DestroyEncoder(IEncoderAdapter* encoder) {
     // In a real C-ABI, we'd have a Destroy function.
 }
 
-} // namespace libvr
+} // namespace neural_studio

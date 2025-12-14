@@ -1,8 +1,12 @@
 #pragma once
 
 #include <QObject>
-#include <QRhi>
-#include <QRhiTexture>
+// #include <QRhi>
+class QRhi;
+// #include <QRhiTexture>
+class QRhiTexture;
+class QRhiTextureRenderTarget;
+class QRhiRenderPassDescriptor;
 #include <memory>
 #include <vector>
 #include <string>

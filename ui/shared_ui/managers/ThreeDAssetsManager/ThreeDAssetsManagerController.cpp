@@ -2,8 +2,8 @@
 #include "../../blueprint/core/NodeGraphController.h"
 #include <QDir>
 #include <QDebug>
-#include <QDir>
-#include <QDebug>
+#include <QFileInfo>
+#include <QStringList>
 
 namespace NeuralStudio {
 namespace Blueprint {
@@ -29,7 +29,8 @@ void ThreeDAssetsManagerController::scanAssets()
 	}
 
 	QStringList filters;
-	filters << "*.obj" << "*.glb" << "*.gltf" << "*.fbx" << "*.dae";
+	filters << "*.obj" << "*.glb" << "*.gltf" << "*.fbx" << "*.dae"
+		<< "*.usd" << "*.usda" << "*.usdc" << "*.usdz";
 	QFileInfoList files = assetsDir.entryInfoList(filters, QDir::Files);
 
 	for (const QFileInfo &fileInfo : files) {

@@ -1,22 +1,23 @@
 #include <iostream>
-#include <libvr/OpenXRRuntime.h>
-#include <libvr/IRenderEngine.h>
-#include <libvr/pipeline/FrameRouter.h>
-#include <libvr/IStitcher.h>
-#include <libvr/ISuperResolutionAdapter.h>
-#include <libvr/SceneManager.h>
+#include <unordered_map>
+#include <OpenXRRuntime.h>
+#include <IRenderEngine.h>
+#include <FrameRouter.h>
+#include <IStitcher.h>
+#include <drivers/interfaces/ISuperResolutionAdapter.h>
+#include <SceneManager.h>
 #include <nlohmann/json.hpp>
-#include <libvr/ipc/IPCServer.h>
+#include <IPCServer.h>
 #include <memory>
 
 // Factory from libvr
 int main(int argc, char **argv)
 {
-	std::cout << "[obs-vr] Starting VR Engine..." << std::endl;
+	std::cout << "[neural-studio] Starting VR Engine..." << std::endl;
 
 	// 1. Initialize OpenXR Runtime
-	libvr::OpenXRRuntime xrRuntime;
-	libvr::OpenXRRuntime::Config xrConfig;
+	neural_studio::OpenXRRuntime xrRuntime;
+	neural_studio::OpenXRRuntime::Config xrConfig;
 	xrConfig.app_name = "OBS-VR-Fork";
 	xrConfig.enable_debug = true;
 
@@ -36,8 +37,8 @@ int main(int argc, char **argv)
 	}
 
 	// 3. Initialize Renderer with Requirements
-	auto renderer = libvr::CreateVulkanRenderEngine();
-	libvr::RenderConfig renderConfig;
+	auto renderer = neural_studio::CreateVulkanRenderEngine();
+	neural_studio::RenderConfig renderConfig;
 	renderConfig.width = 1920;
 	renderConfig.height = 1080;
 	renderConfig.enable_validation_layers = true;
@@ -64,13 +65,13 @@ int main(int argc, char **argv)
 	}
 
 	// 5. Initialize Router & Pipeline Components
-	libvr::FrameRouter router(renderer.get());
+	neural_studio::FrameRouter router(renderer.get());
 
 	// Scene Manager
-	libvr::SceneManager sceneManager;
+	neural_studio::SceneManager sceneManager;
 
 	// Create Stitcher
-	auto stitcher = libvr::CreateStitcher();
+	auto stitcher = neural_studio::CreateStitcher();
 	if (stitcher && stitcher->vtbl->Initialize) {
 		stitcher->vtbl->Initialize(stitcher, 4096, 4096); // 4K input
 	}
@@ -83,11 +84,9 @@ int main(int argc, char **argv)
 	}
 	router.SetSuperRes(srAdapter);
 
-#include <unordered_map>
-
 	// ...
 	// 5.5 IPC Server (Backend UI Support)
-	libvr::IPCServer ipcServer;
+	neural_studio::IPCServer ipcServer;
 	std::unordered_map<std::string, uint32_t> uuidMap;
 
 	// Simple command handler
@@ -102,7 +101,7 @@ int main(int argc, char **argv)
 					float x = j.value("x", 0.0f);
 					float y = j.value("y", 0.0f);
 
-					libvr::Transform t = {{x, y, 0.0f}, {0, 0, 0, 1}, {1, 1, 1}};
+					neural_studio::Transform t = {{x, y, 0.0f}, {0, 0, 0, 1}, {1, 1, 1}};
 					uint32_t id = sceneManager.AddNode(t);
 
 					if (j.contains("id")) {
@@ -110,7 +109,7 @@ int main(int argc, char **argv)
 						uuidMap[uuid] = id;
 					}
 
-					libvr::SemanticData sData;
+					neural_studio::SemanticData sData;
 					if (j.contains("label"))
 						sData.label = j["label"];
 					sceneManager.SetSemantics(id, sData);
@@ -130,8 +129,8 @@ int main(int argc, char **argv)
 
 								// Get current state (Naive linear search for now)
 								const auto &nodes = sceneManager.GetNodes();
-								libvr::Transform currentT;
-								libvr::SemanticData currentS;
+								neural_studio::Transform currentT;
+								neural_studio::SemanticData currentS;
 								bool found = false;
 								for (const auto &n : nodes) {
 									if (n.id == nodeId) {
@@ -173,7 +172,7 @@ int main(int argc, char **argv)
 									bool sChanged = false;
 									if (updates.contains("stereoMode")) {
 										currentS.stereoMode =
-											(libvr::StereoMode)
+											(neural_studio::StereoMode)
 												updates["stereoMode"]
 													.get<int>();
 										sChanged = true;

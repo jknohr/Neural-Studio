@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -12,8 +12,8 @@ namespace NeuralStudio {
             explicit CameraNode(const std::string &id);
             ~CameraNode() override = default;
 
-            void initialize() override;
-            void execute(ExecutionContext &ctx) override;
+            bool initialize(const NodeConfig &config) override;
+            ExecutionResult process(ExecutionContext &ctx) override;
 
             // Camera specific properties
             void setDeviceId(const std::string &deviceId);

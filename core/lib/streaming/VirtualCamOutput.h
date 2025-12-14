@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace libvr {
+namespace neural_studio {
 
     struct VirtualCamConfig {
         std::string devicePath = "/dev/video20";
@@ -32,4 +32,4 @@ namespace libvr {
         std::vector<uint8_t> yuyv_buffer;
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

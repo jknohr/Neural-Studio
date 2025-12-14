@@ -4,7 +4,12 @@
 #include <QMap>
 #include <QVector>
 #include <QString>
-#include "../shared/MixerData.h"
+#include "../../include/MixerData.h"
+
+// Structs might be missing if MixerData.h is incomplete or circular.
+// Assuming they should be effectively available.
+// If not, we forward declare or they need to be defined here.
+// But mostly the issue was missing QVector/QString includes.
 
 namespace NeuralStudio {
 

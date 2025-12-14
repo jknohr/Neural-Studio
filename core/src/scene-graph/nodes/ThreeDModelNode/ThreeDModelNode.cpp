@@ -1,4 +1,6 @@
 #include "ThreeDModelNode.h"
+#include "SceneManager.h"
+#include "NodeFactory.h"
 #include <iostream>
 
 namespace NeuralStudio {
@@ -15,13 +17,28 @@ ThreeDModelNode::~ThreeDModelNode()
 	// Cleanup from SceneManager handled in dedicated cleanup method with context
 }
 
-void ThreeDModelNode::execute(const ExecutionContext &context)
+ExecutionResult ThreeDModelNode::process(ExecutionContext &ctx)
 {
-	if (m_dirty && !m_modelPath.empty()) {
-		if (context.sceneManager) {
-			// Logic to load model into SceneManager
-			// e.g. m_sceneObjectId = context.sceneManager->LoadModel(m_modelPath);
-			std::cout << "ThreeDModelNode: Loading " << m_modelPath << std::endl;
+	if (m_dirty) {
+		if (ctx.sceneManager) {
+			if (m_modelPath.empty()) {
+				return ExecutionResult::failure("Model path is empty.");
+			}
+
+			// Check for USD extension
+			std::string ext = m_modelPath.substr(m_modelPath.find_last_of(".") + 1);
+			if (ext == "usd" || ext == "usda" || ext == "usdc" || ext == "usdz") {
+				std::cout << "ThreeDModelNode: Opening USD Stage " << m_modelPath << std::endl;
+				if (ctx.sceneManager->OpenUsdStage(m_modelPath)) {
+					// In the future, we might return a Stage Root ID, but for now
+					// the Stage Manager holds the singleton stage.
+					m_sceneObjectId = 9999; // Dummy ID to indicate success
+				}
+			} else {
+				// Standard Mesh Loading Logic (Placeholder)
+				// e.g. m_sceneObjectId = context.sceneManager->LoadModel(m_modelPath);
+				std::cout << "ThreeDModelNode: Loading Mesh " << m_modelPath << std::endl;
+			}
 
 			// Reset dirty flag
 			m_dirty = false;

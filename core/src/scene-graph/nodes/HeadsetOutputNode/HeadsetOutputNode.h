@@ -1,11 +1,8 @@
-```
 #pragma once
 
-#include "../BaseNodeBackend.h"
-#include "../../compositor/VirtualCamManager.h"
-
-    namespace NeuralStudio
-{
+#include "BaseNodeBackend.h"
+// #include "../../compositor/VirtualCamManager.h" // Commented - path needs verification
+namespace NeuralStudio {
     namespace SceneGraph {
 
         /**

@@ -13,7 +13,7 @@
 // Mock symbols if needed or just error at runtime
 #endif
 
-namespace libvr {
+namespace neural_studio {
 
 struct MLRuntime::Impl {
 #if HAS_ONNX
@@ -92,4 +92,4 @@ bool MLRuntime::RunInference(const std::vector<float>& input, std::vector<float>
 #endif
 }
 
-} // namespace libvr
+} // namespace neural_studio

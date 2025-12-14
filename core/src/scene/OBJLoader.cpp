@@ -1,11 +1,11 @@
-#include "libvr/OBJLoader.h"
+#include "OBJLoader.h"
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <unordered_map>
 #include <iostream>
 
-namespace libvr {
+namespace neural_studio {
 
 struct VertexHash {
 	size_t operator()(const std::string &key) const { return std::hash<std::string>{}(key); }
@@ -155,4 +155,4 @@ Mesh OBJLoader::Load(const std::string &path)
 	return mesh;
 }
 
-} // namespace libvr
+} // namespace neural_studio

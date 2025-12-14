@@ -9,7 +9,7 @@
 struct mp_media;
 typedef struct mp_media mp_media_t;
 
-namespace libvr {
+namespace neural_studio {
 
     class MediaSource
     {
@@ -39,4 +39,4 @@ namespace libvr {
         int height = 0;
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

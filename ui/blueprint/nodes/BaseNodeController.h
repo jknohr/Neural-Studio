@@ -4,7 +4,9 @@
 #include <QString>
 #include <QVariant>
 #include <QQmlEngine>
+#include <QQmlEngine>
 #include <memory>
+#include "../core/NodeGraphController.h"
 
 namespace NeuralStudio {
     namespace SceneGraph {

@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -9,7 +9,7 @@ namespace NeuralStudio {
               public:
             EffectNode(const std::string &id);
             ~EffectNode() override;
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &context) override;
             void setEffectPath(const std::string &path);
             std::string getEffectPath() const;
 

@@ -271,7 +271,8 @@ Thumbnail cache:
 
 ### With Scene Graph
 - Creates 3DModelNode instances
-- Spatial transforms
+- **Hybrid USD Support**: Delegates `.usd` files to `UsdStageManager`
+- Spatial transforms (Bi-directional sync)
 - Physics collision (planned)
 
 ### With VR Pipeline

@@ -6,7 +6,7 @@
 #include "libvr/SceneManager.h"
 #include <map>
 
-namespace libvr {
+namespace neural_studio {
 
     class VRController
     {
@@ -28,4 +28,4 @@ namespace libvr {
         bool m_running = false;
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

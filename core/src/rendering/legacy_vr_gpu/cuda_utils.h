@@ -7,7 +7,7 @@ typedef struct CUextMemory_st *CUexternalMemory_Handle;
 typedef struct CUarray_st *CUarray_Handle;
 typedef struct CUstream_st *CUstream_Handle;
 
-namespace libvr {
+namespace neural_studio {
 
     // Use the global types
     typedef CUexternalMemory_Handle CUexternalMemory;
@@ -27,4 +27,4 @@ namespace libvr {
 
     void FreeCudaResources(CUexternalMemory ext_mem, CUarray array);
 
-}  // namespace libvr
+}  // namespace neural_studio

@@ -1,7 +1,7 @@
 #include "libvr/IStitcher.h"
 #include <iostream>
 
-namespace libvr {
+namespace neural_studio {
 
 class Stitcher : public IStitcher {
 public:
@@ -46,4 +46,4 @@ extern "C" IStitcher* CreateStitcher() {
     return new Stitcher();
 }
 
-} // namespace libvr
+} // namespace neural_studio

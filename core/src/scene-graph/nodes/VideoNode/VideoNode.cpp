@@ -16,7 +16,7 @@ VideoNode::~VideoNode()
 	// Cleanup video player resources
 }
 
-void VideoNode::execute(const ExecutionContext &context)
+ExecutionResult VideoNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_videoPath.empty()) {
 		// Load/initialize video player
@@ -29,6 +29,7 @@ void VideoNode::execute(const ExecutionContext &context)
 		// setOutputData("visual_out", currentFrameTexture);
 		// setOutputData("audio_out", currentAudioBuffer);
 	}
+	return ExecutionResult::success();
 }
 
 void VideoNode::setVideoPath(const std::string &path)

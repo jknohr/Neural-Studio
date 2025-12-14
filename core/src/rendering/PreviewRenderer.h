@@ -1,8 +1,16 @@
 #pragma once
 
 #include <QObject>
-#include <QRhi>
-#include <QRhiTexture>
+// #include <QRhi>
+// #include <QRhiTexture>
+class QRhiTexture;
+class QRhiTextureRenderTarget;
+class QRhiRenderPassDescriptor;
+class QRhiCommandBuffer;
+class QRhiBuffer;
+class QRhiSampler;
+class QRhiShaderResourceBindings;
+class QRhiGraphicsPipeline;
 #include <memory>
 
 namespace NeuralStudio {

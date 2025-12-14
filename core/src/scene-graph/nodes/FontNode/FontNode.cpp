@@ -11,12 +11,13 @@ FontNode::FontNode(const std::string &id) : BaseNodeBackend(id, "FontNode")
 
 FontNode::~FontNode() {}
 
-void FontNode::execute(const ExecutionContext &context)
+ExecutionResult FontNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_fontPath.empty()) {
 		std::cout << "FontNode: Loading " << m_fontPath << std::endl;
 		m_dirty = false;
 	}
+	return ExecutionResult::success();
 }
 
 void FontNode::setFontPath(const std::string &path)

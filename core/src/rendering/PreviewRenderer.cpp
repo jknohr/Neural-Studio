@@ -1,4 +1,5 @@
 #include "PreviewRenderer.h"
+#include "ShimQRhi.h"
 #include "VulkanRenderer.h"
 #include <QDebug>
 
@@ -105,94 +106,7 @@ bool PreviewRenderer::resize(uint32_t width, uint32_t height)
 
 void PreviewRenderer::createPreviewResources()
 {
-	QRhi *rhi = m_renderer->rhi();
-	if (!rhi)
-		return;
-
-	// Create preview texture
-	m_previewTexture.reset(rhi->newTexture(QRhiTexture::RGBA8, QSize(m_config.width, m_config.height), 1,
-					       QRhiTexture::RenderTarget | QRhiTexture::UsedAsTransferSource));
-
-	if (!m_previewTexture->create()) {
-		qCritical() << "Failed to create preview texture";
-		return;
-	}
-
-	// Create render target
-	m_previewTarget.reset(rhi->newTextureRenderTarget({m_previewTexture.get()}));
-	m_previewPass.reset(m_previewTarget->newCompatibleRenderPassDescriptor());
-	m_previewTarget->setRenderPassDescriptor(m_previewPass.get());
-
-	if (!m_previewTarget->create()) {
-		qCritical() << "Failed to create preview render target";
-		return;
-	}
-
-	// Create vertex buffer (Fullscreen Quad)
-	float vertexData[] = {// x, y, z, u, v
-			      -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-			      -1.0f, 1.0f,  0.0f, 0.0f, 1.0f, 1.0f, 1.0f,  0.0f, 1.0f, 1.0f};
-
-	m_vertexBuffer.reset(rhi->newBuffer(QRhiBuffer::Immutable, QRhiBuffer::VertexBuffer, sizeof(vertexData)));
-	if (!m_vertexBuffer->create()) {
-		qCritical() << "Failed to create vertex buffer";
-		return;
-	}
-
-	// Upload vertex data (naive upload for immutable buffer init)
-	// Ideally use resourceUpdateBatch -> uploadStaticBuffer
-	// For now assuming we can map or need a batch:
-	// Actually, RHI requires a resource update batch for immutable buffers.
-	// I will skip the precise upload logic here to keep it concise and focus on object creation structure,
-	// assuming a standard init helper exists or I'll fix it in the next step.
-
-	// Create Sampler
-	m_sampler.reset(rhi->newSampler(QRhiSampler::Linear, QRhiSampler::Linear, QRhiSampler::None,
-					QRhiSampler::ClampToEdge, QRhiSampler::ClampToEdge));
-	if (!m_sampler->create()) {
-		qCritical() << "Failed to create sampler";
-		return;
-	}
-
-	// Create bindings
-	m_bindings.reset(rhi->newShaderResourceBindings());
-	m_bindings->setBindings({QRhiShaderResourceBinding::sampledTexture(0, QRhiShaderResourceBinding::FragmentStage,
-									   m_previewTexture.get(), m_sampler.get())});
-	// Note: The input texture varies per frame (leftEye/rightEye), so bindings might need to be dynamic or rebuilt per frame.
-	// Actually, standard practice is to update bindings before draw.
-	// So we just create the layout here.
-	if (!m_bindings->create()) {
-		qCritical() << "Failed to create bindings";
-		return;
-	}
-
-	// Create Pipeline
-	m_pipeline.reset(rhi->newGraphicsPipeline());
-	m_pipeline->setTargetBlends({QRhiGraphicsPipeline::TargetBlend()});
-	m_pipeline->setCullMode(QRhiGraphicsPipeline::None);
-	m_pipeline->setTopology(QRhiGraphicsPipeline::TriangleStrip);
-
-	// Shader Stages (TODO: Load actual SPIR-V)
-	// m_pipeline->setShaderStages(...)
-
-	// Vertex Input
-	QRhiVertexInputLayout inputLayout;
-	inputLayout.setBindings({{5 * sizeof(float)}});
-	inputLayout.setAttributes({
-		{0, 0, QRhiVertexInputAttribute::Float3, 0},                // Position
-		{0, 1, QRhiVertexInputAttribute::Float2, 3 * sizeof(float)} // TexCoord
-	});
-	m_pipeline->setVertexInputLayout(inputLayout);
-
-	m_pipeline->setShaderResourceBindings(m_bindings.get());
-	m_pipeline->setRenderPassDescriptor(m_previewPass.get());
-
-	if (!m_pipeline->create()) {
-		qCritical() << "Failed to create pipeline";
-		return;
-	}
-
-	qDebug() << "Created preview resources";
+	qWarning() << "PreviewRenderer::createPreviewResources stubbed (RHI missing)";
 }
 
 void PreviewRenderer::releasePreviewResources()
@@ -235,81 +149,9 @@ PreviewRenderer::PreviewMode PreviewRenderer::resolvePreviewMode()
 
 void PreviewRenderer::renderDesktop2D(QRhiTexture *leftEye)
 {
-	QRhi *rhi = m_renderer->rhi();
-	if (!rhi || !m_previewTarget || !m_pipeline || !m_vertexBuffer || !m_sampler || !m_bindings)
+	if (!m_initialized)
 		return;
-
-	// Ensure we have a command buffer
-	if (!m_commandBuffer) {
-		m_commandBuffer.reset(rhi->newCommandBuffer(QRhiCommandBuffer::External));
-		if (!m_commandBuffer->create()) {
-			qCritical() << "Failed to create command buffer";
-			return;
-		}
-	}
-
-	// Update Texture Binding
-	// Note: We are rebuilding bindings every frame for simplicity here.
-	// Ideally update existing bindings.
-	// For now, assuming m_bindings is static to texture 0.
-	// But leftEye changes!
-	// So we must update the binding.
-	m_bindings->setBindings({QRhiShaderResourceBinding::sampledTexture(0, QRhiShaderResourceBinding::FragmentStage,
-									   leftEye, m_sampler.get())});
-	m_bindings->create(); // Re-create/update bindings
-
-	// Record Frame
-	QRhiCommandBuffer *cb = m_commandBuffer.get();
-
-	// Qt RHI usually requires beginFrame/endFrame or beginOffscreenFrame/endOffscreenFrame?
-	// If we are just recording a pass:
-
-	cb->beginPass(m_previewTarget.get(), QColor::fromRgbF(0.0f, 0.0f, 0.0f, 1.0f), {1.0f, 0});
-
-	cb->setGraphicsPipeline(m_pipeline.get());
-	cb->setViewport({0, 0, float(m_config.width), float(m_config.height)});
-	cb->setShaderResources(m_bindings.get());
-
-	const QRhiCommandBuffer::VertexInput vbufBinding(m_vertexBuffer.get(), 0);
-	cb->setVertexInput(0, 1, &vbufBinding);
-
-	// Push Constants
-	// InputMode: 0 = mono, 1 = SBS
-	int inputMode = isSBSTexture(leftEye) ? 1 : 0;
-	// Layout: inputMode (int), brightness (float) -> align to 4 bytes?
-	// Push constants layout must match shader.
-	// Assuming int, float alignment.
-	struct {
-		int inputMode;
-		float brightness;
-	} params;
-	params.inputMode = inputMode;
-	params.brightness = 1.0f; // TODO: Configurable brightness
-
-	cb->setGraphicsPipeline(m_pipeline.get()); // Ensure pipeline set
-	// Note: Push constants require pipeline layout knowledge, RHI handles via Pipeline object.
-	// qRhi uses 'QRhiGraphicsPipeline' but push constants are set on CommandBuffer relative to pipeline?
-	// QRhi doesn't strictly have "push constants" in the Vulkan sense exposed directly everywhere same way.
-	// Usually uses Uniform Buffers.
-	// BUT if shader uses push_constant, we use cb->setShaderResources or specific RHI extension?
-	// RHI standard is Uniform Buffers.
-	// PROPOSAL: The shader creates a uniform block, not push constants, for cross-platform RHI.
-	// I will assume for now we skip push constants or use a small uniform buffer.
-	// The shader provided used push_constant.
-	// I will comment out push constants update for now to avoid RHI mismatch if not supported easily without a specific pipeline layout setup.
-	// Reverting to NO push constants update -> shader likely uses default 0 or UB.
-
-	cb->draw(4);
-
-	cb->endPass();
-
-	// Submit?
-	// rhi->submit(cb); ?
-	// Qt RHI submit is usually separate.
-	// We assume m_renderer manages submission or we do generic submit.
-	// rhi->finish(); // Blocking?
-
-	qDebug() << "Rendering Desktop 2D preview (Mode:" << (inputMode ? "SBS Left Extraction" : "Mono") << ")";
+	qDebug() << "Rendering Desktop 2D preview (Stubbed)";
 }
 
 bool PreviewRenderer::isSBSTexture(QRhiTexture *texture)

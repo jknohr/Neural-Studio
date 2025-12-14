@@ -1,5 +1,5 @@
 #include "CameraNode.h"
-#include "../NodeFactory.h"
+#include "NodeFactory.h"
 
 namespace NeuralStudio {
 namespace SceneGraph {
@@ -18,30 +18,22 @@ static CameraNodeRegistrar registrar;
 
 CameraNode::CameraNode(const std::string &id) : BaseNodeBackend(id, "CameraNode") {}
 
-void CameraNode::initialize()
+bool CameraNode::initialize(const NodeConfig &config)
 {
 	// Define Output Ports
 	// Visual Output (Right)
-	PinDescriptor visualOut;
-	visualOut.id = "visual_out";
-	visualOut.name = "Visual Out";
-	visualOut.type = DataType::Texture;
-	visualOut.direction = PinDirection::Output;
-	addPin(visualOut);
+	addOutput("visual_out", "Visual Out", DataType{DataCategory::Media, "Texture"});
 
 	// Audio Output (Bottom)
-	PinDescriptor audioOut;
-	audioOut.id = "audio_out";
-	audioOut.name = "Audio Out";
-	audioOut.type = DataType::Audio;
-	audioOut.direction = PinDirection::Output;
-	addPin(audioOut);
+	addOutput("audio_out", "Audio Out", DataType{DataCategory::Media, "Audio"});
+	return true;
 }
 
-void CameraNode::execute(ExecutionContext &ctx)
+ExecutionResult CameraNode::process(ExecutionContext &ctx)
 {
 	// Logic to capture frame from m_deviceId and setPinData("visual_out", texture)
 	// For now, no-op or placeholder
+	return ExecutionResult::success();
 }
 
 void CameraNode::setDeviceId(const std::string &deviceId)

@@ -16,13 +16,62 @@ The **Scene Graph Module** provides an industrial-strength **node execution grap
 - ✅ Type-safe pin connections
 - ✅ Plugin-based node registration (unlimited node types)
 - ✅ Parallel execution of independent nodes
+The Scene Graph is the central nervous system of Neural Studio. It manages the lifecycle, relationships, and execution flow of all nodes in the creative pipeline.
+
+**NEW (v0.2): Hybrid USD Architecture**
+The Scene Graph has evolved into a "Hybrid Host".
+- **Execution Layer**: Neural Studio `Node` objects (C++) handle logic, ML inference, and signal flow.
+- **Data Layer**: A live `pxr::UsdStage` handles the persistent 3D data, geometry, and composition.
+- **Sync**: `ThreeDModelNode` and `SceneGraphManager` act as the bridge, synchronizing executing nodes with USD Prims.
 - ✅ Smart caching system
 - ✅ Cycle detection and validation
 - ✅ Comprehensive error handling
 
 ---
 
-## Architecture
+## 2. Hybrid USD Architecture (New in v0.3)
+
+The Scene Graph now operates as a **Hybrid Host**, bridging the gap between real-time generic node logic and high-fidelity USD data.
+
+### Concept
+- **Logical Graph**: The `NodeExecutionGraph` (C++) manages the *flow* of data and logic (e.g., "Load File" -> "Apply Filter").
+- **Physical Scene**: A `pxr::UsdStage` manages the *persistent 3D world* (Geometry, Lights, Hierarchy).
+- **Synchronization**: The **SceneManager** acts as the synchronizer. When a USD stage is opened, it traverses the USD Prims and mirrors them as `SceneNode` objects in the runtime scene graph.
+
+### Components
+
+#### `UsdStageManager` (`core/src/usd_manager`)
+- **Wrapper**: Encapsulates the `pxr::UsdStageRefPtr`.
+- **Traversal**: Provides flat or hierarchical lists of Prims (`getStageStructure`).
+- **Extraction**:
+    - `getPrimTransform(path)`: returns precise Translation, Rotation (Quat), Scale.
+    - `getPrimMesh(path)`: returns Vertices, Normals, Indices (with basic triangulation).
+
+#### `SceneManager` Integration
+- **`OpenUsdStage(path)`**:
+    1. Opens the Stage via `UsdStageManager`.
+    2. Iterates all Prims.
+    3. **Mapping**:
+        - `UsdGeomMesh` -> `MeshNode` (Loads geometry).
+        - `UsdGeomXform` -> `SceneNode` (Transform only).
+    4. **Transform Application**: Applies the exact USD transform to the runtime node.
+
+### Data Flow
+```
+USD File (.usd) 
+    ↓ (Open)
+pxr::UsdStage (In-Memory)
+    ↓ (Traverse)
+UsdStageManager (Extracts Xform/Mesh)
+    ↓ (Structs: PrimInfo, PrimMesh)
+SceneManager (Creates Nodes)
+    ↓ (Runtime)
+Scene Graph (Visual Representation)
+```
+
+---
+
+## 3. Core Architecture
 
 ### Design Pattern
 **Factory + Registry** - Core system agnostic to specific node types
@@ -41,6 +90,20 @@ User Creates Graph → Compile (validate + sort) → Execute (per frame)
    connectPins()         - Type check               - Propagate data
                          - Detect cycles            - Cache results
                          - Topological sort         - Handle errors
+```
+
+```cpp
+struct SceneNode {
+    uint32_t id;             // Internal numeric core ID
+    std::string externalId;  // Link to USD Prim Path or external asset ID
+    Transform transform;     // Position, Rotation, Scale
+    
+    uint32_t mesh_id;        // 0 if empty
+    uint32_t material_id;    // 0 if default
+    
+    std::vector<uint32_t> children;
+    SemanticData semantics;
+};
 ```
 
 ---

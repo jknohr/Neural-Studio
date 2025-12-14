@@ -4,7 +4,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick)
 
 # Rendering module sources
 set(RENDERING_SOURCES
@@ -36,15 +36,25 @@ add_library(nstudio-rendering STATIC
     ${RENDERING_HEADERS}
 )
 
+include(FetchContent)
+FetchContent_Declare(
+    OpenXR
+    GIT_REPOSITORY https://github.com/KhronosGroup/OpenXR-SDK
+    GIT_TAG release-1.0.32
+)
+FetchContent_MakeAvailable(OpenXR)
+
 target_link_libraries(nstudio-rendering
-    PRIVATE
-        Qt6::Core
-        Qt6::Gui  # Includes QRhi, QVulkan
+    PUBLIC
+    Qt6::Core
+    Qt6::Gui # Includes QRhi, QVulkan
+    Qt6::Quick
+    openxr_loader
 )
 
 target_include_directories(nstudio-rendering
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 # Enable C++20

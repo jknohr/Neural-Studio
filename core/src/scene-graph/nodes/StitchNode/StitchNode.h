@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../BaseNodeBackend.h"
-#include "../../rendering/STMapLoader.h"
-#include "../../rendering/StereoRenderer.h"
+#include "BaseNodeBackend.h"
+#include "STMapLoader.h"
+#include "StereoRenderer.h"
 
 namespace NeuralStudio {
     namespace SceneGraph {

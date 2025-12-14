@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-namespace libvr {
+namespace neural_studio {
 
 IPCServer::IPCServer() : m_running(false) {}
 
@@ -119,4 +119,4 @@ void IPCServer::SetCommandCallback(std::function<std::string(const std::string &
 	m_commandCallback = cb;
 }
 
-} // namespace libvr
+} // namespace neural_studio

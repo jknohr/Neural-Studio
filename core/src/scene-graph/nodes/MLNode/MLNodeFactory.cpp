@@ -1,4 +1,4 @@
-#include "../NodeFactory.h"
+#include "NodeFactory.h"
 #include "MLNode.h"
 #include <memory>
 namespace NeuralStudio {

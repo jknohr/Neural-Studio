@@ -1,9 +1,9 @@
 #pragma once
 
-#include "scene/SceneManager.h"
+#include "SceneManager.h"
 #include <string>
 
-namespace libvr {
+namespace neural_studio {
 
     class OBJLoader
     {
@@ -14,4 +14,4 @@ namespace libvr {
         static Mesh Load(const std::string &path);
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

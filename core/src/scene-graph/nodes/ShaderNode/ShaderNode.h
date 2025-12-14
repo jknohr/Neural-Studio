@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseNodeBackend.h"
+#include "BaseNodeBackend.h"
 #include <string>
 
 namespace NeuralStudio {
@@ -7,11 +7,9 @@ namespace NeuralStudio {
         class ShaderNode : public BaseNodeBackend
         {
               public:
-            Shader
-
-                Node(const std::string &id);
+            ShaderNode(const std::string &id);
             ~ShaderNode() override;
-            void execute(const ExecutionContext &context) override;
+            ExecutionResult process(ExecutionContext &context) override;
             void setShaderPath(const std::string &path);
             std::string getShaderPath() const;
 

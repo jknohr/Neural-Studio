@@ -1,4 +1,5 @@
 #include "RTXUpscaler.h"
+#include "ShimQRhi.h"
 #include "VulkanRenderer.h"
 #include <QDebug>
 
@@ -318,7 +319,7 @@ void RTXUpscaler::destroyCUDABuffers()
 		// NvCVImage_Dealloc(m_cudaOutputImage);
 		m_cudaOutputImage = nullptr;
 	}
-	```
+
 #endif
 }
 
@@ -328,84 +329,12 @@ bool RTXUpscaler::mapVulkanToCUDA(QRhiTexture *texture, void **cudaBuffer)
 	return false;
 #else
 
-	// Get OpenGL texture ID from Qt RHI
-	auto nativeTexture = texture->nativeTexture();
-	uint32_t glTexID = static_cast<uint32_t>(nativeTexture.object);
-
-	if (glTexID == 0) {
-		qCritical() << "Invalid OpenGL texture ID from Qt RHI";
-		return false;
-	}
-
-	// Determine if this is input or output texture
-	cudaGraphicsResource_t *resourcePtr = nullptr;
-	uint32_t *lastTexIDPtr = nullptr;
-	bool *registeredPtr = nullptr;
-
-	// Simple heuristic: assume smaller = input, larger = output
-	QSize size = texture->pixelSize();
-	bool isInput = (size.width() == m_inputWidth && size.height() == m_inputHeight);
-
-	if (isInput) {
-		resourcePtr = &m_cudaInputResource;
-		lastTexIDPtr = &m_lastInputTexID;
-		registeredPtr = &m_inputRegistered;
-	} else {
-		resourcePtr = &m_cudaOutputResource;
-		lastTexIDPtr = &m_lastOutputTexID;
-		registeredPtr = &m_outputRegistered;
-	}
-
-	// Re-register if texture ID changed
-	if (*registeredPtr && *lastTexIDPtr != glTexID) {
-		cudaGraphicsUnregisterResource(*resourcePtr);
-		*registeredPtr = false;
-		*resourcePtr = nullptr;
-	}
-
-	// Register GL texture with CUDA (once per texture)
-	if (!*registeredPtr) {
-		cudaError_t err = cudaGraphicsGLRegisterImage(resourcePtr, glTexID, GL_TEXTURE_2D,
-							      isInput ? cudaGraphicsRegisterFlagsReadOnly
-								      : cudaGraphicsRegisterFlagsWriteDiscard);
-
-		if (err != cudaSuccess) {
-			qCritical() << "Failed to register GL texture with CUDA:" << cudaGetErrorString(err);
-			return false;
-		}
-
-		*registeredPtr = true;
-		*lastTexIDPtr = glTexID;
-
-		qDebug() << "Registered" << (isInput ? "input" : "output") << "GL texture" << glTexID << "with CUDA";
-	}
-
-	// Map CUDA resource for this frame
-	cudaError_t err = cudaGraphicsMapResources(1, resourcePtr, (CUstream)m_cudaStream);
-	if (err != cudaSuccess) {
-		qCritical() << "Failed to map CUDA resource:" << cudaGetErrorString(err);
-		return false;
-	}
-
-	// Get mapped CUDA array
-	cudaArray_t cudaArray = nullptr;
-	err = cudaGraphicsSubResourceGetMappedArray(&cudaArray, *resourcePtr, 0, 0);
-	if (err != cudaSuccess) {
-		cudaGraphicsUnmapResources(1, resourcePtr, (CUstream)m_cudaStream);
-		qCritical() << "Failed to get mapped CUDA array:" << cudaGetErrorString(err);
-		return false;
-	}
-
-	*cudaBuffer = (void *)cudaArray;
-
-	// Store the resource for unmapping later
-	if (isInput) {
-		m_currentlyMappedInput = *resourcePtr;
-	} else {
-		m_currentlyMappedOutput = *resourcePtr;
-	}
-
-	return true;
+	// Step 1: Map Qt RHI textures to CUDA arrays
+	// STUBBED: QRhi missing, cannot reference QRhiTexture methods or nativeTexture
+	Q_UNUSED(texture);
+	Q_UNUSED(cudaBuffer);
+	qWarning() << "RTXUpscaler::mapVulkanToCUDA stubbed (RHI missing)";
+	return false;
 #endif
 }
 
@@ -426,4 +355,3 @@ void RTXUpscaler::unmapVulkanFromCUDA(void *cudaBuffer)
 
 } // namespace Rendering
 } // namespace NeuralStudio
-```

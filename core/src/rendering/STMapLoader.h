@@ -1,8 +1,10 @@
 #pragma once
 
 #include <QObject>
-#include <QRhi>
-#include <QRhiTexture>
+// #include <QRhi>
+// #include <QRhiTexture>
+class QRhi;
+class QRhiTexture;
 #include <QString>
 #include <memory>
 #include <unordered_map>

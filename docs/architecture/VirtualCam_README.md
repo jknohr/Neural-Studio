@@ -20,7 +20,14 @@
 
 ## Overview
 
-The **VirtualCam/LayerMixer** is the heart of Neural Studio's VR broadcasting system. It composites stereoscopic video feeds, 3D objects, physics simulations, and spatial audio into multiple optimized streams for different VR headsets.
+The **VirtualCam/LayerMixer** is the heart of Neural Studio's VR broadcasting system. It utilizes a **Hybrid Rendering Architecture** to composite stereoscopic video feeds, 3D objects, and spatial audio into a unified scene that can be viewed simultaneously on 2D desktop monitors and 3D VR headsets.
+
+### Vision: The "Holodeck" Pipeline
+Neural Studio aims to go beyond simple 360° video playback. Our architecture supports a real-time reconstruction pipeline:
+1.  **Input**: Stereoscopic Video Feed.
+2.  **Processing**: ML Nodes (Flux, Depth-Anything, Gaussian Splatting) infer geometry and depth from video.
+3.  **Reconstruction**: Generating a true 3D USD scene graph in real-time.
+4.  **Experience**: Users can physically walk through the reconstructed scene using VR (6DOF), not just look around (3DOF).
 
 **Key Principle**: Stereoscopic video is positioned as a 3D plane in Z-space, with other elements properly depth-ordered around it.
 
@@ -93,23 +100,27 @@ Z-Axis Spatial Ordering:
                  │
                  ▼
 ┌──────────────────────────────────────────────────────┐
-│  SPATIAL COMPOSITOR (Qt Quick 3D)                    │
+│  SHARED SCENE CONTENT (Qt Quick 3D Node)             │
 │  ┌────────────────────────────────────────────────┐  │
 │  │ Video Plane (Z=-5m)                            │  │
-│  │ • Stereo L/R textures                          │  │
-│  │ • Full resolution                              │  │
+│  │ • Stereo L/R textures via ML Depth Map         │  │
 │  └────────────────────────────────────────────────┘  │
 │  ┌────────────────────────────────────────────────┐  │
-│  │ 3D Overlays                                    │  │
-│  │ • Positioned at various Z-depths               │  │
-│  │ • Physics simulation                           │  │
+│  │ 3D Overlays & USD Prims (Hybrid)               │  │
+│  │ • UsdStageManager Live Sync                    │  │
+│  │ • Positioned at true Z-depths                  │  │
 │  └────────────────────────────────────────────────┘  │
-│  ┌────────────────────────────────────────────────┐  │
-│  │ Spatial Audio Mix (Qt Spatial Audio)           │  │
-│  │ • Sources at 3D positions                      │  │
-│  │ • Listener = VR camera                         │  │
-│  └────────────────────────────────────────────────┘  │
-└────────────────┬─────────────────────────────────────┘
+└───────────────────────┬──────────────────────────────┘
+                        │
+          ┌─────────────┴─────────────┐
+          ▼                           ▼
+┌───────────────────────┐   ┌──────────────────────────┐
+│  DESKTOP VIEWPORT     │   │  XR VIEWPORT (OpenXR)    │
+│  (Qt Quick View3D)    │   │  (Qt Quick 3D XR)        │
+│  • Orbit Camera       │   │  • Headset Tracking      │
+│  • Editor Tools       │   │  • 6DOF Movement         │
+│  • Mono / Stereo Prev │   │  • Dual-Eye Rendering    │
+└───────────────────────┘   └──────────────────────────┘
                  │
                  ▼
 ┌──────────────────────────────────────────────────────┐
@@ -359,7 +370,7 @@ audioManager.setVirtualRoom(
 1. **Qt Quick 3D** - Hardware-accelerated 3D rendering
 2. **Qt Quick 3D Physics** - PhysX-based physics simulation
 3. **Qt Spatial Audio** - Resonance Audio for 3D sound
-4. **Qt Quick 3D Xr** - Native VR headset rendering (for editor preview)
+4. **Qt Quick 3D Xr** - Native OpenXR integration for HMDs (Quest, Index, Vive).
 5. **Qt Multimedia** - Camera/video input
 
 ### CMake Dependencies
@@ -447,10 +458,15 @@ View3D {
 
 ### 🚧 In Progress (Phase 2)
 
+- [x] **Hybrid Viewport Architecture**
+  - Shared Scene Node implementing environment & layers.
+  - Decoupled `View3D` (Desktop) and `XrView` (VR) pipelines.
+  - `VirtualCamPreview.qml` refactored for simultaneous support.
+
 - [ ] **Stereo rendering pipeline**
-  - Dual-pass rendering (L/R eyes)
-  - IPD offset calculation
-  - Per-eye framebuffer rendering
+  - [x] Stereo Mode Properties (Mono/SBS/TB) in Controller.
+  - [ ] Dual-pass rendering logic (connected to ML depth).
+  - [ ] Per-eye framebuffer rendering.
 
 - [ ] **Video capture integration**
   - QtMultimedia camera input
@@ -583,7 +599,7 @@ View3D {
 ```bash
 cd Neural-Studio
 cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --target obs-vr
+cmake --build build --target neural-studio
 cmake --build build --target vr_blueprint_qml
 ```
 

@@ -9,12 +9,13 @@ EffectNode::EffectNode(const std::string &id) : BaseNodeBackend(id, "EffectNode"
 	addOutput("visual_out", "Visual Output", DataType::Texture2D());
 }
 EffectNode::~EffectNode() {}
-void EffectNode::execute(const ExecutionContext &context)
+ExecutionResult EffectNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_effectPath.empty()) {
 		std::cout << "EffectNode: Loading effect " << m_effectPath << std::endl;
 		m_dirty = false;
 	}
+	return ExecutionResult::success();
 }
 void EffectNode::setEffectPath(const std::string &path)
 {

@@ -1,29 +1,44 @@
-project(obs-vr)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
-set(CMAKE_AUTOMOC ON)
+# Fetch nlohmann/json for IPC message parsing
+include(FetchContent)
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.11.3
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(nlohmann_json)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui)
-
-add_executable(obs-vr
-    main.cpp
-    VirtualCamManager.cpp
+add_library(neural_studio_compositor STATIC
     MixerRouter.cpp
     MixerEngine.cpp
 )
 
-target_include_directories(obs-vr PRIVATE
-    ${CMAKE_SOURCE_DIR}/shared
-    ${CMAKE_SOURCE_DIR}/frontend/blueprint
-)
-
-target_link_libraries(obs-vr PRIVATE
-    libvr
-    nlohmann_json::nlohmann_json
+target_link_libraries(neural_studio_compositor PUBLIC
     Qt6::Core
     Qt6::Gui
 )
 
-set_target_properties(obs-vr PROPERTIES
-    CXX_STANDARD 20
-    CXX_STANDARD_REQUIRED ON
+target_include_directories(neural_studio_compositor PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/core/include
 )
+
+# Main Executable - DISABLED: needs OpenXRRuntime, IPCServer implementations
+# Re-enable once the rendering/OpenXR backend is implemented
+# add_executable(neural-studio
+#     main.cpp
+# )
+#
+# target_link_libraries(neural-studio PRIVATE
+#     neural_studio_compositor
+#     Qt6::Core
+#     Qt6::Gui
+#     Qt6::Widgets
+#     nstudio-rendering
+#     nstudio-scene
+#     nstudio-pipeline
+#     scene-graph
+#     nlohmann_json::nlohmann_json
+# )

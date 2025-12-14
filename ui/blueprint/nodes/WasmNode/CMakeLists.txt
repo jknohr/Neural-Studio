@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core Quick)
+
 add_library(ui-wasmnode STATIC
     WasmNodeController.cpp
     WasmNodeController.h

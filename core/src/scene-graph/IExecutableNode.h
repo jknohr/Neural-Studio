@@ -165,14 +165,27 @@ namespace NeuralStudio {
         // Execution Context & Result
         //=============================================================================
 
+    }  // namespace SceneGraph
+}  // namespace NeuralStudio
+
+// Global namespace forward declaration
+namespace neural_studio {
+    class SceneManager;
+}
+
+namespace NeuralStudio {
+    namespace SceneGraph {
+
         // Forward declarations
-        namespace libvr {
-            class SceneManager;
-        }
+        class IExecutableNode;
+        struct ExecutionContext;
+        struct ExecutionResult;
+
+        // ... (skipping to struct ExecutionContext)
 
         struct ExecutionContext {
-            void *renderer = nullptr;                     // IRenderEngine*
-            libvr::SceneManager *sceneManager = nullptr;  // SceneManager*
+            void *renderer = nullptr;                               // IRenderEngine*
+            ::neural_studio::SceneManager *sceneManager = nullptr;  // SceneManager*
             void *presentationTarget = nullptr;
             double deltaTime = 0.0;
             uint64_t frameNumber = 0;
@@ -277,42 +290,13 @@ namespace NeuralStudio {
             virtual bool hasPinData(const std::string &pinId) const = 0;
         };
 
-        //=============================================================================
-        // Node Factory (Plugin System)
-        //=============================================================================
-
-        class NodeFactory
+        // Network Node Interface
+        class INetworkNode
         {
               public:
-            using NodeCreator = std::function<std::shared_ptr<IExecutableNode>(const std::string &nodeId)>;
-
-            // Register a node type
-            static void registerNodeType(const std::string &typeName, NodeCreator creator);
-
-            // Create a node instance
-            static std::shared_ptr<IExecutableNode> create(const std::string &typeName, const std::string &nodeId);
-
-            // Query available types
-            static std::vector<std::string> getRegisteredTypes();
-            static bool isTypeRegistered(const std::string &typeName);
-
-              private:
-            static std::map<std::string, NodeCreator> &getRegistry();
+            virtual ~INetworkNode() = default;
+            // Define network capabilities if needed here or keep empty for tagging
         };
-
-// Helper macro for registration
-#define REGISTER_NODE_TYPE(NodeClass, TypeName) \
-    namespace { \
-        struct NodeClass##Registrar { \
-            NodeClass##Registrar() { \
-                NodeFactory::registerNodeType(TypeName, \
-                    [](const std::string& id) -> std::shared_ptr<IExecutableNode> { \
-                        return std::make_shared<NodeClass>(id); \
-                    }); \
-            } \
-        }; \
-        static NodeClass##Registrar s_##NodeClass##Registrar; \
-    }
 
     }  // namespace SceneGraph
 }  // namespace NeuralStudio

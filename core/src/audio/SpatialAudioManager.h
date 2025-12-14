@@ -1,9 +1,11 @@
 #pragma once
 
-#include <QAudioEngine>
-#include <QSpatialSound>
-#include <QAmbientSound>
-#include <QAudioRoom>
+#include <QObject>
+#include <QtSpatialAudio/QAudioEngine>
+#include <QtSpatialAudio/QSpatialSound>
+#include <QtSpatialAudio/QAmbientSound>
+#include <QtSpatialAudio/QAudioRoom>
+#include <QtSpatialAudio/QAudioListener>
 #include <QVector3D>
 #include <QMap>
 #include <QString>
@@ -47,6 +49,7 @@ namespace NeuralStudio {
 
           private:
         QAudioEngine *m_audioEngine;
+        QAudioListener *m_listener;
         QMap<QString, QSpatialSound *> m_spatialSounds;
         QMap<QString, QAmbientSound *> m_ambientSounds;
         QAudioRoom *m_virtualRoom;

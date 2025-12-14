@@ -1,9 +1,10 @@
 #include "AudioManagerController.h"
 #include "../../blueprint/core/NodeGraphController.h"
 #include <QDir>
-#include <QDebug>
-#include <QFileInfo>
 #include <QUuid>
+#include <QFileInfo>
+#include <QDebug>
+#include <QObject>
 
 namespace NeuralStudio {
 namespace Blueprint {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "libvr/IAudioAdapter.h"
+#include "drivers/interfaces/IAudioAdapter.h"
 
 // Extension interface for 3D Audio
 typedef struct ISpatialAudioAdapter_Vtbl {
@@ -13,11 +13,11 @@ typedef struct ISpatialAudioAdapter_Vtbl {
 extern "C" {
 #endif
 
-// Add positioning to IAudioAdapter
-// In a real C-ABI, we'd either version the struct or have extension functions.
-// For this MVP, we will declare a helper function that casts.
+    // Add positioning to IAudioAdapter
+    // In a real C-ABI, we'd either version the struct or have extension functions.
+    // For this MVP, we will declare a helper function that casts.
 
-void AudioAdapter_SetPosition(struct IAudioAdapter* self, float x, float y, float z);
+    void AudioAdapter_SetPosition(struct IAudioAdapter *self, float x, float y, float z);
 
 #ifdef __cplusplus
 }

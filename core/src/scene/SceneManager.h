@@ -5,9 +5,17 @@
 #include <array>
 #include <mutex>
 #include <cstdint>  // For uint32_t
+#include <cstdint>  // For uint32_t
 #include <map>      // For std::map
 
-namespace libvr {
+// Forward Declaration
+namespace NeuralStudio {
+    namespace USD {
+        class UsdStageManager;
+    }
+}  // namespace NeuralStudio
+
+namespace neural_studio {
 
     struct Transform {
         float position[3];
@@ -73,6 +81,7 @@ namespace libvr {
 
     struct SceneNode {
         uint32_t id;
+        std::string externalId;  // Link to USD Prim Path or other external source
         Transform transform;
         uint32_t mesh_id;
         uint32_t material_id;
@@ -126,6 +135,9 @@ namespace libvr {
         uint32_t AddMesh(const Mesh &mesh);
         const Mesh *GetMesh(uint32_t id) const;
 
+        // USD Management
+        bool OpenUsdStage(const std::string &filePath);
+
         uint32_t AddMaterial(const Material &material);
         const Material *GetMaterial(uint32_t id) const;
 
@@ -134,9 +146,17 @@ namespace libvr {
 
         // Semantic Graph API
         void AddRelation(uint32_t sourceId, uint32_t targetId, RelationType type, float weight = 1.0f);
+
         const std::vector<SemanticEdge> &GetRelations() const;
 
+        // USD Manager Access
+        NeuralStudio::USD::UsdStageManager *GetUsdStageManager() const
+        {
+            return m_usdManager;
+        }
+
           private:
+        NeuralStudio::USD::UsdStageManager *m_usdManager = nullptr;
         std::vector<SceneNode> nodes;
         int next_id = 1;
         mutable std::mutex nodes_mutex;
@@ -158,4 +178,4 @@ namespace libvr {
         int next_light_id = 1;
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

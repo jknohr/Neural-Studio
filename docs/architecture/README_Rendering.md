@@ -299,10 +299,15 @@ hdr.process(inputTexture, outputTexture);
 ### Current
 - **VirtualCamManager**: Uses rendering for per-profile output
 - **FrameRouter**: Processing pipeline (will integrate with NodeExecutionGraph)
+- **SceneManager**: 3D scene rendering integration (Hybrid USD Architecture)
+  - Creates 3DModelNode instances
+  - **Hybrid USD Support**: Delegates `.usd` files to `UsdStageManager`
+  - Spatial transforms (Bi-directional sync)
+- **UsdStageManager**: Provides mesh data and transforms for rendering
 
 ### Planned
+- Physics collision (planned)
 - **NodeExecutionGraph**: Rendering nodes as Blueprint components
-- **SceneManager**: 3D scene rendering integration
 - **Video Capture**: Camera input integration
 
 ---

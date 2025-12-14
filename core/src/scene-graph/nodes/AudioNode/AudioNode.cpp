@@ -15,7 +15,7 @@ AudioNode::~AudioNode()
 	// Cleanup audio player resources
 }
 
-void AudioNode::execute(const ExecutionContext &context)
+ExecutionResult AudioNode::process(ExecutionContext &context)
 {
 	if (m_dirty && !m_audioPath.empty()) {
 		// Load audio file
@@ -33,6 +33,7 @@ void AudioNode::execute(const ExecutionContext &context)
 		// Audio data with volume and loop applied
 		// setOutputData("audio_out", currentAudioBuffer);
 	}
+	return ExecutionResult::success();
 }
 
 void AudioNode::setAudioPath(const std::string &path)

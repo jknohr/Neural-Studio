@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-namespace libvr {
+namespace neural_studio {
 
 // CUDA Driver API defines (Subset)
 #define CUDA_SUCCESS 0
@@ -152,4 +152,4 @@ void FreeCudaResources(CUexternalMemory ext_mem, CUarray array) {
     // array is destroyed if mipmap is destroyed, need to track that. Simple leak here for skeleton.
 }
 
-} // namespace libvr
+} // namespace neural_studio

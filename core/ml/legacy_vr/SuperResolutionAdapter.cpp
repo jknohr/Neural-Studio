@@ -8,7 +8,7 @@
 #include "gpu/cuda_utils.h"
 #include "gpu/vulkan_utils.h"
 
-namespace libvr {
+namespace neural_studio {
 
 // Helper to wrap cudaArray in NvCVImage
 static void WrapCudaArrayInNvCVImage(NvCVImage *img, CUarray arr, int width, int height, NvCVImage_PixelFormat fmt)
@@ -196,4 +196,4 @@ extern "C" ISuperResolutionAdapter *CreateSRAdapter()
 	return new SuperResolutionAdapter();
 }
 
-} // namespace libvr
+} // namespace neural_studio

@@ -3,7 +3,7 @@
 #include "libvr/IAudioAdapter.h"
 #include <vector>
 
-namespace libvr {
+namespace neural_studio {
 
 class AudioManager {
 public:
@@ -24,4 +24,4 @@ private:
 // Built-in Adapters
 extern "C" IAudioAdapter* CreatePipeWireAudioSource(); // TBD
 
-} // namespace libvr
+} // namespace neural_studio

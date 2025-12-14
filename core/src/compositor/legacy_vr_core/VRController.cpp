@@ -13,7 +13,7 @@
 
 using json = nlohmann::json;
 
-namespace libvr {
+namespace neural_studio {
 
 VRController::VRController()
 {
@@ -124,4 +124,4 @@ std::string VRController::HandleCommand(const std::string &jsonPayload)
 	return "{\"status\":\"ok\"}";
 }
 
-} // namespace libvr
+} // namespace neural_studio

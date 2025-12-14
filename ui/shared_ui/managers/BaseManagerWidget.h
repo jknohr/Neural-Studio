@@ -35,6 +35,9 @@ namespace NeuralStudio {
                 return m_description;
             }
 
+            void setTitle(const QString &title);
+            void setDescription(const QString &description);
+
             QStringList managedNodes() const;
             QStringList nodePresets() const;
 

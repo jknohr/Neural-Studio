@@ -41,4 +41,3 @@ namespace NeuralStudio {
 
     }  // namespace UI
 }  // namespace NeuralStudio
-```

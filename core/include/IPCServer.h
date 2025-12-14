@@ -5,7 +5,7 @@
 #include <atomic>
 #include <functional>
 
-namespace libvr {
+namespace neural_studio {
 
     class IPCServer
     {
@@ -31,4 +31,4 @@ namespace libvr {
         std::function<std::string(const std::string &)> m_commandCallback;
     };
 
-}  // namespace libvr
+}  // namespace neural_studio

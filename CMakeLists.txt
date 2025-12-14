@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(obs-vr VERSION 0.1.0 LANGUAGES C CXX)
+project(neural-studio VERSION 0.1.0 LANGUAGES C CXX)
 
 # Standard Settings
 set(CMAKE_CXX_STANDARD 20)

@@ -12,7 +12,7 @@ namespace NeuralStudio {
         class IRenderEngine;
     }
 
-    namespace libvr {
+    namespace neural_studio {
         class SceneManager;
     }
 }  // namespace NeuralStudio
@@ -43,7 +43,7 @@ namespace NeuralStudio {
 
             // Graph Management
             NodeExecutionGraph *getNodeGraph() const;
-            libvr::SceneManager *getSceneManager() const;
+            neural_studio::SceneManager *getSceneManager() const;
 
             // High-Level Operations (Transactional)
             // These ensure both graphs are kept in sync
@@ -58,7 +58,7 @@ namespace NeuralStudio {
               private:
             // Core Subsystems
             std::unique_ptr<NodeExecutionGraph> m_nodeGraph;
-            std::shared_ptr<libvr::SceneManager> m_sceneManager;  // Shared with Legacy VR system?
+            std::shared_ptr<neural_studio::SceneManager> m_sceneManager;  // Shared with Legacy VR system?
             Rendering::IRenderEngine *m_renderer = nullptr;
 
             // Context

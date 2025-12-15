@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/objectbox-build/src-test-gen",
+		"source" : "build_ubuntu/_deps/objectbox-src/src-test-gen"
+	}
+}

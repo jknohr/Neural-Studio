@@ -1,0 +1,23 @@
+// Master Store: Pipeline Templates
+namespace NeuralStudio.Master;
+
+table PipelineTemplate {
+    id: ulong;
+    
+    /// Template name
+    name: string;
+    
+    /// Category
+    category: string;
+    
+    /// Description
+    description: string;
+    
+    /// Serialized graph (JSON)
+    graph_json: string;
+    
+    /// Thumbnail path
+    thumbnail: string;
+}
+
+root_type PipelineTemplate;

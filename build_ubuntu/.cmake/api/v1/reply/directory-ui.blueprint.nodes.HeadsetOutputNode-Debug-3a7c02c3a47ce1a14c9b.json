@@ -1,0 +1,61 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"ui/blueprint/nodes/HeadsetOutputNode/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"ui/blueprint/nodes/HeadsetOutputNode/libui-headsetoutputnode.a"
+			],
+			"targetId" : "ui-headsetoutputnode::@b6a0e7fdfdb6ffd0de77",
+			"targetIndex" : 64,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "share/neural-studio/qml/blueprint/nodes/HeadsetOutputNode",
+			"paths" : 
+			[
+				"ui/blueprint/nodes/HeadsetOutputNode/HeadsetOutputNode.qml"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "ui/blueprint/nodes/HeadsetOutputNode",
+		"source" : "ui/blueprint/nodes/HeadsetOutputNode"
+	}
+}

@@ -1,0 +1,35 @@
+// Master Store: Node Type Definitions
+namespace NeuralStudio.Master;
+
+table NodeType {
+    id: ulong;
+    
+    /// Internal type identifier
+    name: string;
+    
+    /// User-facing category
+    category: string;
+    
+    /// Display name
+    display_name: string;
+    
+    /// Description for tooltips
+    description: string;
+    
+    /// Material icon name
+    icon: string;
+    
+    /// Default configuration (JSON)
+    default_config: string;
+    
+    /// Input port definitions (JSON array)
+    input_ports: string;
+    
+    /// Output port definitions (JSON array)
+    output_ports: string;
+    
+    /// Schema version
+    version: int = 1;
+}
+
+root_type NodeType;

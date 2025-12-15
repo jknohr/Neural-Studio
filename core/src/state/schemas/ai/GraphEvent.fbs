@@ -1,0 +1,30 @@
+// AI Memory Store: Graph Events (Time-Series)
+namespace NeuralStudio.AI;
+
+table GraphEvent {
+    id: ulong;
+    
+    /// objectbox:id-companion, date
+    timestamp: long;
+    
+    /// Event type: "node_add", "node_delete", "edge_create", "edge_delete"
+    event_type: string;
+    
+    /// Node type involved
+    node_type: string;
+    
+    /// For connection events
+    from_type: string;
+    to_type: string;
+    from_port: string;
+    to_port: string;
+    
+    /// Graph state before event
+    context_hash: string;
+    
+    /// Session identifier
+    /// objectbox:index
+    session_id: string;
+}
+
+root_type GraphEvent;

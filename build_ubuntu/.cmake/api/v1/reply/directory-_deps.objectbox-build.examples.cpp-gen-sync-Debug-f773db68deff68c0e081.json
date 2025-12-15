@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/objectbox-build/examples/cpp-gen-sync",
+		"source" : "build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync"
+	}
+}

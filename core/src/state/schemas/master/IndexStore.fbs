@@ -1,0 +1,131 @@
+// Index Store Schema - Meta-registry for ID System & UI Composition
+namespace NeuralStudio.State.Master;
+
+// Lifecycle management rules
+enum DecayRule:byte {
+    NeverDecay = 0,   // Store persists forever (Master, UI components)
+    ManualOnly = 1,   // Only deleted by explicit user action
+    Interval = 2      // Auto-delete after interval if unused
+}
+
+// ============================================================================
+// FLEXIBLE SOUL STRUCTURE (The "Creative Solution")
+// ============================================================================
+// Supports ALL forms: 0, 1, [1,1], {[1,1],[1]}, {{...}}
+// Strictly typed, no strings.
+
+/// Form 1: Scalar (0 or 1)
+table SoulScalar {
+    value: ulong;
+}
+
+/// Form 2: Vector (1, 1, 5)
+table SoulVector {
+    values: [int];
+}
+
+/// Form 3: Array of Vectors ({[1,1], [1]})
+table SoulArray {
+    vec_a: SoulVector;
+    vec_b: SoulVector;
+}
+
+/// Form 4: Matrix of Arrays ({{...}, {...}})
+/// Matches your C++ NestedStructure exactly
+table SoulMatrix {
+    arr_a: SoulArray;
+    arr_b: SoulArray;
+}
+
+/// The Soul can be any of these forms
+union SoulVariant {
+    SoulScalar,
+    SoulVector,
+    SoulArray,
+    SoulMatrix
+}
+
+// ============================================================================
+// INDEX STORE
+// ============================================================================
+
+table SpeciesIndex {
+    code: string;
+    name: string;
+    description: string;
+    category: string;
+    
+    // Capabilities
+    has_types: bool;
+    has_archetypes: bool;
+    
+    // Lifecycle
+    default_decay_logic: ulong;
+}
+
+table TypeIndex {
+    species_id: long;
+    code: string;
+    name: string;
+    
+    ethnicity: string;
+    
+    /// Can be Scalar, Vector, Array, or Matrix
+    soul_number: SoulVariant;
+    
+    ui_superpower: bool;
+    decay_logic: ulong; // 0 = no decay
+}
+
+table ArchetypeIndex {
+    type_id: long;
+    code: string;
+    name: string;
+    
+    ethnicity: string;
+    
+    /// Can be Scalar, Vector, Array, or Matrix
+    soul_number: SoulVariant;
+    
+    decay_logic: ulong;
+}
+
+table SchemaIndex {
+    prefix: string (key);
+    species_id: long;
+    type_id: long;
+    archetype_id: long;
+    
+    ethnicity: string;
+    
+    /// Can be Scalar, Vector, Array, or Matrix
+    soul_number: SoulVariant;
+    
+    logic_code: string;
+    ui_superpower: bool;
+    
+    schema_path: string;
+    schema_filename: string;
+    cpp_class_name: string;
+    
+    decay_logic: ulong;
+    
+    last_accessed: long;
+    access_count: long;
+    created_at: long;
+    last_updated: long;
+}
+
+table StoreInstance {
+    instance_id: string (key);
+    schema_id: long;
+    store_path: string;
+    is_loaded: bool;
+    created_at: long;
+    last_accessed: long;
+    
+    decay_logic: ulong;
+    scheduled_deletion: long;
+}
+
+root_type SpeciesIndex;

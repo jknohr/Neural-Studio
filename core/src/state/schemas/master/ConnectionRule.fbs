@@ -1,0 +1,23 @@
+// Master Store: Connection Rules
+namespace NeuralStudio.Master;
+
+table ConnectionRule {
+    id: ulong;
+    
+    /// Source node type ID
+    from_type_id: ulong;
+    
+    /// Target node type ID
+    to_type_id: ulong;
+    
+    /// Source port name
+    from_port_name: string;
+    
+    /// Target port name
+    to_port_name: string;
+    
+    /// Validation constraints (JSON)
+    constraints: string;
+}
+
+root_type ConnectionRule;

@@ -1,0 +1,31 @@
+// Animation Keyframe FlatBuffers Schema
+namespace NeuralStudio;
+
+table AnimationKeyframe {
+    id:ulong;
+    object_id:ulong;        // Scene object ID
+    node_id:string;         // Node graph ID
+    
+    /// objectbox:id-companion, date
+    timestamp_ms:long;      // Time in milliseconds
+    
+    // Position (flattened from Vector3)
+    pos_x:float = 0.0;
+    pos_y:float = 0.0;
+    pos_z:float = 0.0;
+    
+    // Rotation (flattened from Vector3)
+    rot_x:float = 0.0;
+    rot_y:float = 0.0;
+    rot_z:float = 0.0;
+    
+    // Scale (flattened from Vector3)
+    scale_x:float = 1.0;
+    scale_y:float = 1.0;
+    scale_z:float = 1.0;
+    
+    script_id:ulong = 0;    // Optional: script controlling this
+    interpolation:string = "linear";  // "linear", "bezier", "step"
+}
+
+root_type AnimationKeyframe;

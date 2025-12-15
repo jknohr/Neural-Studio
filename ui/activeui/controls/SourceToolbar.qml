@@ -21,8 +21,8 @@ Rectangle {
         spacing: 8
         
         Label {
-            text: selectedSourceName ? selectedSourceName : "No source selected"
-            color: selectedSourceName ? "#ccc" : "#888"
+            text: sourceToolbar.selectedSourceName ? sourceToolbar.selectedSourceName : "No source selected"
+            color: sourceToolbar.selectedSourceName ? "#ccc" : "#888"
             font.pixelSize: 11
         }
         
@@ -32,18 +32,18 @@ Rectangle {
             text: "Properties"
             flat: true
             font.pixelSize: 11
-            enabled: selectedSourceName !== ""
+            enabled: sourceToolbar.selectedSourceName !== ""
             
-            onClicked: propertiesClicked()
+            onClicked: sourceToolbar.propertiesClicked()
         }
         
         Button {
             text: "Filters"
             flat: true
             font.pixelSize: 11
-            enabled: selectedSourceName !== ""
+            enabled: sourceToolbar.selectedSourceName !== ""
             
-            onClicked: filtersClicked()
+            onClicked: sourceToolbar.filtersClicked()
         }
     }
 }

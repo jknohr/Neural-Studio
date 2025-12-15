@@ -3,6 +3,18 @@
 # Libraries - Look for USD using its native cmake config
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 
+# ObjectBox C++ for state management
+include(FetchContent)
+
+FetchContent_Declare(
+    objectbox
+    GIT_REPOSITORY https://github.com/objectbox/objectbox-c.git
+    GIT_TAG v0.21.0
+)
+
+set(OBJECTBOX_BUILD_SHARED OFF CACHE BOOL "Build ObjectBox as static library")
+FetchContent_MakeAvailable(objectbox)
+
 # Use Pixar's native pxrConfig.cmake if available
 find_package(pxr CONFIG QUIET HINTS $ENV{HOME}/USD /usr/local /opt/pixar)
 
@@ -24,6 +36,7 @@ else()
 endif()
 
 # Source Modules
+add_subdirectory(src/state) # State management with ObjectBox
 add_subdirectory(src/scene-graph)
 add_subdirectory(src/scene) # New location for SceneManager
 add_subdirectory(src/pipeline) # New location for FrameRouter

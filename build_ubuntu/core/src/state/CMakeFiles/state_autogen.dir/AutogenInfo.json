@@ -1,0 +1,284 @@
+{
+	"BUILD_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen",
+	"CMAKE_BINARY_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/CMakeLists.txt",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6Config.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtInstallPaths.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6Targets.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtFeature.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake",
+		"/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake",
+		"/usr/share/cmake-3.28/Modules/Internal/CheckFlagCommonConfig.cmake",
+		"/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake",
+		"/usr/share/cmake-3.28/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake",
+		"/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtFeatureCommon.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicAndroidHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicGitHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicPluginHelpers_v2.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomCpeHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomLicenseHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomOpsHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomPurlHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomQtEntityHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake",
+		"/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6Dependencies.cmake",
+		"/usr/share/cmake-3.28/Modules/FindThreads.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckIncludeFile.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake",
+		"/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+		"/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6/FindWrapAtomic.cmake",
+		"/usr/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake",
+		"/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake",
+		"/usr/share/cmake-3.28/Modules/GNUInstallDirs.cmake",
+		"/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreVersionlessAliasTargets.cmake",
+		"/home/subtomic/Documents/GitHub/Neural-Studio/cmake/modules/FindObjectBoxGenerator.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio",
+	"DEP_FILE" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "state_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.hpp",
+			"Mu",
+			"7FB6YMYCGV/moc_GraphEvent.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.hpp",
+			"Mu",
+			"7FB6YMYCGV/moc_GraphPattern.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.hpp",
+			"Mu",
+			"7FB6YMYCGV/moc_IntentPrediction.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.hpp",
+			"Mu",
+			"XDC3KXOHCZ/moc_ConnectionRule.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.hpp",
+			"Mu",
+			"XDC3KXOHCZ/moc_NodeType.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.hpp",
+			"Mu",
+			"XDC3KXOHCZ/moc_PipelineTemplate.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.hpp",
+			"Mu",
+			"277SPKVAWO/moc_AnimationKeyframe.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.hpp",
+			"Mu",
+			"277SPKVAWO/moc_BroadcastSettings.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.hpp",
+			"Mu",
+			"277SPKVAWO/moc_GraphEdge.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.hpp",
+			"Mu",
+			"277SPKVAWO/moc_GraphNode.obx.cpp",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.hpp",
+			"Mu",
+			"277SPKVAWO/moc_SceneObject.obx.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "NEURAL_STUDIO_USE_USD", "QT_CORE_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state",
+		"/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include",
+		"/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external",
+		"/home/subtomic/Qt/6.10.1/gcc_64/include/QtCore",
+		"/home/subtomic/Qt/6.10.1/gcc_64/include",
+		"/home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++",
+		"/usr/include/c++/13",
+		"/usr/include/x86_64-linux-gnu/c++/13",
+		"/usr/include/c++/13/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/13/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-std=gnu++20",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 6,
+	"PARSE_CACHE_FILE" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/CMakeFiles/state_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/subtomic/Qt/6.10.1/gcc_64/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 10,
+	"SETTINGS_FILE" : "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/CMakeFiles/state_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.cpp",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

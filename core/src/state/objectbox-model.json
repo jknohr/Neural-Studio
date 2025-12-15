@@ -1,0 +1,642 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4983374517096241241",
+      "lastPropertyId": "11:4189994237562563643",
+      "name": "BroadcastSettings",
+      "properties": [
+        {
+          "id": "1:4739269246231445414",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4040633880717979746",
+          "name": "platform",
+          "type": 9
+        },
+        {
+          "id": "3:8370627668021134012",
+          "name": "stream_key",
+          "type": 9
+        },
+        {
+          "id": "4:4169666315763708143",
+          "name": "server_url",
+          "type": 9
+        },
+        {
+          "id": "5:8960471891043545626",
+          "name": "bitrate",
+          "type": 5
+        },
+        {
+          "id": "6:9182105764800302265",
+          "name": "resolution",
+          "type": 9
+        },
+        {
+          "id": "7:3054091125498663627",
+          "name": "framerate",
+          "type": 5
+        },
+        {
+          "id": "8:6340113412831970412",
+          "name": "encoder",
+          "type": 9
+        },
+        {
+          "id": "9:8130479897569182011",
+          "name": "audio_bitrate",
+          "type": 5
+        },
+        {
+          "id": "10:5183927744598799625",
+          "name": "sample_rate",
+          "type": 5
+        },
+        {
+          "id": "11:4189994237562563643",
+          "name": "enabled",
+          "type": 1
+        }
+      ]
+    },
+    {
+      "id": "2:7470032134549567603",
+      "lastPropertyId": "15:2327174666706499271",
+      "name": "AnimationKeyframe",
+      "properties": [
+        {
+          "id": "1:6830389758620302980",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1933690219521896575",
+          "name": "object_id",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "3:1166423187444966949",
+          "name": "node_id",
+          "type": 9
+        },
+        {
+          "id": "4:7626816835733007624",
+          "name": "timestamp_ms",
+          "type": 10,
+          "flags": 16384
+        },
+        {
+          "id": "5:5239153353790514682",
+          "name": "pos_x",
+          "type": 7
+        },
+        {
+          "id": "6:4203417546208624027",
+          "name": "pos_y",
+          "type": 7
+        },
+        {
+          "id": "7:1764901859277132616",
+          "name": "pos_z",
+          "type": 7
+        },
+        {
+          "id": "8:7497430310142092571",
+          "name": "rot_x",
+          "type": 7
+        },
+        {
+          "id": "9:4792991999221501700",
+          "name": "rot_y",
+          "type": 7
+        },
+        {
+          "id": "10:5923910447790585973",
+          "name": "rot_z",
+          "type": 7
+        },
+        {
+          "id": "11:3069348221139012588",
+          "name": "scale_x",
+          "type": 7
+        },
+        {
+          "id": "12:1159443774650843705",
+          "name": "scale_y",
+          "type": 7
+        },
+        {
+          "id": "13:3269063388332667008",
+          "name": "scale_z",
+          "type": 7
+        },
+        {
+          "id": "14:8744371900234847323",
+          "name": "script_id",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "15:2327174666706499271",
+          "name": "interpolation",
+          "type": 9
+        }
+      ]
+    },
+    {
+      "id": "3:765965672176352531",
+      "lastPropertyId": "15:2825556049937191521",
+      "name": "SceneObject",
+      "properties": [
+        {
+          "id": "1:8298277251682432903",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8570262232547793784",
+          "name": "node_id",
+          "type": 9
+        },
+        {
+          "id": "3:5945665489862808148",
+          "name": "type",
+          "type": 9
+        },
+        {
+          "id": "4:3063893182585899335",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "5:799715896026418397",
+          "name": "pos_x",
+          "type": 7
+        },
+        {
+          "id": "6:2908092011459023694",
+          "name": "pos_y",
+          "type": 7
+        },
+        {
+          "id": "7:4171391756888130785",
+          "name": "pos_z",
+          "type": 7
+        },
+        {
+          "id": "8:330306955504229529",
+          "name": "rot_x",
+          "type": 7
+        },
+        {
+          "id": "9:8712526186490695518",
+          "name": "rot_y",
+          "type": 7
+        },
+        {
+          "id": "10:7915708143972665323",
+          "name": "rot_z",
+          "type": 7
+        },
+        {
+          "id": "11:1370787891354403537",
+          "name": "scale_x",
+          "type": 7
+        },
+        {
+          "id": "12:6811259124074724828",
+          "name": "scale_y",
+          "type": 7
+        },
+        {
+          "id": "13:8592582243557599052",
+          "name": "scale_z",
+          "type": 7
+        },
+        {
+          "id": "14:227614118282955526",
+          "name": "enabled",
+          "type": 1
+        },
+        {
+          "id": "15:2825556049937191521",
+          "name": "properties",
+          "type": 9
+        }
+      ]
+    },
+    {
+      "id": "4:691585485205749242",
+      "lastPropertyId": "10:4185973465504983771",
+      "name": "NodeType",
+      "properties": [
+        {
+          "id": "1:7206512075372682825",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:182933630801232067",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:245472486318685095",
+          "name": "category",
+          "type": 9
+        },
+        {
+          "id": "4:7302076843148902891",
+          "name": "display_name",
+          "type": 9
+        },
+        {
+          "id": "5:2087505208827666730",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "6:7284051790836970057",
+          "name": "icon",
+          "type": 9
+        },
+        {
+          "id": "7:3800929147163572612",
+          "name": "default_config",
+          "type": 9
+        },
+        {
+          "id": "8:3454282178717654690",
+          "name": "input_ports",
+          "type": 9
+        },
+        {
+          "id": "9:7294412781335254579",
+          "name": "output_ports",
+          "type": 9
+        },
+        {
+          "id": "10:4185973465504983771",
+          "name": "version",
+          "type": 5
+        }
+      ]
+    },
+    {
+      "id": "5:2767127479057613079",
+      "lastPropertyId": "6:8048085061339828555",
+      "name": "ConnectionRule",
+      "properties": [
+        {
+          "id": "1:6208786491683423225",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2467527430734305151",
+          "name": "from_type_id",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "3:1210422276073254018",
+          "name": "to_type_id",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "4:4556176520996868250",
+          "name": "from_port_name",
+          "type": 9
+        },
+        {
+          "id": "5:7339147468667811917",
+          "name": "to_port_name",
+          "type": 9
+        },
+        {
+          "id": "6:8048085061339828555",
+          "name": "constraints",
+          "type": 9
+        }
+      ]
+    },
+    {
+      "id": "6:5035399726560040859",
+      "lastPropertyId": "6:3278812170213056336",
+      "name": "PipelineTemplate",
+      "properties": [
+        {
+          "id": "1:3123251284371766190",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:205587244958340249",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:2449168693765088158",
+          "name": "category",
+          "type": 9
+        },
+        {
+          "id": "4:5889767807897221990",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "5:2049855418491791861",
+          "name": "graph_json",
+          "type": 9
+        },
+        {
+          "id": "6:3278812170213056336",
+          "name": "thumbnail",
+          "type": 9
+        }
+      ]
+    },
+    {
+      "id": "7:3151993038422604410",
+      "lastPropertyId": "9:999710280616103365",
+      "name": "GraphNode",
+      "properties": [
+        {
+          "id": "1:2506050045069201598",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4080929898332409332",
+          "name": "type_id",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "3:6830349750384718923",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:8594221677595933538",
+          "name": "pos_x",
+          "type": 7
+        },
+        {
+          "id": "5:3200720532479448638",
+          "name": "pos_y",
+          "type": 7
+        },
+        {
+          "id": "6:1795798955359061355",
+          "name": "pos_z",
+          "type": 7
+        },
+        {
+          "id": "7:3297562220732756698",
+          "name": "config_json",
+          "type": 9
+        },
+        {
+          "id": "8:5380986810566331179",
+          "name": "enabled",
+          "type": 1
+        },
+        {
+          "id": "9:999710280616103365",
+          "name": "created_at",
+          "indexId": "1:5864996251858635037",
+          "type": 6,
+          "flags": 8
+        }
+      ]
+    },
+    {
+      "id": "8:7988323572453525072",
+      "lastPropertyId": "7:7751187013345813373",
+      "name": "GraphEdge",
+      "properties": [
+        {
+          "id": "1:1945451722973120682",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6418131887734195272",
+          "name": "from_node_id",
+          "indexId": "2:6986325636522500868",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "GraphNode"
+        },
+        {
+          "id": "3:2321869519645333000",
+          "name": "to_node_id",
+          "indexId": "3:174478287737931212",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "GraphNode"
+        },
+        {
+          "id": "4:6738218524042367562",
+          "name": "from_port",
+          "type": 9
+        },
+        {
+          "id": "5:5648578808653313273",
+          "name": "to_port",
+          "type": 9
+        },
+        {
+          "id": "6:5871800209889044441",
+          "name": "data_type",
+          "type": 9
+        },
+        {
+          "id": "7:7751187013345813373",
+          "name": "enabled",
+          "type": 1
+        }
+      ]
+    },
+    {
+      "id": "9:7518635190650337221",
+      "lastPropertyId": "10:2971015498239945990",
+      "name": "GraphEvent",
+      "properties": [
+        {
+          "id": "1:6459456832930191507",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6120605933864547403",
+          "name": "timestamp",
+          "type": 10,
+          "flags": 16384
+        },
+        {
+          "id": "3:1336785362253568950",
+          "name": "event_type",
+          "type": 9
+        },
+        {
+          "id": "4:1483959732374349654",
+          "name": "node_type",
+          "type": 9
+        },
+        {
+          "id": "5:8754286289047755458",
+          "name": "from_type",
+          "type": 9
+        },
+        {
+          "id": "6:3464222242673606493",
+          "name": "to_type",
+          "type": 9
+        },
+        {
+          "id": "7:8206431129058822337",
+          "name": "from_port",
+          "type": 9
+        },
+        {
+          "id": "8:5755448157255162611",
+          "name": "to_port",
+          "type": 9
+        },
+        {
+          "id": "9:1500084222071228117",
+          "name": "context_hash",
+          "type": 9
+        },
+        {
+          "id": "10:2971015498239945990",
+          "name": "session_id",
+          "indexId": "4:4743171403228677233",
+          "type": 9,
+          "flags": 2048
+        }
+      ]
+    },
+    {
+      "id": "10:7684501265397504746",
+      "lastPropertyId": "7:2953916057587597850",
+      "name": "GraphPattern",
+      "properties": [
+        {
+          "id": "1:5128163235441873123",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2479479140556432794",
+          "name": "pattern_hash",
+          "indexId": "5:3265423074363145237",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:3126054317548670228",
+          "name": "node_sequence",
+          "type": 9
+        },
+        {
+          "id": "4:2641872998528125278",
+          "name": "edge_structure",
+          "type": 9
+        },
+        {
+          "id": "5:7695267555162314596",
+          "name": "frequency",
+          "type": 6,
+          "flags": 8192
+        },
+        {
+          "id": "6:6134235376143099188",
+          "name": "success_rate",
+          "type": 7
+        },
+        {
+          "id": "7:2953916057587597850",
+          "name": "last_updated",
+          "type": 6
+        }
+      ]
+    },
+    {
+      "id": "11:2230849036126152022",
+      "lastPropertyId": "7:4253613767955126374",
+      "name": "IntentPrediction",
+      "properties": [
+        {
+          "id": "1:777915633890803864",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7812563807704275353",
+          "name": "context_hash",
+          "indexId": "6:3957028577785953062",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:2756926705052696206",
+          "name": "predicted_node_type",
+          "type": 9
+        },
+        {
+          "id": "4:4647502309933657841",
+          "name": "predicted_from_type",
+          "type": 9
+        },
+        {
+          "id": "5:6631754017620906083",
+          "name": "predicted_to_type",
+          "type": 9
+        },
+        {
+          "id": "6:7670002493036526741",
+          "name": "confidence",
+          "type": 7
+        },
+        {
+          "id": "7:4253613767955126374",
+          "name": "reason",
+          "type": 9
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "11:2230849036126152022",
+  "lastIndexId": "6:3957028577785953062",
+  "lastRelationId": "",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

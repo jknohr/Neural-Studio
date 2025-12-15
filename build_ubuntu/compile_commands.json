@@ -1,6 +1,204 @@
 [
 {
   "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/plain-c-test-main.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/plain-c-test-main.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/plain-c-test-main.c",
+  "output": "_deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/plain-c-test-main.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/c_test_objects.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/c_test_objects.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/c_test_objects.c",
+  "output": "_deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/c_test_objects.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/builder.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "output": "_deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/builder.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/emitter.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "output": "_deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/emitter.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/refmap.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "output": "_deps/objectbox-build/src-test/CMakeFiles/objectbox-c-test.dir/__/external/flatcc-src/refmap.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/plain-c-test-main.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/plain-c-test-main.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/plain-c-test-main.c",
+  "output": "_deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/plain-c-test-main.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/builder.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "output": "_deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/builder.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/emitter.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "output": "_deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/emitter.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen/../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu99 -fPIE -o _deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/refmap.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "output": "_deps/objectbox-build/src-test-gen/CMakeFiles/objectbox-c-gen-test.dir/__/external/flatcc-src/refmap.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/main.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/main.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/main.c",
+  "output": "_deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/main.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/builder.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "output": "_deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/builder.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/emitter.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "output": "_deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/emitter.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/refmap.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "output": "_deps/objectbox-build/examples/c-cursor-no-gen/CMakeFiles/objectbox-c-examples-tasks.dir/__/__/external/flatcc-src/refmap.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/main.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/main.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/main.c",
+  "output": "_deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/main.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/builder.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/builder.c",
+  "output": "_deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/builder.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/emitter.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/emitter.c",
+  "output": "_deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/emitter.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/cc -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../external -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen/../../include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -fPIE -o _deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/refmap.c.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external/flatcc-src/refmap.c",
+  "output": "_deps/objectbox-build/examples/c-gen/CMakeFiles/objectbox-c-examples-tasks-c-gen.dir/__/__/external/flatcc-src/refmap.c.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/../../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/../../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu++11 -fPIE -o _deps/objectbox-build/examples/cpp-gen/CMakeFiles/objectbox-c-examples-tasks-cpp-gen.dir/main.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/main.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/main.cpp",
+  "output": "_deps/objectbox-build/examples/cpp-gen/CMakeFiles/objectbox-c-examples-tasks-cpp-gen.dir/main.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/../../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/../../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu++11 -fPIE -o _deps/objectbox-build/examples/cpp-gen/CMakeFiles/objectbox-c-examples-tasks-cpp-gen.dir/tasklist.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/tasklist.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen/tasklist.obx.cpp",
+  "output": "_deps/objectbox-build/examples/cpp-gen/CMakeFiles/objectbox-c-examples-tasks-cpp-gen.dir/tasklist.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/../../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/../../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu++11 -fPIE -o _deps/objectbox-build/examples/cpp-gen-sync/CMakeFiles/objectbox-c-examples-tasks-cpp-gen-sync.dir/main.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/main.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/main.cpp",
+  "output": "_deps/objectbox-build/examples/cpp-gen-sync/CMakeFiles/objectbox-c-examples-tasks-cpp-gen-sync.dir/main.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/../../include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/../../external -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -g -std=gnu++11 -fPIE -o _deps/objectbox-build/examples/cpp-gen-sync/CMakeFiles/objectbox-c-examples-tasks-cpp-gen-sync.dir/tasklist.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/tasklist.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync/tasklist.obx.cpp",
+  "output": "_deps/objectbox-build/examples/cpp-gen-sync/CMakeFiles/objectbox-c-examples-tasks-cpp-gen-sync.dir/tasklist.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/state_autogen/mocs_compilation.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/mocs_compilation.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/mocs_compilation.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/state_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/master/NodeType.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/master/NodeType.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/master/ConnectionRule.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/master/ConnectionRule.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/master/PipelineTemplate.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/master/PipelineTemplate.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/profile/GraphNode.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/profile/GraphNode.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/profile/GraphEdge.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/profile/GraphEdge.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/profile/BroadcastSettings.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/profile/BroadcastSettings.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/profile/AnimationKeyframe.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/profile/AnimationKeyframe.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/profile/SceneObject.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/profile/SceneObject.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/ai/GraphEvent.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/ai/GraphEvent.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/ai/GraphPattern.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/ai/GraphPattern.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
+  "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-download-src/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/state_autogen/include -isystem /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/external -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -g -std=gnu++20 -fPIC -fPIC -o core/src/state/CMakeFiles/state.dir/schemas/ai/IntentPrediction.obx.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.cpp",
+  "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.cpp",
+  "output": "core/src/state/CMakeFiles/state.dir/schemas/ai/IntentPrediction.obx.cpp.o"
+},
+{
+  "directory": "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu",
   "command": "/usr/bin/c++ -DNEURAL_STUDIO_USE_USD -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene-graph -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene -I/home/subtomic/USD/include -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/usd_manager -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/usd_manager/neural_studio_usd_manager_autogen/include -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/rendering -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-src/include -I/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-build/include -I/home/subtomic/Documents/GitHub/Neural-Studio/core/src/pipeline -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtCore -isystem /home/subtomic/Qt/6.10.1/gcc_64/include -isystem /home/subtomic/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtGui -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtQuick -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtQml -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtQmlIntegration -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtNetwork -isystem /home/subtomic/Qt/6.10.1/gcc_64/include/QtOpenGL -g -std=gnu++20 -fPIC -fPIC -o core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/CameraNode/CameraNode.cpp.o -c /home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene-graph/nodes/CameraNode/CameraNode.cpp",
   "file": "/home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene-graph/nodes/CameraNode/CameraNode.cpp",
   "output": "core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/CameraNode/CameraNode.cpp.o"

@@ -1,0 +1,28 @@
+// Profile Store: Graph Edges (Connections)
+namespace NeuralStudio.Profile;
+
+table GraphEdge {
+    id: ulong;
+    
+    /// Source node ID
+    /// objectbox:relation=GraphNode
+    from_node_id: ulong;
+    
+    /// Target node ID
+    /// objectbox:relation=GraphNode
+    to_node_id: ulong;
+    
+    /// Source port name
+    from_port: string;
+    
+    /// Target port name
+    to_port: string;
+    
+    /// Data type flowing through
+    data_type: string;
+    
+    /// Connection enabled
+    enabled: bool = true;
+}
+
+root_type GraphEdge;

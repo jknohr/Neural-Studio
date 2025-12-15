@@ -1,0 +1,22 @@
+// Scene Object FlatBuffers Schema
+namespace NeuralStudio;
+
+table SceneObject {
+  id:ulong = 0;
+  node_id:string;         // Node graph ID
+  type:string;            // "camera", "video", "text", "image", "light"
+  name:string;
+  pos_x:float = 0.0;
+  pos_y:float = 0.0;
+  pos_z:float = 0.0;
+  rot_x:float = 0.0;
+  rot_y:float = 0.0;
+  rot_z:float = 0.0;
+  scale_x:float = 1.0;
+  scale_y:float = 1.0;
+  scale_z:float = 1.0;
+  enabled:bool = true;
+  properties:string;      // JSON blob for type-specific properties
+}
+
+root_type SceneObject;

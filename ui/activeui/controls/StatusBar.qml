@@ -24,25 +24,25 @@ Rectangle {
         
         // CPU usage
         Label {
-            text: "CPU: " + cpuUsage.toFixed(1) + "%"
-            color: cpuUsage > 80 ? "#ff4444" : "#666"
+            text: "CPU: " + statusBar.cpuUsage.toFixed(1) + "%"
+            color: statusBar.cpuUsage > 80 ? "#ff4444" : "#666"
             font.pixelSize: 10
         }
         
         // Status indicators
         Row {
             spacing: 8
-            visible: isRecording || isStreaming
+            visible: statusBar.isRecording || statusBar.isStreaming
             
             Rectangle {
-                visible: isRecording
+                visible: statusBar.isRecording
                 width: 8; height: 8; radius: 4
                 color: "#ff0000"
                 anchors.verticalCenter: parent.verticalCenter
             }
             
             Rectangle {
-                visible: isStreaming
+                visible: statusBar.isStreaming
                 width: 8; height: 8; radius: 4
                 color: "#00ff00"
                 anchors.verticalCenter: parent.verticalCenter
@@ -53,7 +53,7 @@ Rectangle {
         
         // Elapsed time
         Label {
-            text: elapsedTime
+            text: statusBar.elapsedTime
             color: "#666"
             font.pixelSize: 10
             font.family: "monospace"
@@ -61,8 +61,8 @@ Rectangle {
         
         // FPS
         Label {
-            text: fps.toFixed(2) + " / " + targetFps.toFixed(2) + " FPS"
-            color: fps < targetFps * 0.9 ? "#ffaa00" : "#666"
+            text: statusBar.fps.toFixed(2) + " / " + statusBar.targetFps.toFixed(2) + " FPS"
+            color: statusBar.fps < statusBar.targetFps * 0.9 ? "#ffaa00" : "#666"
             font.pixelSize: 10
         }
     }

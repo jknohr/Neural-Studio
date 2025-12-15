@@ -1,0 +1,202 @@
+Here is an example of AudioNode.....
+
+
+ 📂 nodes
+└── 📂 AudioNode/
+│  └── 📂 AudioClip/
+│    ├── 📄 audioclipnode.qml
+│  └── 📂 AudioClipFX/
+│    ├── 📄 audio_clip_f_xnode.qml
+│    ├── 📄 audioclipfxnode.qml
+│  └── 📂 AudioClipFXSettingsWidget/
+│    ├── 📄 audioclipfxsettingswidget.qml
+│  └── 📂 AudioClipFXSourceSelectorWidget/
+│    ├── 📄 audioclipfxsourceselectorwidget.qml
+│  └── 📂 AudioClipMusic/
+│    ├── 📄 audio_clip_musicnode.qml
+│    ├── 📄 audioclipmusicnode.qml
+│  └── 📂 AudioClipMusicSettingsWidget/
+│    ├── 📄 audioclipmusicsettingswidget.qml
+│  └── 📂 AudioClipMusicSourceSelectorWidget/
+│    ├── 📄 audioclipmusicsourceselectorwidget.qml
+│  └── 📂 AudioClipPlaybackControlsWidget/
+│    ├── 📄 audioclipplaybackcontrolswidget.qml
+│  └── 📂 AudioClipPlayerWidget/
+│    ├── 📄 audioclipplayerwidget.qml
+│  └── 📂 AudioClipPodcast/
+│    ├── 📄 audio_clip_podcastnode.qml
+│    ├── 📄 audioclippodcastnode.qml
+│  └── 📂 AudioClipPodcastSettingsWidget/
+│    ├── 📄 audioclippodcastsettingswidget.qml
+│  └── 📂 AudioClipPodcastSourceSelectorWidget/
+│    ├── 📄 audioclippodcastsourceselectorwidget.qml
+│  └── 📂 AudioClipSettingsWidget/
+│    ├── 📄 audioclipsettingswidget.qml
+│  └── 📂 AudioClipSourceSelectorWidget/
+│    ├── 📄 audioclipsourceselectorwidget.qml
+│  └── 📂 AudioClipTimelineScrubberWidget/
+│    ├── 📄 audiocliptimescrubberwidget.qml
+│  └── 📂 AudioGainLevelMeterWidget/
+│    ├── 📄 audiogainlevelmeterwidget.qml
+│  └── 📂 AudioMuteButtonWidget/
+│    ├── 📄 audiomutebuttonwidget.qml
+│  └── 📂 AudioStream/
+│    ├── 📄 audiostreamnode.qml
+│  └── 📂 AudioStreamConnectionStatusWidget/
+│    ├── 📄 audiostreamconnectionstatuswidget.qml
+│  └── 📂 AudioStreamInfoDisplayWidget/
+│    ├── 📄 audiostreaminfodisplaywidget.qml
+│  └── 📂 AudioStreamMusic/
+│    ├── 📄 audio_stream_musicnode.qml
+│    ├── 📄 audiostreammusicnode.qml
+│  └── 📂 AudioStreamMusicSettingsWidget/
+│    ├── 📄 audiostreammusicsettingswidget.qml
+│  └── 📂 AudioStreamMusicSourceSelectorWidget/
+│    ├── 📄 audiostreammusicso urceselectorwidget.qml
+│    ├── 📄 audiostreammusicsourceselectorwidget.qml
+│  └── 📂 AudioStreamPodcast/
+│    ├── 📄 audio_stream_podcastnode.qml
+│    ├── 📄 audiostreampodcastnode.qml
+│  └── 📂 AudioStreamPodcastSettingsWidget/
+│    ├── 📄 audiostreampodcastsettingswidget.qml
+│  └── 📂 AudioStreamPodcastSourceSelectorWidget/
+│    ├── 📄 audiostreampodcastsourceselectorwidget.qml
+│  └── 📂 AudioStreamSettingsWidget/
+│    ├── 📄 audiostreamsettingswidget.qml
+│  └── 📂 AudioStreamSourceSelectorWidget/
+│    ├── 📄 audiostreamsourceselectorwidget.qml
+│  └── 📂 AudioStreamVoiceCall/
+│    ├── 📄 audio_stream_voice_callnode.qml
+│    ├── 📄 audiostreamvoicecallnode.qml
+│  └── 📂 AudioStreamVoiceCallSettingsWidget/
+│    ├── 📄 audiostreamvoicecallsettingswidget.qml
+│  └── 📂 AudioStreamVoiceCallSourceSelectorWidget/
+│    ├── 📄 audiostreamvoicecallsourceselectorwidget.qml
+│  └── 📂 AudioVolumeSliderWidget/
+│    ├── 📄 audiovolumesliderwidget.qml
+│  ├── 📄 audionode.qml
+
+It consist of 8 variants... 
+So we need a schema for 
+AudioClip, AudioclipFX, AudioclipMusic, AudioClipPodCast, AudioStream, AudioStreamMusic, AudioStream, AudioStreamPodCast, AudioStreamVoiceCall,  and then several widgets will link into them. 
+
+
+Each Variant of a nodetype... will have 2 schemas,,, one for the actual settings of the nodevarient... and one for if it is a source node and then it will create a pipeline schema where it store that... look at the end where i go more in details with that
+
+ui/blueprint/nodes
+
+I think we did most of Audio, Video, graphical ,,, BUT missing tons of others... and it is fare from complete we did not make a settings page for it .... and not connected to any controls or function in ActiveFrame yet either ... 
+
+Born from ui/shared_ui/managers
+
+ENDING out after a connected pipeline of nodes connected with diagrams and connecting  to the scenegraph frame... and ending up with output object inside that frame of some sort... that is alterered with whatever filters or settings or scripts or analysis or alias nodes or whatever people need on its way..
+
+
+So We need to have a logic in all  of these nodeschemas... if a node is first inline and not connected to any other node on the topside of leftside Which are the input sides ... Then it is a source node...  and any source node will then create a NodeVarientNAME_pipelineschema This schema will not have much in it other then the baisc information of the Nodevarient, and then have storeID for each node in the pipeline stored and the order in whichj they are connected and remember there can be split out to to seperate diagram threads ... or have nodes that connect in from the side... so it is like making a mermaid diagram of storeids for the pipeline... 
+
+if it makes sense... It is metaphorically.. not actual... 
+
+
+
+
+
+Please Create the logic I talk about here... @BaseNode.qml Well atleast i Guess it should be here... 
+
+But 
+
+When we think logically about it ... 
+
+we need to have a firm rule that all nodes abide.. so that when we need to render a pipeline we can easy read whatthe entire pipeline consist of and in what order... the settings should be applied and what should be applied... 
+
+
+So I imagine some logic here...
+
+where if LEFTSIDE and TOPSIDE have no connections...  And the rightside and bottomside is not connected to a node which have the SToreFlag PipelineSourceMaster= populated with an ID... 
+
+Then it becomes the PipelineSourceMaster and will generate a VariantNamePipelineStore, 
+
+So that means we need 3 seperate logics... and tracking in each Node/controller Store, we have, We will always have aField for VAriantNamePipelineStore... , and we will have ethnicityField, So nodes can either be of "ethnicity" + rank
+ "source(4), morphic(6), supportive(5), debug(10), trigger(9), control(11), encoding(60), postprocessing(70), analysis(80) profile(99), prompt(100)  grouping(3), api(2), dock(200), sequencer(2), hardware(1), data(0)".. 
+These numbers represents there Hierachy but can be used for determining diffrient things , will be explained in more details later and might be subject to value changes.. 
+
+
+Type field
+That can be either 
+audio , camera, effet, filter, font, llm, transcription, graphics, monitorout,ML, Editing, Script, Transitionm TextureNode, ShaderNode, 3dModel, 3D animation, Effect, WASMNode, 
+
+
+... and Each Type will have many varients..  VarientNameField... 
+
+and a Field for UUID,
+
+
+So in the BaseNode, 
+
+We have the logic I told you about the sides of the node... Because left top input, and bottom and right outputs...
+
+
+We need to ensure that only 1 node have the pipeline and track it all ... 
+
+So lets say we have a pipeline that goes 
+
+VideoCameraFEED---AudioFilter---Speachtranscription---EffectVoiceEnhancement---Schenagraph
+                                    \  
+                                      \
+                                        VideoFilter --- MLUserGestureTracking --- VideoUpscaling -- Schenegraph.
+
+
+and We start creating a new Pipeline  LLM--- 
+
+
+So some etnecitets can have diffrient rules and logics... 
+
+for instance... lets say only SourceNodes and SupportNodes,  GroupNodes,  and SequencerNodes, HardwareNode, EventNode or ApiNode can start a Pipeline... 
+
+
+Each time A connection is made on the right or bottom to another node... 
+it checks.. Do I have anything Connected to my top or left.. and do i Have a  PipelineSourceMasterID.. if have this do nothing.
+
+If something not connected to the top or bottom right. It should have and generate its PipelineSourceMasterID... And generate a varientPipeline store (in theory this schema could be generic for all of them but by letting them follow variant we give us self the ability to add custom logics we not thought of yet to those pipeline trackers... ) 
+
+Each time a connection is made on the bottom or right.. It will check if the node it is connecting to have an rank , not on itself but the rank of its PipelineSourceMasterID's Rank,  it will evaluate if its own "rank" is higher or lower then the one PipelineSourceMasterID's Rank of the Node it is connecting to ... or same or lower... if same it takes the PipelineSourceMasterID of the node it connects to and copy merge the pipeline store of its current ("PipelineSourcemasterID"_pipeline_store) into the store of the receiver... merging the data  in a flow that can be used by the renders to follow the trail of manipulations and alteration to give the desired outcome
+if Higher rank of its PipelineSourceMaster's   it will Merge the store from the receiving pipeline into its own store and change all their PipelineSourcemastteID's to its PipelineSourceMasterID.
+
+
+It will first check the node it should connect to... Does it have the  PipelineSourceMaster= populated with an ID. IF so it Populates that field in itself with that ID... 
+
+
+We have 4 diffrient types of edges maybe more later but for now that is it...  DataEdgeAudio, DataEdgeVision, Vison Edge, AudioEdge, 
+
+What kind of Edge it is that is connecting will be noted in each pipeline... they are sorta sepated to 4 Pipelines within the same Pipeline Store... 
+
+Would make it easy to see what is what if we said all Audio connects right and out from the left 
+
+and all Visual connect in from the top and out from the bottom.
+
+Audio Edges are Red, Visual Edges are Blue, and Data edges of anykind are grey with a Hint of Either Blue or Red in  depending on if the datastream is related to audio or visual information and metadata.. 
+
+
+A new node can either be made from a manager... Or by clicking of the bottom or right edge of a node and holding it down and dragging out a edge. and  stopping it at an empty space atleast half a node width away from itself... upon release it will open a Circular Wheel menu where you can choose the nodetype you wanna create there... 
+
+Each time a node is created it will generate a NodeVariantType STore for its settings and configuration... and once again..
+
+
+I have not reasoned on what the fields should be in the Pipeline schemas...  but again we need to have those diffrient types of pipelines in the same pipeline... 
+
+but things i could imagine... is context, timecode/temporaldata, pipelinesourceMasterID, visual specifications, audio specification, scene start postion and physicality, x y z, (rotation , visual only) scaling(Size for Vision, Volume for Audio), SceneManipulationLogic (what happens after the first frame if anything does..),
+
+Then ofcause the 4 seperate pipelines for each edge type in the variantpilelinestore, but all part of the same story...Each coping the NodeVariantStoreID of each connection ,, and then reference its Relationship "to many relation." or "many to many relation"
+
+and then a new entry for each of those relationships... 
+
+
+
+
+
+Ahh Yes I think Also we should make A function for generatingID's so the first  character is species (could be N for Node, or C for Controller, P for Pipeline, S for Settings)  the next Two character is Type+ 2characters more That represent Archtype within that type(Variant) in the node case.... and + uuid... This gives us some flexiblity.. to just from ID's without having to do a ton of cqueries to filter and predict what those id's are. and how to handle them...  and we can use that universally throughout the software for ID generation... even where we do not know the usecase yet... we just have to Figure out a list of what is what so everytime we have a new module that need thing we need to track... we need to give it a letter... and then figure out if it have any specialised types and archtypes... and else those fields will  just be that letter and  00+00 + uuid. But When it comes to the objectbox stores we will know precisely what each store is... and who it belongs to... and similar for connections and rules of nodes or media or whatever it is, behavior we get so much more flexiblity without crashing the system 
+
+I AM NOT ASKING YOU I AM TELLING YOU.... IT IS BOTH... SO OUR INTEND FOR A QUERY DETERMINES IF WE ARE LOOKING IN OBJECTBOX OR THE SOFTWARESTACK FOR THAT ID
+
+is it a connection or ui_physicality or information writing or retrival request for what it contains. we are aiming to do .. 
+
+same ID for the store and for the object in the software... where we go depends for our intend...

@@ -1,0 +1,18 @@
+// BroadcastSettings FlatBuffers Schema
+namespace NeuralStudio;
+
+table BroadcastSettings {
+  id:ulong = 0;
+  platform:string;
+  stream_key:string;
+  server_url:string;
+  bitrate:int = 6000;
+  resolution:string = "1920x1080";
+  framerate:int = 60;
+  encoder:string = "x264";
+  audio_bitrate:int = 192;
+  sample_rate:int = 48000;
+  enabled:bool = true;
+}
+
+root_type BroadcastSettings;

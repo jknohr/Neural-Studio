@@ -1,0 +1,28 @@
+// Profile Store: Graph Node Instances
+namespace NeuralStudio.Profile;
+
+table GraphNode {
+    id: ulong;
+    
+    /// Reference to Master NodeType
+    type_id: ulong;
+    
+    /// User-assigned name
+    name: string;
+    
+    /// Blueprint canvas position
+    pos_x: float = 0.0;
+    pos_y: float = 0.0;
+    pos_z: float = 0.0;
+    
+    /// User configuration (JSON, overrides defaults)
+    config_json: string;
+    
+    /// Execution enabled
+    enabled: bool = true;
+    
+    /// objectbox:index
+    created_at: long;
+}
+
+root_type GraphNode;

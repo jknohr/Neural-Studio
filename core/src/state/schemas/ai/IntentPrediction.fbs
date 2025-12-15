@@ -1,0 +1,27 @@
+// AI Memory Store: Intent Predictions
+namespace NeuralStudio.AI;
+
+table IntentPrediction {
+    id: ulong;
+    
+    /// Current graph context hash
+    /// objectbox:index
+    context_hash: string;
+    
+    /// Predicted next node type
+    predicted_node_type: string;
+    
+    /// Predicted connection source
+    predicted_from_type: string;
+    
+    /// Predicted connection target
+    predicted_to_type: string;
+    
+    /// Confidence score (0.0 - 1.0)
+    confidence: float;
+    
+    /// Reasoning explanation
+    reason: string;
+}
+
+root_type IntentPrediction;

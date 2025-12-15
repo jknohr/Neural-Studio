@@ -367,6 +367,18 @@ FETCHCONTENT_QUIET:BOOL=ON
 FETCHCONTENT_SOURCE_DIR_NLOHMANN_JSON:PATH=
 
 //When not empty, overrides where to find pre-populated content
+// for objectbox
+FETCHCONTENT_SOURCE_DIR_OBJECTBOX:PATH=
+
+//When not empty, overrides where to find pre-populated content
+// for objectbox-download
+FETCHCONTENT_SOURCE_DIR_OBJECTBOX-DOWNLOAD:PATH=
+
+//When not empty, overrides where to find pre-populated content
+// for objectbox-sync-download
+FETCHCONTENT_SOURCE_DIR_OBJECTBOX-SYNC-DOWNLOAD:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for OpenXR
 FETCHCONTENT_SOURCE_DIR_OPENXR:PATH=
 
@@ -375,6 +387,15 @@ FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of nlohmann_json
 FETCHCONTENT_UPDATES_DISCONNECTED_NLOHMANN_JSON:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of objectbox
+FETCHCONTENT_UPDATES_DISCONNECTED_OBJECTBOX:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of objectbox-download
+FETCHCONTENT_UPDATES_DISCONNECTED_OBJECTBOX-DOWNLOAD:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of objectbox-sync-download
+FETCHCONTENT_UPDATES_DISCONNECTED_OBJECTBOX-SYNC-DOWNLOAD:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of OpenXR
 FETCHCONTENT_UPDATES_DISCONNECTED_OPENXR:BOOL=OFF
@@ -430,6 +451,12 @@ MEMORYCHECK_COMMAND:FILEPATH=/usr/bin/compute-sanitizer
 //File that contains suppressions for the memory checker
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
+//Build ObjectBox as static library
+OBJECTBOX_BUILD_SHARED:BOOL=OFF
+
+//Opt-in automatic download and prepare for local execution
+OBX_GENERATOR_ALLOW_FETCH:BOOL=ON
+
 //Path to a file.
 OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
 
@@ -477,6 +504,20 @@ OPENXR_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 OPENXR_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-src
+
+//Value Computed by CMake
+ObjectBoxCRoot_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+
+//Value Computed by CMake
+ObjectBoxCRoot_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ObjectBoxCRoot_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+
+//The directory containing a CMake configuration file for ObjectBoxGenerator.
+ObjectBoxGenerator_DIR:PATH=ObjectBoxGenerator_DIR-NOTFOUND
+
+ObjectBoxGenerator_EXECUTABLE:FILEPATH=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/ObjectBoxGenerator-download/5.0.0/install/objectbox-generator
 
 //The directory containing a CMake configuration file for OpenSubdiv.
 OpenSubdiv_DIR:PATH=/home/subtomic/USD/lib/cmake/OpenSubdiv
@@ -1082,6 +1123,87 @@ nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 nlohmann_json_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/nlohmann_json-src
 
+//Value Computed by CMake
+objectbox-c-examples-tasks-c-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/c-gen
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-c-gen_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-c-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/cpp-gen-sync
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen-sync_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/cpp-gen
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-c-examples-tasks-cpp-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen
+
+//Value Computed by CMake
+objectbox-c-examples-tasks_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/c-cursor-no-gen
+
+//Value Computed by CMake
+objectbox-c-examples-tasks_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-c-examples-tasks_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen
+
+//Value Computed by CMake
+objectbox-c-gen-test_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/src-test-gen
+
+//Value Computed by CMake
+objectbox-c-gen-test_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-c-gen-test_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen
+
+//Value Computed by CMake
+objectbox-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+
+//Value Computed by CMake
+objectbox-download_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+
+//Value Computed by CMake
+objectbox-sync-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+
+//Value Computed by CMake
+objectbox-sync-download_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-sync-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+
+//Value Computed by CMake
+objectbox-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+
+//Value Computed by CMake
+objectbox-sync_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+
+//Value Computed by CMake
+objectbox_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+
+//Value Computed by CMake
+objectbox_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+objectbox_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+
 //Path to a library.
 pkgcfg_lib_WAYLAND_CLIENT_wayland-client:FILEPATH=/usr/lib/x86_64-linux-gnu/libwayland-client.so
 
@@ -1242,7 +1364,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=28
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=37
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1307,6 +1429,8 @@ CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Details about finding JsonCpp
 FIND_PACKAGE_MESSAGE_DETAILS_JsonCpp:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/jsoncpp][jsoncpp_lib][/usr/include/jsoncpp][v()]
+//Details about finding ObjectBoxGenerator
+FIND_PACKAGE_MESSAGE_DETAILS_ObjectBoxGenerator:INTERNAL=[/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/ObjectBoxGenerator-download/5.0.0/install/objectbox-generator][v5.0.0(4.0.0)]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libOpenGL.so][/usr/lib/x86_64-linux-gnu/libGLX.so][/usr/include][c ][v()]
 //Details about finding PkgConfig

@@ -1,0 +1,61 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"ui/blueprint/nodes/RTXUpscaleNode/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"ui/blueprint/nodes/RTXUpscaleNode/libui-rtxupscalenode.a"
+			],
+			"targetId" : "ui-rtxupscalenode::@88c8de58d528b813cb03",
+			"targetIndex" : 76,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "share/neural-studio/qml/blueprint/nodes/RTXUpscaleNode",
+			"paths" : 
+			[
+				"ui/blueprint/nodes/RTXUpscaleNode/RTXUpscaleNode.qml"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "ui/blueprint/nodes/RTXUpscaleNode",
+		"source" : "ui/blueprint/nodes/RTXUpscaleNode"
+	}
+}

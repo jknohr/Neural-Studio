@@ -3,5 +3,17 @@
     "qmlls.importPaths": [
         "/home/subtomic/Qt/6.10.1/gcc_64/qml"
     ],
-    "qmlls.enabled": true
+    "qmlls.enabled": true,
+    // Qt6 Installation Configuration
+    "qt-core.qtInstallationRoot": "/home/subtomic/Qt/6.10.1/gcc_64",
+    "qt-core.additionalQtPaths": [
+        "/home/subtomic/Qt/6.10.1/gcc_64"
+    ],
+    // Qt VS Code Tools - use correct build directory
+    "qttools.buildDir": "${workspaceFolder}/build_ubuntu",
+    // Disable conflicting MS CMake Tools (use Kylin fork instead)
+    "cmake-tools.enable": false,
+    // CMake configuration for Kylin fork
+    "cmake.buildDirectory": "${workspaceFolder}/build_ubuntu",
+    "cmake.configureOnOpen": false
 }

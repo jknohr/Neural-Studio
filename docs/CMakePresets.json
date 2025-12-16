@@ -1,0 +1,373 @@
+{
+  "version": 8,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "environmentVars",
+      "hidden": true,
+      "cacheVariables": {
+        "RESTREAM_CLIENTID": {
+          "type": "STRING",
+          "value": "$penv{RESTREAM_CLIENTID}"
+        },
+        "RESTREAM_HASH": {
+          "type": "STRING",
+          "value": "$penv{RESTREAM_HASH}"
+        },
+        "TWITCH_CLIENTID": {
+          "type": "STRING",
+          "value": "$penv{TWITCH_CLIENTID}"
+        },
+        "TWITCH_HASH": {
+          "type": "STRING",
+          "value": "$penv{TWITCH_HASH}"
+        },
+        "YOUTUBE_CLIENTID": {
+          "type": "STRING",
+          "value": "$penv{YOUTUBE_CLIENTID}"
+        },
+        "YOUTUBE_CLIENTID_HASH": {
+          "type": "STRING",
+          "value": "$penv{YOUTUBE_CLIENTID_HASH}"
+        },
+        "YOUTUBE_SECRET": {
+          "type": "STRING",
+          "value": "$penv{YOUTUBE_SECRET}"
+        },
+        "YOUTUBE_SECRET_HASH": {
+          "type": "STRING",
+          "value": "$penv{YOUTUBE_SECRET_HASH}"
+        }
+      }
+    },
+    {
+      "name": "linux-base",
+      "hidden": true,
+      "inherits": ["environmentVars"],
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_INSTALL_LIBDIR": "lib/x86_64-linux-gnu",
+        "CMAKE_PREFIX_PATH": "$env{HOME}/Qt/6.10.1/gcc_64;$env{HOME}/USD;/usr/local/cuda",
+        "pxr_DIR": "$env{HOME}/USD",
+        "PXR_INCLUDE_DIRS": "$env{HOME}/USD/include",
+        "CUDAToolkit_ROOT": "/usr/local/cuda",
+        "CUDA_TOOLKIT_ROOT_DIR": "/usr/local/cuda",
+        "ENABLE_UI": true,
+        "ENABLE_SCRIPTING": true,
+        "ENABLE_PLUGINS": true,
+        "ENABLE_HEVC": true,
+        "ENABLE_AV1": true,
+        "ENABLE_AV2": true,
+        "ENABLE_VLC": true,
+        "ENABLE_WAYLAND": true,
+        "ENABLE_WEBRTC": true,
+        "ENABLE_WEBTRANSPORT": true,
+        "ENABLE_MOQ": true,
+        "ENABLE_WHIP": true,
+        "ENABLE_BROWSER": true,
+        "ENABLE_WEBSOCKET": true,
+        "ENABLE_PULSEAUDIO": true,
+        "ENABLE_PIPEWIRE": true,
+        "ENABLE_JACK": true,
+        "ENABLE_ALSA": true,
+        "ENABLE_V4L2": true,
+        "ENABLE_DECKLINK": true,
+        "ENABLE_VST": true,
+        "ENABLE_AJA": false,
+        "ENABLE_QSV": false,
+        "ENABLE_VIRTUALCAM": true,
+        "ENABLE_PROFILING": false,
+        "ENABLE_FFMPEG_LOGGING": false,
+        "ENABLE_FFMPEG_MUX_DEBUG": false,
+        "ENABLE_VULKAN": true,
+        "ENABLE_VULKAN_COMPUTE": true,
+        "ENABLE_OPENXR": true,
+        "ENABLE_VR": true,
+        "ENABLE_SPATIAL_AUDIO": true,
+        "ENABLE_AMBISONICS": true,
+        "ENABLE_OBJECTBOX": true,
+        "ENABLE_OPENUSD": true,
+        "ENABLE_NVENC": true,
+        "ENABLE_VAAPI": true,
+        "ENABLE_WASM_PLUGINS": true,
+        "ENABLE_WASMTIME": true,
+        "ENABLE_AI": true,
+        "ENABLE_ONNX": true,
+        "ENABLE_ML": true,
+        "ENABLE_OPTICAL_FLOW": true,
+        "ENABLE_DISPARITY_MAP": true,
+        "ENABLE_MOTION_VECTORS": true,
+        "ENABLE_METADATA_STREAMING": true,
+        "ENABLE_FSR4_INJECTION": true,
+        "ENABLE_FRAME_GENERATION": true,
+        "ENABLE_INTER_VIEW_PREDICTION": true,
+        "ENABLE_NEW_MPEGTS_OUTPUT": true,
+        "ENABLE_SRT": true,
+        "ENABLE_RTMP": true,
+        "ENABLE_HLS": true,
+        "ENABLE_DASH": true,
+        "ENABLE_8K_VR": true,
+        "ENABLE_STEREOSCOPIC": true,
+        "ENABLE_360_VIDEO": true,
+        "ENABLE_VOLUMETRIC_STREAMING": true,
+        "ENABLE_BI_DIRECTIONAL_STREAMING": true,
+        "ENABLE_LOW_LATENCY_MODE": true,
+        "ENABLE_TRANSPORT_PROFILES": true,
+        "ENABLE_SERVICE_UPDATES": true,
+        "ENABLE_WHATSNEW": true,
+        "ENABLE_UPDATER": false,
+        "ENABLE_RELEASE_BUILD": false,
+        "BUILD_FOR_DISTRIBUTION": false
+      }
+    },
+    {
+      "name": "ubuntu",
+      "displayName": "Neural Studio (Debug)",
+      "description": "Full-featured debug build with WebTransport, AV2, metadata streaming",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_PROFILING": true,
+        "ENABLE_FFMPEG_LOGGING": true,
+        "ENABLE_FFMPEG_MUX_DEBUG": true
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      }
+    },
+    {
+      "name": "ubuntu-release",
+      "displayName": "Neural Studio (Release)",
+      "description": "Production build optimized for 8K VR bi-directional streaming",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_RELEASE_BUILD": true,
+        "BUILD_FOR_DISTRIBUTION": true
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      }
+    },
+    {
+      "name": "ubuntu-relwithdebinfo",
+      "displayName": "Neural Studio (RelWithDebInfo)",
+      "description": "Release with debug symbols for profiling streaming performance",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_relwithdebinfo",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_PROFILING": true
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      }
+    },
+    {
+      "name": "ubuntu-ci",
+      "displayName": "Neural Studio (CI)",
+      "description": "CI build with strict warnings and ccache acceleration",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_ci",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_COMPILE_WARNING_AS_ERROR": true,
+        "CMAKE_COLOR_DIAGNOSTICS": true,
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_CCACHE": true,
+        "BUILD_FOR_DISTRIBUTION": true
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      }
+    },
+    {
+      "name": "ubuntu-experimental",
+      "displayName": "Neural Studio (Experimental)",
+      "description": "Bleeding-edge features: AV2, MoQ, metadata-assisted streaming",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_experimental",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_AV2": true,
+        "ENABLE_WEBTRANSPORT": true,
+        "ENABLE_MOQ": true,
+        "ENABLE_METADATA_STREAMING": true,
+        "ENABLE_OPTICAL_FLOW": true,
+        "ENABLE_DISPARITY_MAP": true,
+        "ENABLE_FSR4_INJECTION": true,
+        "ENABLE_VOLUMETRIC_STREAMING": true,
+        "ENABLE_BI_DIRECTIONAL_STREAMING": true
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      }
+    },
+    {
+      "name": "ubuntu-legacy",
+      "displayName": "Neural Studio (Legacy Transport)",
+      "description": "Traditional streaming only: RTMP, SRT, HLS - no WebTransport",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_legacy",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_WEBRTC": false,
+        "ENABLE_WEBTRANSPORT": false,
+        "ENABLE_MOQ": false,
+        "ENABLE_WHIP": false,
+        "ENABLE_AV2": false,
+        "ENABLE_METADATA_STREAMING": false
+      }
+    },
+    {
+      "name": "ubuntu-minimal",
+      "displayName": "Neural Studio (Minimal)",
+      "description": "Lightweight UI-only build without advanced streaming",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_minimal",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_PLUGINS": false,
+        "ENABLE_SCRIPTING": false,
+        "ENABLE_BROWSER": false,
+        "ENABLE_WEBSOCKET": false,
+        "ENABLE_VLC": false,
+        "ENABLE_WEBRTC": false,
+        "ENABLE_WEBTRANSPORT": false,
+        "ENABLE_DECKLINK": false,
+        "ENABLE_VST": false,
+        "ENABLE_WASM_PLUGINS": false,
+        "ENABLE_AI": false,
+        "ENABLE_ML": false,
+        "ENABLE_OPENXR": false,
+        "ENABLE_VR": false,
+        "ENABLE_AV2": false
+      },
+      "warnings": {
+        "dev": false,
+        "deprecated": false
+      }
+    },
+    {
+      "name": "ubuntu-headless",
+      "displayName": "Neural Studio (Headless Server)",
+      "description": "Server mode for cloud streaming with WebTransport support",
+      "inherits": ["linux-base"],
+      "binaryDir": "${sourceDir}/build_ubuntu_headless",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_UI": false,
+        "ENABLE_BROWSER": false,
+        "ENABLE_SCRIPTING": true,
+        "ENABLE_WASM_PLUGINS": true,
+        "ENABLE_AI": true,
+        "ENABLE_WEBTRANSPORT": true,
+        "ENABLE_MOQ": true,
+        "ENABLE_METADATA_STREAMING": true
+      },
+      "warnings": {
+        "dev": false,
+        "deprecated": false
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ubuntu",
+      "configurePreset": "ubuntu",
+      "displayName": "Debug",
+      "description": "Debug build for active development"
+    },
+    {
+      "name": "ubuntu-release",
+      "configurePreset": "ubuntu-release",
+      "displayName": "Release",
+      "description": "Optimized production build"
+    },
+    {
+      "name": "ubuntu-relwithdebinfo",
+      "configurePreset": "ubuntu-relwithdebinfo",
+      "displayName": "RelWithDebInfo",
+      "description": "Release with debugging symbols"
+    },
+    {
+      "name": "ubuntu-ci",
+      "configurePreset": "ubuntu-ci",
+      "displayName": "CI Build",
+      "description": "Continuous integration build"
+    },
+    {
+      "name": "ubuntu-experimental",
+      "configurePreset": "ubuntu-experimental",
+      "displayName": "Experimental",
+      "description": "Bleeding-edge streaming tech"
+    },
+    {
+      "name": "ubuntu-legacy",
+      "configurePreset": "ubuntu-legacy",
+      "displayName": "Legacy Transport",
+      "description": "Traditional RTMP/SRT only"
+    },
+    {
+      "name": "ubuntu-minimal",
+      "configurePreset": "ubuntu-minimal",
+      "displayName": "Minimal",
+      "description": "Minimal feature set"
+    },
+    {
+      "name": "ubuntu-headless",
+      "configurePreset": "ubuntu-headless",
+      "displayName": "Headless Server",
+      "description": "Cloud streaming server"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "ubuntu",
+      "configurePreset": "ubuntu",
+      "displayName": "Debug Tests",
+      "description": "Run all tests in debug mode"
+    },
+    {
+      "name": "ubuntu-release",
+      "configurePreset": "ubuntu-release",
+      "displayName": "Release Tests",
+      "description": "Run tests in release mode"
+    },
+    {
+      "name": "ubuntu-ci",
+      "configurePreset": "ubuntu-ci",
+      "displayName": "CI Tests",
+      "description": "Run tests in CI environment"
+    },
+    {
+      "name": "ubuntu-experimental",
+      "configurePreset": "ubuntu-experimental",
+      "displayName": "Experimental Tests",
+      "description": "Test bleeding-edge streaming features"
+    }
+  ]
+}

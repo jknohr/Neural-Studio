@@ -146,8 +146,52 @@ static inline OBX_model* create_obx_model() {
     obx_model_property(model, "enabled", OBXPropertyType_Bool, 7, 7751187013345813373);
     obx_model_entity_last_property_id(model, 7, 7751187013345813373);
     
-    obx_model_last_entity_id(model, 8, 7988323572453525072);
-    obx_model_last_index_id(model, 3, 174478287737931212);
+    obx_model_entity(model, "GraphEvent", 9, 7518635190650337221);
+    obx_model_property(model, "id", OBXPropertyType_Long, 1, 6459456832930191507);
+    obx_model_property_flags(model, OBXPropertyFlags_ID);
+    obx_model_property(model, "timestamp", OBXPropertyType_Date, 2, 6120605933864547403);
+    obx_model_property_flags(model, OBXPropertyFlags_ID_COMPANION);
+    obx_model_property(model, "event_type", OBXPropertyType_String, 3, 1336785362253568950);
+    obx_model_property(model, "node_type", OBXPropertyType_String, 4, 1483959732374349654);
+    obx_model_property(model, "from_type", OBXPropertyType_String, 5, 8754286289047755458);
+    obx_model_property(model, "to_type", OBXPropertyType_String, 6, 3464222242673606493);
+    obx_model_property(model, "from_port", OBXPropertyType_String, 7, 8206431129058822337);
+    obx_model_property(model, "to_port", OBXPropertyType_String, 8, 5755448157255162611);
+    obx_model_property(model, "context_hash", OBXPropertyType_String, 9, 1500084222071228117);
+    obx_model_property(model, "session_id", OBXPropertyType_String, 10, 2971015498239945990);
+    obx_model_property_flags(model, OBXPropertyFlags_INDEX_HASH);
+    obx_model_property_index_id(model, 4, 4743171403228677233);
+    obx_model_entity_last_property_id(model, 10, 2971015498239945990);
+    
+    obx_model_entity(model, "GraphPattern", 10, 7684501265397504746);
+    obx_model_property(model, "id", OBXPropertyType_Long, 1, 5128163235441873123);
+    obx_model_property_flags(model, OBXPropertyFlags_ID);
+    obx_model_property(model, "pattern_hash", OBXPropertyType_String, 2, 2479479140556432794);
+    obx_model_property_flags(model, OBXPropertyFlags_INDEX_HASH | OBXPropertyFlags_UNIQUE);
+    obx_model_property_index_id(model, 5, 3265423074363145237);
+    obx_model_property(model, "node_sequence", OBXPropertyType_String, 3, 3126054317548670228);
+    obx_model_property(model, "edge_structure", OBXPropertyType_String, 4, 2641872998528125278);
+    obx_model_property(model, "frequency", OBXPropertyType_Long, 5, 7695267555162314596);
+    obx_model_property_flags(model, OBXPropertyFlags_UNSIGNED);
+    obx_model_property(model, "success_rate", OBXPropertyType_Float, 6, 6134235376143099188);
+    obx_model_property(model, "last_updated", OBXPropertyType_Long, 7, 2953916057587597850);
+    obx_model_entity_last_property_id(model, 7, 2953916057587597850);
+    
+    obx_model_entity(model, "IntentPrediction", 11, 2230849036126152022);
+    obx_model_property(model, "id", OBXPropertyType_Long, 1, 777915633890803864);
+    obx_model_property_flags(model, OBXPropertyFlags_ID);
+    obx_model_property(model, "context_hash", OBXPropertyType_String, 2, 7812563807704275353);
+    obx_model_property_flags(model, OBXPropertyFlags_INDEX_HASH);
+    obx_model_property_index_id(model, 6, 3957028577785953062);
+    obx_model_property(model, "predicted_node_type", OBXPropertyType_String, 3, 2756926705052696206);
+    obx_model_property(model, "predicted_from_type", OBXPropertyType_String, 4, 4647502309933657841);
+    obx_model_property(model, "predicted_to_type", OBXPropertyType_String, 5, 6631754017620906083);
+    obx_model_property(model, "confidence", OBXPropertyType_Float, 6, 7670002493036526741);
+    obx_model_property(model, "reason", OBXPropertyType_String, 7, 4253613767955126374);
+    obx_model_entity_last_property_id(model, 7, 4253613767955126374);
+    
+    obx_model_last_entity_id(model, 11, 2230849036126152022);
+    obx_model_last_index_id(model, 6, 3957028577785953062);
     return model; // NOTE: the returned model will contain error information if an error occurred.
 }
 

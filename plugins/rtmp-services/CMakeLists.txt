@@ -23,22 +23,22 @@ add_library(OBS::rtmp-services ALIAS rtmp-services)
 target_sources(
   rtmp-services
   PRIVATE
-    rtmp-common.c
-    rtmp-custom.c
-    rtmp-format-ver.h
-    rtmp-services-main.c
-    service-specific/amazon-ivs.c
-    service-specific/amazon-ivs.h
-    service-specific/dacast.c
-    service-specific/dacast.h
-    service-specific/nimotv.c
-    service-specific/nimotv.h
-    service-specific/service-ingest.c
-    service-specific/service-ingest.h
-    service-specific/showroom.c
-    service-specific/showroom.h
-    service-specific/twitch.c
-    service-specific/twitch.h
+  rtmp-common.c
+  rtmp-custom.c
+  rtmp-format-ver.h
+  rtmp-services-main.c
+  service-specific/amazon-ivs.c
+  service-specific/amazon-ivs.h
+  service-specific/dacast.c
+  service-specific/dacast.h
+  service-specific/nimotv.c
+  service-specific/nimotv.h
+  service-specific/service-ingest.c
+  service-specific/service-ingest.h
+  service-specific/showroom.c
+  service-specific/showroom.h
+  service-specific/twitch.c
+  service-specific/twitch.h
 )
 
 target_compile_definitions(
@@ -48,12 +48,6 @@ target_compile_definitions(
 
 target_link_libraries(rtmp-services PRIVATE OBS::libobs OBS::file-updater jansson::jansson)
 
-# Remove once jansson has been fixed on obs-deps
-target_link_options(rtmp-services PRIVATE $<$<PLATFORM_ID:Windows>:/IGNORE:4098>)
 
-if(OS_WINDOWS)
-  configure_file(cmake/windows/obs-module.rc.in rtmp-services.rc)
-  target_sources(rtmp-services PRIVATE rtmp-services.rc)
-endif()
 
 set_target_properties_obs(rtmp-services PROPERTIES FOLDER plugins PREFIX "")

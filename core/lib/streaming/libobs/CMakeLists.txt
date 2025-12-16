@@ -17,7 +17,7 @@ find_package(Uthash REQUIRED)
 
 find_package(jansson REQUIRED)
 if(NOT TARGET OBS::caption)
-  add_subdirectory("${CMAKE_SOURCE_DIR}/deps/libcaption" "${CMAKE_BINARY_DIR}/deps/libcaption")
+  add_subdirectory("${CMAKE_SOURCE_DIR}/dependencies/libcaption" "${CMAKE_BINARY_DIR}/dependencies/libcaption")
 endif()
 
 add_library(libobs SHARED)
@@ -26,193 +26,193 @@ add_library(OBS::libobs ALIAS libobs)
 target_sources(
   libobs
   PRIVATE
-    $<$<BOOL:${ENABLE_HEVC}>:obs-hevc.c>
-    $<$<BOOL:${ENABLE_HEVC}>:obs-hevc.h>
-    obs-audio-controls.c
-    obs-audio-controls.h
-    obs-audio.c
-    obs-av1.c
-    obs-av1.h
-    obs-avc.c
-    obs-avc.h
-    obs-canvas.c
-    obs-config.h
-    obs-data.c
-    obs-data.h
-    obs-defs.h
-    obs-display.c
-    obs-encoder.c
-    obs-encoder.h
-    obs-ffmpeg-compat.h
-    obs-hotkey-name-map.c
-    obs-hotkey.c
-    obs-hotkey.h
-    obs-hotkeys.h
-    obs-interaction.h
-    obs-internal.h
-    obs-missing-files.c
-    obs-missing-files.h
-    obs-module.c
-    obs-module.h
-    obs-nal.c
-    obs-nal.h
-    obs-output-delay.c
-    obs-output.c
-    obs-output.h
-    obs-properties.c
-    obs-properties.h
-    obs-scene.c
-    obs-scene.h
-    obs-service.c
-    obs-service.h
-    obs-source-deinterlace.c
-    obs-source-transition.c
-    obs-source.c
-    obs-source.h
-    obs-video-gpu-encode.c
-    obs-video.c
-    obs-view.c
-    obs.c
-    obs.h
-    obs.hpp
+  $<$<BOOL:${ENABLE_HEVC}>:obs-hevc.c>
+  $<$<BOOL:${ENABLE_HEVC}>:obs-hevc.h>
+  obs-audio-controls.c
+  obs-audio-controls.h
+  obs-audio.c
+  obs-av1.c
+  obs-av1.h
+  obs-avc.c
+  obs-avc.h
+  obs-canvas.c
+  obs-config.h
+  obs-data.c
+  obs-data.h
+  obs-defs.h
+  obs-display.c
+  obs-encoder.c
+  obs-encoder.h
+  obs-ffmpeg-compat.h
+  obs-hotkey-name-map.c
+  obs-hotkey.c
+  obs-hotkey.h
+  obs-hotkeys.h
+  obs-interaction.h
+  obs-internal.h
+  obs-missing-files.c
+  obs-missing-files.h
+  obs-module.c
+  obs-module.h
+  obs-nal.c
+  obs-nal.h
+  obs-output-delay.c
+  obs-output.c
+  obs-output.h
+  obs-properties.c
+  obs-properties.h
+  obs-scene.c
+  obs-scene.h
+  obs-service.c
+  obs-service.h
+  obs-source-deinterlace.c
+  obs-source-transition.c
+  obs-source.c
+  obs-source.h
+  obs-video-gpu-encode.c
+  obs-video.c
+  obs-view.c
+  obs.c
+  obs.h
+  obs.hpp
 )
 
 target_sources(
   libobs
   PRIVATE
-    util/array-serializer.c
-    util/array-serializer.h
-    util/base.c
-    util/base.h
-    util/bitstream.c
-    util/bitstream.h
-    util/bmem.c
-    util/bmem.h
-    util/buffered-file-serializer.c
-    util/buffered-file-serializer.h
-    util/c99defs.h
-    util/cf-lexer.c
-    util/cf-lexer.h
-    util/cf-parser.c
-    util/cf-parser.h
-    util/config-file.c
-    util/config-file.h
-    util/crc32.c
-    util/crc32.h
-    util/curl/curl-helper.h
-    util/darray.h
-    util/deque.h
-    util/dstr.c
-    util/dstr.h
-    util/file-serializer.c
-    util/file-serializer.h
-    util/lexer.c
-    util/lexer.h
-    util/pipe.c
-    util/pipe.h
-    util/platform.c
-    util/platform.h
-    util/profiler.c
-    util/profiler.h
-    util/profiler.hpp
-    util/serializer.h
-    util/source-profiler.c
-    util/source-profiler.h
-    util/sse-intrin.h
-    util/task.c
-    util/task.h
-    util/text-lookup.c
-    util/text-lookup.h
-    util/threading.h
-    util/utf8.c
-    util/utf8.h
-    util/uthash.h
-    util/util.hpp
-    util/util_uint128.h
-    util/util_uint64.h
+  util/array-serializer.c
+  util/array-serializer.h
+  util/base.c
+  util/base.h
+  util/bitstream.c
+  util/bitstream.h
+  util/bmem.c
+  util/bmem.h
+  util/buffered-file-serializer.c
+  util/buffered-file-serializer.h
+  util/c99defs.h
+  util/cf-lexer.c
+  util/cf-lexer.h
+  util/cf-parser.c
+  util/cf-parser.h
+  util/config-file.c
+  util/config-file.h
+  util/crc32.c
+  util/crc32.h
+  util/curl/curl-helper.h
+  util/darray.h
+  util/deque.h
+  util/dstr.c
+  util/dstr.h
+  util/file-serializer.c
+  util/file-serializer.h
+  util/lexer.c
+  util/lexer.h
+  util/pipe.c
+  util/pipe.h
+  util/platform.c
+  util/platform.h
+  util/profiler.c
+  util/profiler.h
+  util/profiler.hpp
+  util/serializer.h
+  util/source-profiler.c
+  util/source-profiler.h
+  util/sse-intrin.h
+  util/task.c
+  util/task.h
+  util/text-lookup.c
+  util/text-lookup.h
+  util/threading.h
+  util/utf8.c
+  util/utf8.h
+  util/uthash.h
+  util/util.hpp
+  util/util_uint128.h
+  util/util_uint64.h
 )
 
 target_sources(
   libobs
   PRIVATE
-    callback/calldata.c
-    callback/calldata.h
-    callback/decl.c
-    callback/decl.h
-    callback/proc.c
-    callback/proc.h
-    callback/signal.c
-    callback/signal.h
+  callback/calldata.c
+  callback/calldata.h
+  callback/decl.c
+  callback/decl.h
+  callback/proc.c
+  callback/proc.h
+  callback/signal.c
+  callback/signal.h
 )
 
 target_sources(
   libobs
   PRIVATE
-    media-io/audio-io.c
-    media-io/audio-io.h
-    media-io/audio-math.h
-    media-io/audio-resampler-ffmpeg.c
-    media-io/audio-resampler.h
-    media-io/format-conversion.c
-    media-io/format-conversion.h
-    media-io/frame-rate.h
-    media-io/media-io-defs.h
-    media-io/media-remux.c
-    media-io/media-remux.h
-    media-io/video-fourcc.c
-    media-io/video-frame.c
-    media-io/video-frame.h
-    media-io/video-io.c
-    media-io/video-io.h
-    media-io/video-matrices.c
-    media-io/video-scaler-ffmpeg.c
-    media-io/video-scaler.h
+  media-io/audio-io.c
+  media-io/audio-io.h
+  media-io/audio-math.h
+  media-io/audio-resampler-ffmpeg.c
+  media-io/audio-resampler.h
+  media-io/format-conversion.c
+  media-io/format-conversion.h
+  media-io/frame-rate.h
+  media-io/media-io-defs.h
+  media-io/media-remux.c
+  media-io/media-remux.h
+  media-io/video-fourcc.c
+  media-io/video-frame.c
+  media-io/video-frame.h
+  media-io/video-io.c
+  media-io/video-io.h
+  media-io/video-matrices.c
+  media-io/video-scaler-ffmpeg.c
+  media-io/video-scaler.h
 )
 
 target_sources(
   libobs
   PRIVATE
-    graphics/axisang.c
-    graphics/axisang.h
-    graphics/bounds.c
-    graphics/bounds.h
-    graphics/device-exports.h
-    graphics/effect-parser.c
-    graphics/effect-parser.h
-    graphics/effect.c
-    graphics/effect.h
-    graphics/graphics-ffmpeg.c
-    graphics/graphics-imports.c
-    graphics/graphics-internal.h
-    graphics/graphics.c
-    graphics/graphics.h
-    graphics/half.h
-    graphics/image-file.c
-    graphics/image-file.h
-    graphics/input.h
-    graphics/libnsgif/libnsgif.c
-    graphics/libnsgif/libnsgif.h
-    graphics/math-defs.h
-    graphics/math-extra.c
-    graphics/math-extra.h
-    graphics/matrix3.c
-    graphics/matrix3.h
-    graphics/matrix4.c
-    graphics/matrix4.h
-    graphics/plane.c
-    graphics/plane.h
-    graphics/quat.c
-    graphics/quat.h
-    graphics/shader-parser.c
-    graphics/shader-parser.h
-    graphics/srgb.h
-    graphics/texture-render.c
-    graphics/vec2.c
-    graphics/vec2.h
-    graphics/vec3.c
-    graphics/vec3.h
-    graphics/vec4.c
-    graphics/vec4.h
+  graphics/axisang.c
+  graphics/axisang.h
+  graphics/bounds.c
+  graphics/bounds.h
+  graphics/device-exports.h
+  graphics/effect-parser.c
+  graphics/effect-parser.h
+  graphics/effect.c
+  graphics/effect.h
+  graphics/graphics-ffmpeg.c
+  graphics/graphics-imports.c
+  graphics/graphics-internal.h
+  graphics/graphics.c
+  graphics/graphics.h
+  graphics/half.h
+  graphics/image-file.c
+  graphics/image-file.h
+  graphics/input.h
+  graphics/libnsgif/libnsgif.c
+  graphics/libnsgif/libnsgif.h
+  graphics/math-defs.h
+  graphics/math-extra.c
+  graphics/math-extra.h
+  graphics/matrix3.c
+  graphics/matrix3.h
+  graphics/matrix4.c
+  graphics/matrix4.h
+  graphics/plane.c
+  graphics/plane.h
+  graphics/quat.c
+  graphics/quat.h
+  graphics/shader-parser.c
+  graphics/shader-parser.h
+  graphics/srgb.h
+  graphics/texture-render.c
+  graphics/vec2.c
+  graphics/vec2.h
+  graphics/vec3.c
+  graphics/vec3.h
+  graphics/vec4.c
+  graphics/vec4.h
 )
 
 # Temporarily disables deprecation warnings while obs_data_autoselect_* is deprecated.
@@ -232,23 +232,23 @@ target_compile_definitions(
   libobs
   PRIVATE IS_LIBOBS
   PUBLIC
-    $<BUILD_INTERFACE:$<$<BOOL:${ENABLE_HEVC}>:ENABLE_HEVC>>
-    $<BUILD_INTERFACE:$<$<BOOL:${ENABLE_FFMPEG_MUX_DEBUG}>:SHOW_SUBPROCESSES>>
+  $<BUILD_INTERFACE:$<$<BOOL:${ENABLE_HEVC}>:ENABLE_HEVC>>
+  $<BUILD_INTERFACE:$<$<BOOL:${ENABLE_FFMPEG_MUX_DEBUG}>:SHOW_SUBPROCESSES>>
 )
 
 target_link_libraries(
   libobs
   PRIVATE
-    OBS::caption
-    OBS::libobs-version
-    FFmpeg::avcodec
-    FFmpeg::avformat
-    FFmpeg::avutil
-    FFmpeg::swscale
-    FFmpeg::swresample
-    jansson::jansson
-    Uthash::Uthash
-    ZLIB::ZLIB
+  OBS::caption
+  OBS::libobs-version
+  FFmpeg::avcodec
+  FFmpeg::avformat
+  FFmpeg::avutil
+  FFmpeg::swscale
+  FFmpeg::swresample
+  jansson::jansson
+  Uthash::Uthash
+  ZLIB::ZLIB
   PUBLIC SIMDe::SIMDe Threads::Threads
 )
 
@@ -381,8 +381,8 @@ set_property(TARGET libobs APPEND PROPERTY OBS_PUBLIC_HEADERS ${public_headers})
 set_target_properties_obs(
   libobs
   PROPERTIES FOLDER core
-             VERSION 0
-             SOVERSION "${OBS_VERSION_MAJOR}"
+  VERSION 0
+  SOVERSION "${OBS_VERSION_MAJOR}"
 )
 
 target_export(libobs)

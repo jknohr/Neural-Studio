@@ -9,7 +9,7 @@ if(NOT QT_DEPLOY_LIBEXEC_DIR)
     set(QT_DEPLOY_LIBEXEC_DIR "libexec")
 endif()
 if(NOT QT_DEPLOY_LIB_DIR)
-    set(QT_DEPLOY_LIB_DIR "lib/CMAKE_SYSTEM_PROCESSOR-linux-gnu")
+    set(QT_DEPLOY_LIB_DIR "lib/x86_64-linux-gnu")
 endif()
 if(NOT QT_DEPLOY_PLUGINS_DIR)
     set(QT_DEPLOY_PLUGINS_DIR "plugins")
@@ -62,6 +62,7 @@ set(__QT_DEPLOY_QT_DEBUG_POSTFIX "")
 set(__qt_deploy_support_files
     "/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/.qt/QtDeployTargets.cmake"
     "/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Core/Qt6CoreDeploySupport.cmake"
+    "/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Qml/Qt6QmlDeploySupport.cmake"
 )
 foreach(__qt_deploy_support_file IN LISTS __qt_deploy_support_files)
     include("${__qt_deploy_support_file}")

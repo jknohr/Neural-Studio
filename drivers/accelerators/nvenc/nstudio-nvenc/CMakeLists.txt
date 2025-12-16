@@ -15,7 +15,7 @@ if(NOT TARGET OBS::opts-parser)
 endif()
 
 if(OS_LINUX AND NOT TARGET OBS::glad)
-  add_subdirectory("${CMAKE_SOURCE_DIR}/deps/glad" "${CMAKE_BINARY_DIR}/deps/glad")
+  add_subdirectory("${CMAKE_SOURCE_DIR}/dependencies/glad" "${CMAKE_BINARY_DIR}/dependencies/glad")
 endif()
 
 find_package(FFnvcodec 12 REQUIRED)
@@ -28,20 +28,20 @@ add_subdirectory(obs-nvenc-test)
 target_sources(
   obs-nvenc
   PRIVATE
-    $<$<PLATFORM_ID:Linux>:nvenc-opengl.c>
-    $<$<PLATFORM_ID:Windows>:nvenc-d3d11.c>
-    cuda-helpers.c
-    cuda-helpers.h
-    nvenc-compat.c
-    nvenc-cuda.c
-    nvenc-helpers.c
-    nvenc-helpers.h
-    nvenc-internal.h
-    nvenc-opts-parser.c
-    nvenc-properties.c
-    nvenc.c
-    obs-nvenc.c
-    obs-nvenc.h
+  $<$<PLATFORM_ID:Linux>:nvenc-opengl.c>
+  $<$<PLATFORM_ID:Windows>:nvenc-d3d11.c>
+  cuda-helpers.c
+  cuda-helpers.h
+  nvenc-compat.c
+  nvenc-cuda.c
+  nvenc-helpers.c
+  nvenc-helpers.h
+  nvenc-internal.h
+  nvenc-opts-parser.c
+  nvenc-properties.c
+  nvenc.c
+  obs-nvenc.c
+  obs-nvenc.h
 )
 
 target_link_libraries(
@@ -51,9 +51,7 @@ target_link_libraries(
 
 target_compile_definitions(obs-nvenc PRIVATE $<$<BOOL:${ENABLE_NVENC_FFMPEG_IDS}>:REGISTER_FFMPEG_IDS>)
 
-if(OS_WINDOWS)
-  configure_file(cmake/windows/obs-module.rc.in obs-nvenc.rc)
-  target_sources(obs-nvenc PRIVATE obs-nvenc.rc)
-endif()
+
+
 
 set_target_properties_obs(obs-nvenc PROPERTIES FOLDER plugins/obs-nvenc PREFIX "")

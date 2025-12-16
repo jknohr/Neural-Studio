@@ -7,6 +7,50 @@
 # Usage:
 #   Normal mode: include(CheckDependencies)
 #   Show latest versions: cmake -DCHECK_LATEST_VERSIONS=ON ..
+#
+# ============================================================================
+# RULES FOR ADDING NEW DEPENDENCIES TO THIS FILE
+# ============================================================================
+#
+# 1. SYSTEM FIRST - Always check what is installed on the user's system FIRST
+#    - Search standard locations: /usr, /usr/local, /opt
+#    - Search non-standard locations: $HOME/*, custom paths
+#    - Use find_program(), find_path(), find_library()
+#
+# 2. NEVER TRUST UBUNTU REPOS - Ubuntu packages are often outdated
+#    - Check version AFTER finding the package
+#    - Compare against KNOWN_LATEST_* or minimum required version
+#    - Warn if version is too old, suggest alternative install methods
+#    - Example: Ubuntu Qt6 might be 6.2 but we need 6.10+
+#
+# 3. VERSION COMPARISON - Always validate versions
+#    - Use VERSION_LESS / VERSION_GREATER comparisons
+#    - Warn if older than required minimum
+#    - Log if newer than tracked latest (user has cutting-edge)
+#
+# 4. CHECK HEADERS - Verify headers exist at found locations
+#    - Use find_path() with specific header names
+#    - Check multiple possible locations (system, user home, custom)
+#    - Validate the header file actually exists with EXISTS
+#
+# 5. CHECK LIBRARIES - Verify libraries can be linked
+#    - Use find_library() to locate .so/.a files
+#    - Check lib/ and lib64/ directories
+#
+# 6. ONE BLOCK PER SOFTWARE - Keep each dependency self-contained
+#    - Clear header comment with PURPOSE, USED FOR, OPTIONAL/REQUIRED
+#    - All checks for that software in one section
+#    - Clear separator between sections
+#
+# 7. LINUX PACKAGE HINTS - Suggest apt install commands
+#    - Show exact package names for Ubuntu/Debian
+#    - Show alternative install methods (official installers, source builds)
+#
+# 8. REPORT CLEARLY - Use consistent status messages
+#    - ✓ for found/success
+#    - ✗ for required but missing
+#    - ⚠ for optional/warnings
+#
 # ============================================================================
 
 # ============================================================================
@@ -80,10 +124,12 @@ set(KNOWN_LATEST_QT "${MY_QT_VERSION}")
 set(KNOWN_LATEST_VULKAN "${MY_VULKAN_VERSION}")
 set(KNOWN_LATEST_RUST "${MY_RUST_VERSION}")
 
-# Emscripten (if installed)
-set(KNOWN_LATEST_EMSCRIPTEN "3.1.69")
-# OpenUSD (if installed)
-set(KNOWN_LATEST_USD "24.11")
+# Additional versions
+set(KNOWN_LATEST_OBJECTBOX "4.1.0") # State management database
+set(KNOWN_LATEST_NVIDIA_DRIVER "560") # NVIDIA GPU driver (Dec 2024)
+set(KNOWN_LATEST_CUDA "12.6") # CUDA Toolkit
+set(KNOWN_LATEST_EMSCRIPTEN "3.1.69") # WebAssembly compiler
+set(KNOWN_LATEST_USD "24.11") # Universal Scene Description
 
 message(STATUS "")
 message(STATUS "╔═══════════════════════════════════════════════════════════╗")
@@ -184,28 +230,37 @@ endfunction()
 message(STATUS "")
 message(STATUS "--- Core Build Tools ---")
 
-# CMake version check
-if(CMAKE_VERSION VERSION_LESS "3.16")
-    message(STATUS "✗ CMake: ${CMAKE_VERSION} (required: 3.16+)")
+# CMake version check (MODERN: 3.28+ for latest features)
+if(CMAKE_VERSION VERSION_LESS "3.28")
+    message(FATAL_ERROR "✗ CMake ${CMAKE_VERSION} is too old")
+    message(STATUS "  Required: CMake 3.28+ (current standard)")
     set(DEPENDENCY_CHECK_FAILED TRUE)
 else()
     message(STATUS "✓ CMake: ${CMAKE_VERSION}")
     compare_version("CMake" "${CMAKE_VERSION}" "${KNOWN_LATEST_CMAKE}")
 endif()
 
-# C++ Standard check
-if(CMAKE_CXX_STANDARD LESS 20)
-    message(WARNING "⚠ C++ Standard: ${CMAKE_CXX_STANDARD} (recommended: 20)")
-else()
-    message(STATUS "✓ C++ Standard: ${CMAKE_CXX_STANDARD}")
+# C++ Standard check (TARGET: C++20 minimum, C++23 preferred)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 20)
 endif()
 
-# GCC Compiler check
+if(CMAKE_CXX_STANDARD LESS 20)
+    message(WARNING "⚠ C++ Standard: ${CMAKE_CXX_STANDARD} is outdated")
+    message(STATUS "  Minimum: C++20 (target release: 2026)")
+    message(STATUS "  Recommended: C++23 for modern features")
+else()
+    message(STATUS "✓ C++ Standard: C++${CMAKE_CXX_STANDARD}")
+endif()
+
+# GCC Compiler check (MODERN: GCC 13+ recommended for C++23 support)
 message(STATUS "✓ C++ Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     compare_version("GCC" "${CMAKE_CXX_COMPILER_VERSION}" "${KNOWN_LATEST_GCC}")
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
-        message(WARNING "⚠ GCC version ${CMAKE_CXX_COMPILER_VERSION} is old (recommended: 9+)")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "13.0")
+        message(WARNING "⚠ GCC ${CMAKE_CXX_COMPILER_VERSION} is getting old")
+        message(STATUS "  Recommended: GCC 13+ (full C++23 support)")
+        message(STATUS "  Your version may lack modern C++ features")
     endif()
 endif()
 
@@ -255,14 +310,75 @@ else()
     message(WARNING "⚠ Git: NOT FOUND (needed for version control)")
 endif()
 
-# Python
+# ============================================================================
+# Python 3 (SCRIPTING AND BUILD TOOLS)
+# ============================================================================
+# PURPOSE: Scripting language for build scripts and code generation
+# USED FOR: OpenXR SDK code generation, build automation, development tools
+# python3-dev: Required for building Python C/C++ extensions
+# ============================================================================
+message(STATUS "")
+message(STATUS "--- Python 3 ---")
+
+# Step 1: Find Python interpreter
 find_package(Python3 COMPONENTS Interpreter QUIET)
+
 if(Python3_FOUND)
     message(STATUS "✓ Python: ${Python3_VERSION}")
     compare_version("Python" "${Python3_VERSION}" "${KNOWN_LATEST_PYTHON}")
+
+    # Step 2: Check interpreter path
+    if(Python3_EXECUTABLE)
+        message(STATUS "  ✓ Interpreter: ${Python3_EXECUTABLE}")
+    endif()
+
+    # Step 3: Check for python3-dev headers (CRITICAL for C extensions)
+    if(UNIX AND NOT APPLE AND DPKG_EXECUTABLE)
+        execute_process(
+            COMMAND ${DPKG_EXECUTABLE} -l python3-dev
+            OUTPUT_VARIABLE PYTHON_DEV_CHECK
+            ERROR_QUIET
+        )
+        string(FIND "${PYTHON_DEV_CHECK}" "ii  python3-dev" PYTHON_DEV_PKG)
+
+        if(NOT PYTHON_DEV_PKG EQUAL -1)
+            message(STATUS "  ✓ Package: python3-dev (headers for C extensions)")
+        else()
+            message(WARNING "  ⚠ Package: python3-dev NOT FOUND")
+            message(STATUS "    Required for building Python C extensions")
+            message(STATUS "    Install: sudo apt install python3-dev")
+            set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - python3-dev needed for C extensions")
+        endif()
+    endif()
+
+    # Step 4: Check for pip
+    find_program(PIP_EXECUTABLE pip3)
+    if(PIP_EXECUTABLE)
+        message(STATUS "  ✓ pip3: ${PIP_EXECUTABLE}")
+    else()
+        message(STATUS "    pip3: Not found")
+        message(STATUS "    Install: sudo apt install python3-pip")
+    endif()
+
+    # Step 5: Verify Python.h header (if dev package check wasn't done)
+    if(NOT UNIX OR APPLE)
+        find_path(PYTHON_INCLUDE_DIR Python.h
+            HINTS ${Python3_INCLUDE_DIRS}
+            PATH_SUFFIXES python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}
+        )
+
+        if(PYTHON_INCLUDE_DIR)
+            message(STATUS "  ✓ Python.h: Found")
+        else()
+            message(WARNING "  ⚠ Python.h: NOT FOUND (install development headers)")
+        endif()
+    endif()
 else()
-    message(WARNING "⚠ Python 3: NOT FOUND (required for OpenXR code generation)")
-    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Python 3 required for OpenXR")
+    message(WARNING "⚠ Python 3: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "  Install: sudo apt install python3 python3-dev python3-pip")
+    message(STATUS "")
+    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Python 3 required for build scripts")
 endif()
 
 # ============================================================================
@@ -312,95 +428,307 @@ if(UNIX AND NOT APPLE)
 endif()
 
 # ============================================================================
-# Qt Framework
+# Qt6 Framework (CRITICAL DEPENDENCY)
+# ============================================================================
+# PURPOSE: Cross-platform UI framework and application foundation
+# USED FOR: QML interface, 3D rendering (Qt Quick 3D), spatial audio, widgets
+# REQUIRED: This is the main application framework - cannot build without it
 # ============================================================================
 message(STATUS "")
-message(STATUS "--- Qt Framework ---")
+message(STATUS "--- Qt6 Framework ---")
 
-# First, check what's in CMAKE_PREFIX_PATH
+# Step 1: Check CMAKE_PREFIX_PATH
 if(CMAKE_PREFIX_PATH)
     message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
+else()
+    message(WARNING "⚠ CMAKE_PREFIX_PATH not set - Qt6 may not be found")
+    message(STATUS "  Set with: -DCMAKE_PREFIX_PATH=/path/to/Qt/6.10.1/gcc_64")
 endif()
 
+# Step 2: Find Qt6 Core package
 find_package(Qt6 QUIET COMPONENTS Core)
 if(Qt6_FOUND)
-    # Check Qt version - we need 6.10+
+    message(STATUS "✓ Qt6 Core: ${Qt6_VERSION}")
     compare_version("Qt6" "${Qt6_VERSION}" "${KNOWN_LATEST_QT}")
 
+    # Step 3: Version validation
     if(Qt6_VERSION VERSION_LESS "6.10.0")
-        message(WARNING "⚠ Qt6: Found version ${Qt6_VERSION} at ${Qt6_DIR}")
-        message(WARNING "   Recommended: Qt 6.10+ for full feature support")
-        message(WARNING "   This may be the system Qt instead of your custom installation")
-        set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Qt version ${Qt6_VERSION} is older than recommended (6.10+)")
+        message(WARNING "  ⚠ Version: ${Qt6_VERSION} is below recommended 6.10+")
+        message(STATUS "    You may be using system Qt instead of custom installation")
+        set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Qt ${Qt6_VERSION} < 6.10 (upgrade recommended)")
     else()
-        message(STATUS "✓ Qt6: ${Qt6_VERSION} at ${Qt6_DIR}")
+        message(STATUS "  ✓ Version: ${Qt6_VERSION} meets requirements")
     endif()
 
-    # Verify it's from the expected location (not system Qt)
-    string(FIND "${Qt6_DIR}" "/usr/lib" SYSTEM_QT_FOUND)
-    if(NOT SYSTEM_QT_FOUND EQUAL -1)
-        message(WARNING "⚠ Using SYSTEM Qt from /usr/lib instead of custom Qt installation")
-        message(WARNING "   Set CMAKE_PREFIX_PATH to your Qt installation directory")
-        set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Using system Qt instead of modern Qt installation")
+    # Step 4: Check installation location
+    if(Qt6_DIR)
+        message(STATUS "  ✓ Location: ${Qt6_DIR}")
+
+        # Warn if using system Qt
+        string(FIND "${Qt6_DIR}" "/usr/lib" SYSTEM_QT_FOUND)
+        if(NOT SYSTEM_QT_FOUND EQUAL -1)
+            message(WARNING "  ⚠ Using system Qt from /usr/lib (may be outdated)")
+        endif()
     endif()
 
-    # Check for required Qt components
-    set(QT_COMPONENTS Core Gui Widgets Quick Quick3D Qml SpatialAudio)
-    foreach(COMPONENT ${QT_COMPONENTS})
+    # Step 5: Check required components with validation
+    set(QT_CRITICAL_COMPONENTS Core Gui Widgets Quick Quick3D Qml SpatialAudio)
+    set(QT_MISSING_COMPONENTS "")
+
+    foreach(COMPONENT ${QT_CRITICAL_COMPONENTS})
         find_package(Qt6 QUIET COMPONENTS ${COMPONENT})
         if(Qt6${COMPONENT}_FOUND)
-            message(STATUS "  ✓ Qt6${COMPONENT}")
+            message(STATUS "  ✓ Component: Qt6${COMPONENT}")
+
+            # Check include directory for this component
+            if(DEFINED Qt6${COMPONENT}_INCLUDE_DIRS AND EXISTS "${Qt6${COMPONENT}_INCLUDE_DIRS}")
+                # Silently validated
+            else()
+                message(WARNING "    ⚠ Include dir missing for Qt6${COMPONENT}")
+            endif()
         else()
-            message(STATUS "  ✗ Qt6${COMPONENT}: NOT FOUND")
-            set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Qt6${COMPONENT} is missing")
+            message(WARNING "  ✗ Component: Qt6${COMPONENT} NOT FOUND")
+            list(APPEND QT_MISSING_COMPONENTS ${COMPONENT})
         endif()
     endforeach()
+
+    # Step 6: Fatal if critical components missing
+    if(QT_MISSING_COMPONENTS)
+        list(LENGTH QT_MISSING_COMPONENTS MISSING_COUNT)
+        message(FATAL_ERROR "Qt6: Missing ${MISSING_COUNT} critical components")
+        message(STATUS "  Missing: ${QT_MISSING_COMPONENTS}")
+        message(STATUS "  Install complete Qt6 6.10+ from qt.io")
+        set(DEPENDENCY_CHECK_FAILED TRUE)
+    endif()
+
+    # Step 7: Check QML plugin path (important for runtime)
+    if(DEFINED QT_PLUGIN_PATH OR DEFINED QT_QML_PATH)
+        message(STATUS "  ✓ Qt paths configured")
+    else()
+        message(STATUS "    Qt runtime paths: Will use Qt6_DIR defaults")
+    endif()
+
 else()
-    message(STATUS "✗ Qt6: NOT FOUND")
-    message(STATUS "   Please set CMAKE_PREFIX_PATH to your Qt installation")
-    message(STATUS "   Example: -DCMAKE_PREFIX_PATH=/home/user/Qt/6.10.1/gcc_64")
+    message(FATAL_ERROR "✗ Qt6: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "Qt6 is REQUIRED for this project.")
+    message(STATUS "")
+    message(STATUS "Install Qt 6.10+ from: https://www.qt.io/download")
+    message(STATUS "Then configure with:")
+    message(STATUS "  cmake -DCMAKE_PREFIX_PATH=/path/to/Qt/6.10.1/gcc_64 ...")
+    message(STATUS "")
     set(DEPENDENCY_CHECK_FAILED TRUE)
-    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Qt6 is required (set CMAKE_PREFIX_PATH)")
+    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Qt6 is REQUIRED")
 endif()
 
 # ============================================================================
-# Graphics & Rendering
+# OpenGL/Mesa (GRAPHICS RENDERING)
+# ============================================================================
+# PURPOSE: Cross-platform graphics API for 2D/3D rendering
+# USED FOR: Fallback rendering when Vulkan unavailable, OpenGL ES for compatibility
+# MESA: Open-source Linux implementation with AMD/Intel/NVIDIA drivers
 # ============================================================================
 message(STATUS "")
-message(STATUS "--- Graphics & Rendering ---")
+message(STATUS "--- OpenGL/Mesa ---")
 
-# OpenGL
+# Step 1: Find OpenGL package
 find_package(OpenGL QUIET)
+set(OPENGL_DETECTED FALSE)
+
 if(OpenGL_FOUND)
     message(STATUS "✓ OpenGL: Found")
-    if(OPENGL_INCLUDE_DIR)
-        message(STATUS "  Include: ${OPENGL_INCLUDE_DIR}")
+    set(OPENGL_DETECTED TRUE)
+
+    # Step 2: Check include directory
+    if(OPENGL_INCLUDE_DIR AND EXISTS "${OPENGL_INCLUDE_DIR}")
+        message(STATUS "  ✓ Include dir: ${OPENGL_INCLUDE_DIR}")
+    else()
+        message(STATUS "    Include dir: Using system default")
+    endif()
+
+    # Step 3: Verify GL headers exist
+    set(GL_HEADER_LOCATIONS
+        "/usr/include/GL/gl.h"
+        "/usr/local/include/GL/gl.h"
+        "${OPENGL_INCLUDE_DIR}/GL/gl.h"
+    )
+
+    set(GL_HEADER_FOUND FALSE)
+    foreach(GL_HEADER ${GL_HEADER_LOCATIONS})
+        if(EXISTS "${GL_HEADER}")
+            message(STATUS "  ✓ gl.h: ${GL_HEADER}")
+            set(GL_HEADER_FOUND TRUE)
+            break()
+        endif()
+    endforeach()
+
+    if(NOT GL_HEADER_FOUND)
+        message(WARNING "  ⚠ gl.h: NOT FOUND in standard locations")
+    endif()
+
+    # Step 4: Check Mesa packages (Linux)
+    if(UNIX AND NOT APPLE AND DPKG_EXECUTABLE)
+        execute_process(
+            COMMAND ${DPKG_EXECUTABLE} -l libgl1-mesa-dev mesa-common-dev
+            OUTPUT_VARIABLE MESA_PKG_CHECK
+            ERROR_QUIET
+        )
+
+        string(FIND "${MESA_PKG_CHECK}" "ii  libgl1-mesa-dev" MESA_GL_PKG)
+        string(FIND "${MESA_PKG_CHECK}" "ii  mesa-common-dev" MESA_COMMON_PKG)
+
+        if(NOT MESA_GL_PKG EQUAL -1)
+            message(STATUS "  ✓ Package: libgl1-mesa-dev")
+        else()
+            message(STATUS "    Package: libgl1-mesa-dev not installed")
+        endif()
+
+        if(NOT MESA_COMMON_PKG EQUAL -1)
+            message(STATUS "  ✓ Package: mesa-common-dev")
+        else()
+            message(STATUS "    Package: mesa-common-dev not installed")
+        endif()
+    endif()
+
+    # Step 5: Check OpenGL library
+    if(OPENGL_gl_LIBRARY AND EXISTS "${OPENGL_gl_LIBRARY}")
+        message(STATUS "  ✓ Library: ${OPENGL_gl_LIBRARY}")
+    elseif(OPENGL_LIBRARIES)
+        message(STATUS "  ✓ Libraries: Found")
+    else()
+        message(WARNING "  ⚠ OpenGL library path not set")
     endif()
 else()
-    message(STATUS "✗ OpenGL: NOT FOUND")
+    message(WARNING "✗ OpenGL: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "  Install: sudo apt install libgl1-mesa-dev mesa-common-dev")
+    message(STATUS "")
     set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - OpenGL is required for rendering")
 endif()
 
-# Vulkan SDK
+# ============================================================================
+# Vulkan SDK (LOCATION-AGNOSTIC CHECK)
+# ============================================================================
+# PURPOSE: Modern high-performance graphics API for GPU rendering
+# USED FOR: VR rendering, 3D scene rendering, GPU-accelerated effects
+# ALTERNATIVES: OpenGL (legacy), DirectX (Windows only)
+# ============================================================================
+message(STATUS "")
+message(STATUS "--- Vulkan SDK ---")
+
+# Try CMake's FindVulkan first
 find_package(Vulkan QUIET)
-if(Vulkan_FOUND)
-    message(STATUS "✓ Vulkan SDK: ${Vulkan_VERSION}")
-    if(Vulkan_INCLUDE_DIRS)
-        message(STATUS "  Include: ${Vulkan_INCLUDE_DIRS}")
+
+set(VULKAN_DETECTED FALSE)
+set(VULKAN_HEADER_PATH "")
+set(VULKAN_LIB_PATH "")
+
+# Method 1: CMake found it
+if(Vulkan_FOUND AND DEFINED Vulkan_INCLUDE_DIR)
+    set(VULKAN_DETECTED TRUE)
+    set(VULKAN_HEADER_PATH "${Vulkan_INCLUDE_DIR}")
+    if(DEFINED Vulkan_LIBRARY)
+        set(VULKAN_LIB_PATH "${Vulkan_LIBRARY}")
     endif()
-    if(Vulkan_LIBRARIES)
-        message(STATUS "  Libraries: ${Vulkan_LIBRARIES}")
+    message(STATUS "✓ Vulkan SDK: ${Vulkan_VERSION} (via FindVulkan)")
+endif()
+
+# Method 2: Manual search if CMake didn't find it
+if(NOT VULKAN_DETECTED)
+    # Check common header locations
+    set(VULKAN_SEARCH_PATHS
+        "/usr/include"
+        "/usr/local/include"
+        "$ENV{HOME}/VulkanSDK/*/x86_64/include"
+        "$ENV{VULKAN_SDK}/include"
+    )
+
+    foreach(SEARCH_PATH ${VULKAN_SEARCH_PATHS})
+        file(GLOB VULKAN_CANDIDATES "${SEARCH_PATH}/vulkan/vulkan.h")
+        if(VULKAN_CANDIDATES)
+            list(GET VULKAN_CANDIDATES 0 FIRST_MATCH)
+            get_filename_component(VULKAN_HEADER_PATH "${FIRST_MATCH}" DIRECTORY)
+            get_filename_component(VULKAN_HEADER_PATH "${VULKAN_HEADER_PATH}" DIRECTORY)
+            set(VULKAN_DETECTED TRUE)
+            message(STATUS "✓ Vulkan headers: Found at ${VULKAN_HEADER_PATH}")
+            break()
+        endif()
+    endforeach()
+
+    # Check for library
+    if(VULKAN_DETECTED)
+        set(VULKAN_LIB_SEARCH_PATHS
+            "/usr/lib/x86_64-linux-gnu"
+            "/usr/lib"
+            "/usr/local/lib"
+            "${VULKAN_HEADER_PATH}/../lib"
+        )
+
+        foreach(LIB_PATH ${VULKAN_LIB_SEARCH_PATHS})
+            if(EXISTS "${LIB_PATH}/libvulkan.so")
+                set(VULKAN_LIB_PATH "${LIB_PATH}/libvulkan.so")
+                break()
+            endif()
+        endforeach()
+    endif()
+endif()
+
+# Report findings
+if(VULKAN_DETECTED)
+    message(STATUS "  ✓ Headers: ${VULKAN_HEADER_PATH}/vulkan/")
+
+    # Validate header file exists
+    if(EXISTS "${VULKAN_HEADER_PATH}/vulkan/vulkan.h")
+        message(STATUS "  ✓ vulkan.h: Verified")
+    else()
+        message(WARNING "  ⚠ vulkan.h: NOT FOUND at expected location")
     endif()
 
-    # Check for GLSL compiler
-    if(Vulkan_GLSLC_EXECUTABLE)
-        message(STATUS "  ✓ GLSL Compiler: ${Vulkan_GLSLC_EXECUTABLE}")
+    # Check library
+    if(VULKAN_LIB_PATH)
+        message(STATUS "  ✓ Library: ${VULKAN_LIB_PATH}")
     else()
-        message(WARNING "  ⚠ GLSL Compiler (glslc): NOT FOUND")
+        message(STATUS "    Library: Not found (headers-only install)")
+    endif()
+
+    # Check packages (Debian/Ubuntu)
+    if(UNIX AND NOT APPLE AND DPKG_EXECUTABLE)
+        execute_process(
+            COMMAND ${DPKG_EXECUTABLE} -l vulkan-headers libvulkan-dev
+            OUTPUT_VARIABLE VULKAN_PKG_CHECK
+            ERROR_QUIET
+        )
+        string(FIND "${VULKAN_PKG_CHECK}" "ii  vulkan-headers" HDR_PKG)
+        string(FIND "${VULKAN_PKG_CHECK}" "ii  libvulkan-dev" DEV_PKG)
+
+        if(NOT HDR_PKG EQUAL -1)
+            message(STATUS "  ✓ Package: vulkan-headers")
+        endif()
+        if(NOT DEV_PKG EQUAL -1)
+            message(STATUS "  ✓ Package: libvulkan-dev")
+        endif()
+    endif()
+
+    # Check GLSL compiler
+    find_program(GLSLC_EXECUTABLE glslc)
+    if(GLSLC_EXECUTABLE)
+        message(STATUS "  ✓ GLSL compiler: ${GLSLC_EXECUTABLE}")
+    else()
+        message(STATUS "    GLSL compiler: Not found (optional)")
     endif()
 else()
-    message(WARNING "⚠ Vulkan SDK: NOT FOUND (optional but recommended)")
-    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Vulkan SDK recommended for modern graphics")
+    message(WARNING "⚠ Vulkan SDK: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "  Searched in:")
+    message(STATUS "    - System: /usr/include, /usr/lib")
+    message(STATUS "    - LunarG: ~/VulkanSDK")
+    message(STATUS "    - Custom: $VULKAN_SDK")
+    message(STATUS "")
+    message(STATUS "  Install options:")
+    message(STATUS "    1. System: sudo apt install libvulkan-dev vulkan-headers")
+    message(STATUS "    2. LunarG SDK: https://vulkan.lunarg.com/sdk/home")
+    message(STATUS "")
+    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Vulkan SDK recommended for graphics")
 endif()
 
 # Check for header files directly
@@ -415,7 +743,13 @@ else()
     message(STATUS "  CUDA: NOT FOUND (optional, for GPU acceleration)")
 endif()
 
-# FFmpeg (for video processing)
+# ----------------------------------------------------------------------------
+# FFmpeg (Video/Audio Processing)
+# ----------------------------------------------------------------------------
+# PURPOSE: Multimedia framework for video/audio encoding/decoding
+# USED FOR: Video capture, encoding, streaming, format conversion
+# LIBRARIES: libavcodec (codecs), libavformat (containers), libswscale (scaling)
+# ----------------------------------------------------------------------------
 if(UNIX AND NOT APPLE)
     if(DPKG_EXECUTABLE)
         check_debian_package("libavcodec-dev" "FFmpeg codec development files")
@@ -426,7 +760,11 @@ if(UNIX AND NOT APPLE)
 endif()
 
 # ============================================================================
-# OpenXR (VR/AR)
+# OpenXR (VR/AR Framework)
+# ============================================================================
+# PURPOSE: Cross-platform VR/AR API standard by Khronos Group
+# USED FOR: VR headset integration, motion tracking, spatial rendering
+# AUTO-DOWNLOADED: Fetched via CMake FetchContent if not found
 # ============================================================================
 message(STATUS "")
 message(STATUS "--- OpenXR (VR/AR) ---")
@@ -445,6 +783,242 @@ else()
     endif()
 endif()
 
+# ============================================================================
+# NVIDIA GPU DRIVERS & CUDA TOOLKIT
+# ============================================================================
+# PURPOSE: GPU acceleration, NVENC encoding, RTX features, ML inference
+# USED FOR: Hardware video encoding, AI upscaling, GPU compute, deep learning
+# COMPONENTS: NVIDIA driver, CUDA Toolkit, cuDNN (optional for ML)
+# MODERN: CUDA 12.x, Driver 535+, Compute Capability 7.0+
+# ============================================================================
+message(STATUS "")
+message(STATUS "--- NVIDIA GPU & CUDA ---")
+
+set(NVIDIA_DETECTED FALSE)
+set(CUDA_DETECTED FALSE)
+
+# Step 1: Check NVIDIA Driver via nvidia-smi
+find_program(NVIDIA_SMI nvidia-smi)
+if(NVIDIA_SMI)
+    execute_process(
+        COMMAND ${NVIDIA_SMI} --query-gpu=driver_version --format=csv,noheader
+        OUTPUT_VARIABLE NVIDIA_DRIVER_VERSION
+        ERROR_QUIET
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    if(NVIDIA_DRIVER_VERSION)
+        set(NVIDIA_DETECTED TRUE)
+        message(STATUS "✓ NVIDIA Driver: ${NVIDIA_DRIVER_VERSION}")
+
+        # Get GPU name
+        execute_process(
+            COMMAND ${NVIDIA_SMI} --query-gpu=name --format=csv,noheader
+            OUTPUT_VARIABLE NVIDIA_GPU_NAME
+            ERROR_QUIET
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+        if(NVIDIA_GPU_NAME)
+            message(STATUS "  ✓ GPU: ${NVIDIA_GPU_NAME}")
+        endif()
+
+        # Check driver version (recommend 535+ for CUDA 12)
+        string(REGEX MATCH "^([0-9]+)" NVIDIA_DRIVER_MAJOR "${NVIDIA_DRIVER_VERSION}")
+        if(NVIDIA_DRIVER_MAJOR LESS 535)
+            message(WARNING "  ⚠ Driver ${NVIDIA_DRIVER_VERSION} is old")
+            message(STATUS "    Recommended: 535+ for CUDA 12.x support")
+            message(STATUS "    Update: sudo ubuntu-drivers autoinstall")
+        endif()
+    endif()
+else()
+    message(WARNING "⚠ NVIDIA Driver: NOT FOUND")
+    message(STATUS "  nvidia-smi not available (no NVIDIA GPU or drivers not installed)")
+endif()
+
+# Step 2: Check CUDA Toolkit
+find_program(NVCC_EXECUTABLE nvcc)
+if(NVCC_EXECUTABLE)
+    execute_process(
+        COMMAND ${NVCC_EXECUTABLE} --version
+        OUTPUT_VARIABLE NVCC_VERSION_OUTPUT
+        ERROR_QUIET
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    string(REGEX MATCH "release ([0-9]+\\.[0-9]+)" _ "${NVCC_VERSION_OUTPUT}")
+    if(CMAKE_MATCH_1)
+        set(CUDA_VERSION "${CMAKE_MATCH_1}")
+        set(CUDA_DETECTED TRUE)
+        message(STATUS "✓ CUDA Toolkit: ${CUDA_VERSION}")
+
+        # Check CUDA version (recommend 12.x)
+        if(CUDA_VERSION VERSION_LESS "12.0")
+            message(WARNING "  ⚠ CUDA ${CUDA_VERSION} is outdated")
+            message(STATUS "    Recommended: CUDA 12.x for modern features")
+        endif()
+    endif()
+
+    # Step 3: Check CUDA installation path
+    get_filename_component(CUDA_BIN_DIR "${NVCC_EXECUTABLE}" DIRECTORY)
+    get_filename_component(CUDA_ROOT_DIR "${CUDA_BIN_DIR}" DIRECTORY)
+
+    if(EXISTS "${CUDA_ROOT_DIR}/include/cuda.h")
+        message(STATUS "  ✓ CUDA headers: ${CUDA_ROOT_DIR}/include")
+    else()
+        message(WARNING "  ⚠ CUDA headers not found at ${CUDA_ROOT_DIR}/include")
+    endif()
+
+    # Step 4: Check for CUDA libraries
+    find_library(CUDA_CUDART_LIBRARY cudart
+        PATHS ${CUDA_ROOT_DIR}/lib64 ${CUDA_ROOT_DIR}/lib
+        NO_DEFAULT_PATH
+    )
+
+    if(CUDA_CUDART_LIBRARY)
+        message(STATUS "  ✓ CUDA runtime: ${CUDA_CUDART_LIBRARY}")
+    else()
+        message(WARNING "  ⚠ CUDA runtime library not found")
+    endif()
+
+    # Step 5: Check compute capability (for RTX features)
+    if(NVIDIA_DETECTED)
+        execute_process(
+            COMMAND ${NVIDIA_SMI} --query-gpu=compute_cap --format=csv,noheader
+            OUTPUT_VARIABLE COMPUTE_CAPABILITY
+            ERROR_QUIET
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+
+        if(COMPUTE_CAPABILITY)
+            message(STATUS "  ✓ Compute Capability: ${COMPUTE_CAPABILITY}")
+
+            # RTX features need compute capability 7.0+ (Turing/Ampere/Ada)
+            if(COMPUTE_CAPABILITY VERSION_LESS "7.0")
+                message(WARNING "  ⚠ Compute capability ${COMPUTE_CAPABILITY} too old for RTX")
+                message(STATUS "    RTX features require 7.0+ (Turing architecture or newer)")
+            endif()
+        endif()
+    endif()
+else()
+    message(WARNING "⚠ CUDA Toolkit: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "  CUDA is needed for:")
+    message(STATUS "    - NVENC hardware video encoding")
+    message(STATUS "    - RTX AI upscaling features")
+    message(STATUS "    - GPU-accelerated ML inference")
+    message(STATUS "")
+    message(STATUS "  Install:")
+    message(STATUS "    1. Check your CUDA version: nvcc --version")
+    message(STATUS "    2. Download from: https://developer.download.nvidia.com/compute/cuda/repos/")
+    message(STATUS "    3. Choose repo matching YOUR Ubuntu version (e.g., ubuntu2404)")
+    message(STATUS "    4. Install:")
+    message(STATUS "       wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu(VERSION)/x86_64/cuda-keyring_1.1-1_all.deb")
+    message(STATUS "       sudo dpkg -i cuda-keyring_1.1-1_all.deb")
+    message(STATUS "       sudo apt update")
+    message(STATUS "       sudo apt install cuda-toolkit-{VERSION}-{MINOR}  # Match YOUR GPU's capability")
+    message(STATUS "")
+    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - CUDA Toolkit recommended for GPU acceleration")
+endif()
+
+# Step 6: Check cuDNN (optional, for ML workloads)
+find_path(CUDNN_INCLUDE_DIR cudnn.h
+    PATHS /usr/include /usr/local/cuda/include ${CUDA_ROOT_DIR}/include
+    PATH_SUFFIXES cudnn
+)
+
+if(CUDNN_INCLUDE_DIR)
+    message(STATUS "✓ cuDNN: Found at ${CUDNN_INCLUDE_DIR}")
+
+    # Try to get cuDNN version
+    if(EXISTS "${CUDNN_INCLUDE_DIR}/cudnn_version.h")
+        file(READ "${CUDNN_INCLUDE_DIR}/cudnn_version.h" CUDNN_VERSION_CONTENT)
+        string(REGEX MATCH "CUDNN_MAJOR ([0-9]+)" _ "${CUDNN_VERSION_CONTENT}")
+        if(CMAKE_MATCH_1)
+            message(STATUS "  ✓ cuDNN version: ${CMAKE_MATCH_1}.x")
+        endif()
+    endif()
+else()
+    message(STATUS "  cuDNN: Not found (optional for ML acceleration)")
+    message(STATUS "")
+    message(STATUS "  cuDNN accelerates deep learning operations:")
+    message(STATUS "    - Faster neural network inference")
+    message(STATUS "    - Optimized CNN/RNN operations")
+    message(STATUS "    - Used by ONNX Runtime, TensorFlow, PyTorch")
+    message(STATUS "")
+    message(STATUS "  ⚠ NOTE: This is for C++ development, NOT Python!")
+    message(STATUS "  (Don't use 'pip install cudnn' - you need native libraries)")
+    message(STATUS "")
+    message(STATUS "  Install cuDNN C++ Libraries:")
+    message(STATUS "    1. Check YOUR installed CUDA version: nvcc --version")
+    message(STATUS "    2. Download from: https://developer.nvidia.com/cudnn")
+    message(STATUS "    3. Choose: cuDNN version MATCHING YOUR CUDA (e.g., cuDNN 9.x for CUDA 12.x)")
+    message(STATUS "    4. Extract: tar -xvf cudnn-linux-x86_64-*-archive.tar.xz")
+    message(STATUS "    5. Install:")
+    message(STATUS "       sudo cp cudnn-*/include/cudnn*.h /usr/local/cuda/include")
+    message(STATUS "       sudo cp cudnn-*/lib/libcudnn* /usr/local/cuda/lib64")
+    message(STATUS "       sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*")
+    message(STATUS "")
+endif()
+
+# Step 7: Check TensorRT (optional, for optimized ML inference)
+find_path(TENSORRT_INCLUDE_DIR NvInfer.h
+    PATHS /usr/include /usr/local/include /opt/tensorrt/include
+    PATH_SUFFIXES tensorrt x86_64-linux-gnu
+)
+
+if(TENSORRT_INCLUDE_DIR)
+    message(STATUS "✓ TensorRT: Found at ${TENSORRT_INCLUDE_DIR}")
+
+    # Try to get TensorRT version
+    if(EXISTS "${TENSORRT_INCLUDE_DIR}/NvInferVersion.h")
+        file(READ "${TENSORRT_INCLUDE_DIR}/NvInferVersion.h" TENSORRT_VERSION_CONTENT)
+        string(REGEX MATCH "NV_TENSORRT_MAJOR ([0-9]+)" _ "${TENSORRT_VERSION_CONTENT}")
+        if(CMAKE_MATCH_1)
+            message(STATUS "  ✓ TensorRT version: ${CMAKE_MATCH_1}.x")
+        endif()
+    endif()
+else()
+    message(STATUS "  TensorRT: Not found (optional for optimized ML)")
+    message(STATUS "")
+    message(STATUS "  TensorRT provides fastest AI inference:")
+    message(STATUS "    - 5-10x faster than CPU inference")
+    message(STATUS "    - GPU-optimized neural networks")
+    message(STATUS "    - INT8/FP16 precision optimizations")
+    message(STATUS "")
+    message(STATUS "  ⚠ NOTE: This is for C++ development, NOT Python!")
+    message(STATUS "  (Don't use 'pip install tensorrt' - you need native C++ API)")
+    message(STATUS "")
+    message(STATUS "  Install TensorRT C++ Runtime:")
+    message(STATUS "    1. Check YOUR installed CUDA version: nvcc --version")
+    message(STATUS "    2. Download from: https://developer.nvidia.com/tensorrt")
+    message(STATUS "    3. Choose: TensorRT version MATCHING YOUR CUDA (e.g., TRT 10.x for CUDA 12.x)")
+    message(STATUS "    4. Either:")
+    message(STATUS "       A) Debian package (recommended):")
+    message(STATUS "          sudo dpkg -i nv-tensorrt-local-repo-*.deb")
+    message(STATUS "          sudo cp /var/nv-tensorrt-local-repo-*/nv-*-keyring.gpg /usr/share/keyrings/")
+    message(STATUS "          sudo apt update")
+    message(STATUS "          sudo apt install tensorrt")
+    message(STATUS "")
+    message(STATUS "       B) Tar archive:")
+    message(STATUS "          tar -xvf TensorRT-*.tar.gz")
+    message(STATUS "          export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/TensorRT-*/lib")
+    message(STATUS "")
+endif()
+
+# Summary
+if(NVIDIA_DETECTED AND CUDA_DETECTED)
+    message(STATUS "")
+    message(STATUS "✓ GPU Acceleration: READY")
+    message(STATUS "  NVIDIA Driver + CUDA Toolkit detected")
+elseif(NVIDIA_DETECTED AND NOT CUDA_DETECTED)
+    message(WARNING "⚠ GPU Acceleration: PARTIAL")
+    message(STATUS "  NVIDIA driver found, but CUDA Toolkit missing")
+elseif(NOT NVIDIA_DETECTED)
+    message(STATUS "")
+    message(STATUS "  GPU Acceleration: Disabled (no NVIDIA GPU detected)")
+    message(STATUS "  Software fallback will be used")
+endif()
+
 # OpenXR Linux dependencies
 if(UNIX AND NOT APPLE)
     check_header("X11/Xlib-xcb.h" "X11-XCB (OpenXR)")
@@ -452,7 +1026,11 @@ if(UNIX AND NOT APPLE)
 endif()
 
 # ============================================================================
-# OpenUSD
+# OpenUSD (Universal Scene Description)
+# ============================================================================
+# PURPOSE: Scene description framework by Pixar for 3D content pipelines
+# USED FOR: USD scene import/export, 3D asset interchange, scene composition
+# OPTIONAL: Only needed if working with USD scenes
 # ============================================================================
 message(STATUS "")
 message(STATUS "--- OpenUSD (Universal Scene Description) ---")
@@ -488,7 +1066,13 @@ else()
     endif()
 endif()
 
-# Check for TBB (required by USD)
+# ----------------------------------------------------------------------------
+# Intel TBB (Threading Building Blocks)
+# ----------------------------------------------------------------------------
+# PURPOSE: High-performance parallel programming library
+# USED FOR: Required dependency for OpenUSD (multi-threaded operations)
+# WHO NEEDS IT: OpenUSD cannot function without TBB
+# ----------------------------------------------------------------------------
 find_package(TBB QUIET)
 if(TBB_FOUND)
     message(STATUS "✓ Intel TBB: Found (required by USD)")
@@ -511,9 +1095,13 @@ else()
     message(WARNING "⚠ Qt6 SpatialAudio: NOT FOUND")
 endif()
 
-# ============================================================================
-# Machine Learning / AI
-# ============================================================================
+# ----------------------------------------------------------------------------
+# ONNX Runtime (Machine Learning Inference)
+# ----------------------------------------------------------------------------
+# PURPOSE: High-performance ML model inference engine
+# USED FOR: Running AI models (image/video proc, style transfer, upscaling)
+# OPTIONAL: Only needed for ML-powered effects and nodes
+# ----------------------------------------------------------------------------
 message(STATUS "")
 message(STATUS "--- ML/AI Frameworks ---")
 
@@ -547,7 +1135,13 @@ else()
     set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - ONNX Runtime is optional for ML features")
 endif()
 
-# WebAssembly (for WASM nodes)
+# ----------------------------------------------------------------------------
+# Emscripten (WebAssembly Compiler)
+# ----------------------------------------------------------------------------
+# PURPOSE: Compile C/C++ to WebAssembly for browser-based nodes
+# USED FOR: WASM-based effects, web deployment, portable compute nodes
+# OPTIONAL: Only needed if building WebAssembly components
+# ----------------------------------------------------------------------------
 find_program(EMSCRIPTEN emcc)
 if(EMSCRIPTEN)
     execute_process(
@@ -573,8 +1167,12 @@ else()
     set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - Emscripten needed for WebAssembly nodes")
 endif()
 
+# ==================================================================================================================================
+# Rust Toolchain (OPTIONAL)
 # ============================================================================
-# Rust (optional)
+# PURPOSE: Systems programming language for performance-critical code
+# USED FOR: High-performance modules, memory-safe alternatives to C++
+# OPTIONAL: Only needed if building Rust-based components
 # ============================================================================
 message(STATUS "")
 message(STATUS "--- Rust Toolchain (Optional) ---")
@@ -627,15 +1225,74 @@ else()
 endif()
 
 # ============================================================================
-# ObjectBox (State Management)
+# ObjectBox (STATE MANAGEMENT & DATABASE)
+# ============================================================================
+# PURPOSE: High-performance embedded database with object-graph persistence
+# USED FOR: Application state management, local data storage, sync capabilities
+# MODERN: Latest version 4.1.0 (2024), uses FlatBuffers for serialization
 # ============================================================================
 message(STATUS "")
-message(STATUS "--- State Management ---")
+message(STATUS "--- ObjectBox (State Management) ---")
 
+set(OBJECTBOX_DETECTED FALSE)
+
+# Method 1: Check if fetched via CMake FetchContent
 if(TARGET objectbox)
+    set(OBJECTBOX_DETECTED TRUE)
     message(STATUS "✓ ObjectBox: Available (FetchContent)")
+elseif(EXISTS "${CMAKE_BINARY_DIR}/_deps/objectbox-src")
+    set(OBJECTBOX_DETECTED TRUE)
+    message(STATUS "✓ ObjectBox: Downloaded via FetchContent")
+endif()
+
+# Method 2: Check system installation
+if(NOT OBJECTBOX_DETECTED)
+    find_path(OBJECTBOX_INCLUDE_DIR objectbox.h
+        PATHS /usr/local/include /usr/include
+        PATH_SUFFIXES objectbox
+    )
+
+    if(OBJECTBOX_INCLUDE_DIR)
+        set(OBJECTBOX_DETECTED TRUE)
+        message(STATUS "✓ ObjectBox: Found at ${OBJECTBOX_INCLUDE_DIR}")
+    endif()
+endif()
+
+# Validation if detected
+if(OBJECTBOX_DETECTED)
+    # Check for ObjectBox Generator
+    find_program(OBJECTBOX_GENERATOR objectbox-generator)
+    if(OBJECTBOX_GENERATOR)
+        message(STATUS "  ✓ Generator: ${OBJECTBOX_GENERATOR}")
+    else()
+        message(STATUS "    Generator: Auto-downloads via CMake")
+    endif()
+
+    # Check FlatBuffers (used internally by ObjectBox)
+    find_program(FLATC flatc)
+    if(FLATC)
+        message(STATUS "  ✓ FlatBuffers compiler: Found")
+    else()
+        message(STATUS "    FlatBuffers: Handled internally by ObjectBox")
+    endif()
+
+    # Verify C++ standard
+    if(CMAKE_CXX_STANDARD LESS 11)
+        message(WARNING "  ⚠ ObjectBox requires C++11 minimum")
+        message(STATUS "    Current: C++${CMAKE_CXX_STANDARD}")
+    else()
+        message(STATUS "  ✓ C++ Standard: C++${CMAKE_CXX_STANDARD} (meets requirement)")
+    endif()
 else()
-    message(WARNING "⚠ ObjectBox: Will be downloaded during build")
+    message(WARNING "⚠ ObjectBox: NOT FOUND")
+    message(STATUS "")
+    message(STATUS "  Setup via CMake FetchContent:")
+    message(STATUS "    FetchContent_Declare(objectbox")
+    message(STATUS "        GIT_REPOSITORY https://github.com/objectbox/objectbox-c.git")
+    message(STATUS "        GIT_TAG v4.1.0)")
+    message(STATUS "    FetchContent_MakeAvailable(objectbox)")
+    message(STATUS "")
+    set(DEPENDENCY_WARNINGS "${DEPENDENCY_WARNINGS}\n  - ObjectBox required for state management")
 endif()
 
 # ============================================================================

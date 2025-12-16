@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "KylinIdeTeam.kylin-cmake-tools",
+        "KylinIdeTeam.cmake-intellisence",
+        "KylinIdeTeam.qt-support",
+        "theqtcompany.qt-core",
+        "theqtcompany.qt-cpp",
+        "theqtcompany.qt-qml",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "twxs.cmake"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.cmake-tools",
+        "GitHub.vscode-pull-request-github"
+    ]
+}

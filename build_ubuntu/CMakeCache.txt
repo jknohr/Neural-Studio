@@ -24,6 +24,9 @@ BUILD_ALL_EXTENSIONS:BOOL=OFF
 // copies, replacing those copies.
 BUILD_FORCE_GENERATION:BOOL=OFF
 
+//No help, variable specified on the command line.
+BUILD_FOR_DISTRIBUTION:UNINITIALIZED=false
+
 //Build loader
 BUILD_LOADER:BOOL=ON
 
@@ -48,6 +51,9 @@ BUILD_WITH_XCB_HEADERS:BOOL=ON
 
 //Build with support for X11/Xlib-related features.
 BUILD_WITH_XLIB_HEADERS:BOOL=ON
+
+//Rust build artifacts directory
+CARGO_TARGET_DIR:PATH=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/rust
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
@@ -130,7 +136,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:UNINITIALIZED=ON
+CMAKE_EXPORT_COMPILE_COMMANDS:UNINITIALIZED=true
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/CMakeFiles/pkgRedirects
@@ -154,7 +160,7 @@ CMAKE_INSTALL_INCLUDEDIR:PATH=include
 CMAKE_INSTALL_INFODIR:PATH=
 
 //Object code libraries (lib)
-CMAKE_INSTALL_LIBDIR:PATH=lib/CMAKE_SYSTEM_PROCESSOR-linux-gnu
+CMAKE_INSTALL_LIBDIR:PATH=lib/x86_64-linux-gnu
 
 //Program executables (libexec)
 CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
@@ -222,7 +228,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //No help, variable specified on the command line.
-CMAKE_PREFIX_PATH:UNINITIALIZED=/home/subtomic/Qt/6.10.1/gcc_64;/home/subtomic/USD
+CMAKE_PREFIX_PATH:UNINITIALIZED=/home/subtomic/Qt/6.10.1/gcc_64;/home/subtomic/USD;/usr/local/cuda
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -313,6 +319,37 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Build Corrosion test project
+CORROSION_BUILD_TESTS:BOOL=OFF
+
+//Enables some additional features if you're developing Corrosion
+CORROSION_DEV_MODE:BOOL=OFF
+
+//Use prebuilt, non-bootstrapped corrosion-generator
+CORROSION_GENERATOR_EXECUTABLE:STRING=
+
+//Controls whether corrosion-generator is installed with the package
+CORROSION_INSTALL_EXECUTABLE:BOOL=OFF
+
+//Use native tooling - Required on CMake < 3.19 and available as
+// a fallback option for recent versions
+CORROSION_NATIVE_TOOLING:BOOL=OFF
+
+//Surpresses a warning if the parsing the target triple failed.
+CORROSION_NO_WARN_PARSE_TARGET_TRIPLE_FAILED:BOOL=OFF
+
+//Respect the CMake target properties specifying the output directory
+// of a target, such as
+//\n    `RUNTIME_OUTPUT_DIRECTORY`. This requires CMake >= 3.19,
+// otherwise this option is forced off.
+CORROSION_RESPECT_OUTPUT_DIRECTORY:BOOL=ON
+
+//Enables verbose output from Corrosion and Cargo
+CORROSION_VERBOSE_OUTPUT:BOOL=OFF
+
+//Do not change this
+COR_IS_MULTI_CONFIG:BOOL=0
+
 //Path to the coverage program that CTest uses for performing coverage
 // inspection
 COVERAGE_COMMAND:FILEPATH=/usr/bin/gcov
@@ -326,6 +363,21 @@ CTEST_SUBMIT_RETRY_COUNT:STRING=3
 //How long to wait between timed-out CTest submissions.
 CTEST_SUBMIT_RETRY_DELAY:STRING=5
 
+//No help, variable specified on the command line.
+CUDAToolkit_ROOT:UNINITIALIZED=/usr/local/cuda
+
+//No help, variable specified on the command line.
+CUDA_TOOLKIT_ROOT_DIR:UNINITIALIZED=/usr/local/cuda
+
+//Value Computed by CMake
+Corrosion_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/corrosion-build
+
+//Value Computed by CMake
+Corrosion_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Corrosion_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/corrosion-src
+
 //Maximum time allowed before CTest will kill the test.
 DART_TESTING_TIMEOUT:STRING=1500
 
@@ -333,16 +385,199 @@ DART_TESTING_TIMEOUT:STRING=1500
 DYNAMIC_LOADER:BOOL=ON
 
 //No help, variable specified on the command line.
+ENABLE_360_VIDEO:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_8K_VR:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_AI:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
 ENABLE_AJA:UNINITIALIZED=false
+
+//No help, variable specified on the command line.
+ENABLE_ALSA:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_AMBISONICS:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_AV1:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_AV2:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_BI_DIRECTIONAL_STREAMING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_BROWSER:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_DASH:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_DECKLINK:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_DISPARITY_MAP:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_FFMPEG_LOGGING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_FFMPEG_MUX_DEBUG:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_FRAME_GENERATION:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_FSR4_INJECTION:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_HEVC:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_HLS:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_INTER_VIEW_PREDICTION:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_JACK:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_LOW_LATENCY_MODE:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_METADATA_STREAMING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_ML:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_MOQ:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_MOTION_VECTORS:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_NEW_MPEGTS_OUTPUT:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_NVENC:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_OBJECTBOX:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_ONNX:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_OPENUSD:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_OPENXR:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_OPTICAL_FLOW:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_PIPEWIRE:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_PLUGINS:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_PROFILING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_PULSEAUDIO:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_QSV:UNINITIALIZED=false
+
+//No help, variable specified on the command line.
+ENABLE_RELEASE_BUILD:UNINITIALIZED=false
+
+//No help, variable specified on the command line.
+ENABLE_RTMP:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_SCRIPTING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_SERVICE_UPDATES:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_SPATIAL_AUDIO:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_SRT:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_STEREOSCOPIC:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_TRANSPORT_PROFILES:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_UI:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_UPDATER:UNINITIALIZED=false
+
+//No help, variable specified on the command line.
+ENABLE_V4L2:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VAAPI:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VIRTUALCAM:UNINITIALIZED=true
 
 //No help, variable specified on the command line.
 ENABLE_VLC:UNINITIALIZED=true
 
 //No help, variable specified on the command line.
+ENABLE_VOLUMETRIC_STREAMING:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VR:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VST:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VULKAN:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_VULKAN_COMPUTE:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WASMTIME:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WASM_PLUGINS:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
 ENABLE_WAYLAND:UNINITIALIZED=true
 
 //No help, variable specified on the command line.
-ENABLE_WEBRTC:UNINITIALIZED=false
+ENABLE_WEBRTC:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WEBSOCKET:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WEBTRANSPORT:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WHATSNEW:UNINITIALIZED=true
+
+//No help, variable specified on the command line.
+ENABLE_WHIP:UNINITIALIZED=true
 
 //Search path to use when XDG_CONFIG_DIRS is unset or empty or
 // the current process is SUID/SGID. Default is freedesktop compliant.
@@ -361,6 +596,10 @@ FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
 
 //Enables QUIET option for all content population
 FETCHCONTENT_QUIET:BOOL=ON
+
+//When not empty, overrides where to find pre-populated content
+// for Corrosion
+FETCHCONTENT_SOURCE_DIR_CORROSION:PATH=
 
 //When not empty, overrides where to find pre-populated content
 // for nlohmann_json
@@ -384,6 +623,9 @@ FETCHCONTENT_SOURCE_DIR_OPENXR:PATH=
 
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of Corrosion
+FETCHCONTENT_UPDATES_DISCONNECTED_CORROSION:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of nlohmann_json
 FETCHCONTENT_UPDATES_DISCONNECTED_NLOHMANN_JSON:BOOL=OFF
@@ -494,7 +736,7 @@ OPENGL_opengl_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libOpenGL.so
 OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
 
 //Value Computed by CMake
-OPENXR_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-build
+OPENXR_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/openxr-build
 
 //OpenXR loader debug postfix.
 OPENXR_DEBUG_POSTFIX:STRING=
@@ -503,16 +745,16 @@ OPENXR_DEBUG_POSTFIX:STRING=
 OPENXR_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-OPENXR_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-src
+OPENXR_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/openxr-src
 
 //Value Computed by CMake
-ObjectBoxCRoot_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+ObjectBoxCRoot_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build
 
 //Value Computed by CMake
 ObjectBoxCRoot_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-ObjectBoxCRoot_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+ObjectBoxCRoot_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src
 
 ObjectBoxGenerator_EXECUTABLE:FILEPATH=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/ObjectBoxGenerator-download/5.0.0/install/objectbox-generator
 
@@ -655,6 +897,16 @@ RESTREAM_CLIENTID:STRING=
 //No help, variable specified on the command line.
 RESTREAM_HASH:STRING=
 
+//Indicates whether to descend into the toolchain pointed to by
+// rustup
+Rust_RESOLVE_RUSTUP_TOOLCHAINS:BOOL=ON
+
+//Path to a program.
+Rust_RUSTUP:FILEPATH=/home/subtomic/.cargo/bin/rustup
+
+//The rustup toolchain to use
+Rust_TOOLCHAIN:STRING=nightly-x86_64-unknown-linux-gnu
+
 //Name of the computer/site where compile is being run
 SITE:STRING=NeuralReef
 
@@ -671,7 +923,7 @@ Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=/bin/glslangValidator
 Vulkan_GLSLC_EXECUTABLE:FILEPATH=Vulkan_GLSLC_EXECUTABLE-NOTFOUND
 
 //Path to a file.
-Vulkan_INCLUDE_DIR:PATH=Vulkan_INCLUDE_DIR-NOTFOUND
+Vulkan_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
 Vulkan_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
@@ -1112,94 +1364,106 @@ neural_studio_audio_IS_TOP_LEVEL:STATIC=OFF
 neural_studio_audio_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/core/src/audio
 
 //Value Computed by CMake
-nlohmann_json_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/nlohmann_json-build
+nlohmann_json_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/nlohmann_json-build
 
 //Value Computed by CMake
 nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-nlohmann_json_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/nlohmann_json-src
+nlohmann_json_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/nlohmann_json-src
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-c-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/c-gen
+objectbox-c-examples-tasks-c-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/examples/c-gen
 
 //Value Computed by CMake
 objectbox-c-examples-tasks-c-gen_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-c-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-gen
+objectbox-c-examples-tasks-c-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src/examples/c-gen
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-cpp-gen-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/cpp-gen-sync
+objectbox-c-examples-tasks-cpp-gen-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/examples/cpp-gen-sync
 
 //Value Computed by CMake
 objectbox-c-examples-tasks-cpp-gen-sync_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-cpp-gen-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen-sync
+objectbox-c-examples-tasks-cpp-gen-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src/examples/cpp-gen-sync
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-cpp-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/cpp-gen
+objectbox-c-examples-tasks-cpp-gen_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/examples/cpp-gen
 
 //Value Computed by CMake
 objectbox-c-examples-tasks-cpp-gen_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-c-examples-tasks-cpp-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/cpp-gen
+objectbox-c-examples-tasks-cpp-gen_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src/examples/cpp-gen
 
 //Value Computed by CMake
-objectbox-c-examples-tasks_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/examples/c-cursor-no-gen
+objectbox-c-examples-tasks_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/examples/c-cursor-no-gen
 
 //Value Computed by CMake
 objectbox-c-examples-tasks_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-c-examples-tasks_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/examples/c-cursor-no-gen
+objectbox-c-examples-tasks_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src/examples/c-cursor-no-gen
 
 //Value Computed by CMake
-objectbox-c-gen-test_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/src-test-gen
+objectbox-c-gen-test_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/src-test-gen
 
 //Value Computed by CMake
 objectbox-c-gen-test_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-c-gen-test_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src/src-test-gen
+objectbox-c-gen-test_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src/src-test-gen
 
 //Value Computed by CMake
-objectbox-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+objectbox-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build
 
 //Value Computed by CMake
 objectbox-download_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+objectbox-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src
 
 //Value Computed by CMake
-objectbox-sync-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+objectbox-sync-download_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build
 
 //Value Computed by CMake
 objectbox-sync-download_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-sync-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+objectbox-sync-download_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src
 
 //Value Computed by CMake
-objectbox-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+objectbox-sync_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build
 
 //Value Computed by CMake
 objectbox-sync_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+objectbox-sync_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src
 
 //Value Computed by CMake
-objectbox_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build
+objectbox_BINARY_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build
 
 //Value Computed by CMake
 objectbox_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-objectbox_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-src
+objectbox_SOURCE_DIR:STATIC=/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-src
+
+//Path to a library.
+pkgcfg_lib_FFMPEG_avcodec:FILEPATH=/usr/lib/x86_64-linux-gnu/libavcodec.so
+
+//Path to a library.
+pkgcfg_lib_FFMPEG_avformat:FILEPATH=/usr/lib/x86_64-linux-gnu/libavformat.so
+
+//Path to a library.
+pkgcfg_lib_FFMPEG_avutil:FILEPATH=/usr/lib/x86_64-linux-gnu/libavutil.so
+
+//Path to a library.
+pkgcfg_lib_FFMPEG_swscale:FILEPATH=/usr/lib/x86_64-linux-gnu/libswscale.so
 
 //Path to a library.
 pkgcfg_lib_WAYLAND_CLIENT_wayland-client:FILEPATH=/usr/lib/x86_64-linux-gnu/libwayland-client.so
@@ -1283,6 +1547,8 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -1344,6 +1610,8 @@ CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 CMAKE_LIB_ICE_HAS_ICECONNECTIONNUMBER:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
+CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
@@ -1357,7 +1625,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=37
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=38
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1410,6 +1678,12 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Whether to issue warnings for deprecated functionality.
 CMAKE_WARN_DEPRECATED:INTERNAL=TRUE
+//ADVANCED property for variable: CORROSION_GENERATOR_EXECUTABLE
+CORROSION_GENERATOR_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CORROSION_INSTALL_EXECUTABLE
+CORROSION_INSTALL_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: COR_IS_MULTI_CONFIG
+COR_IS_MULTI_CONFIG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_COMMAND
 COVERAGE_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
@@ -1420,6 +1694,57 @@ CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+FFMPEG_CFLAGS:INTERNAL=-I/usr/include/x86_64-linux-gnu
+FFMPEG_CFLAGS_I:INTERNAL=
+FFMPEG_CFLAGS_OTHER:INTERNAL=
+FFMPEG_FOUND:INTERNAL=1
+FFMPEG_INCLUDEDIR:INTERNAL=
+FFMPEG_INCLUDE_DIRS:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lavcodec;-lavformat;-lavutil;-lswscale
+FFMPEG_LDFLAGS_OTHER:INTERNAL=
+FFMPEG_LIBDIR:INTERNAL=
+FFMPEG_LIBRARIES:INTERNAL=avcodec;avformat;avutil;swscale
+FFMPEG_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+FFMPEG_LIBS:INTERNAL=
+FFMPEG_LIBS_L:INTERNAL=
+FFMPEG_LIBS_OTHER:INTERNAL=
+FFMPEG_LIBS_PATHS:INTERNAL=
+FFMPEG_MODULE_NAME:INTERNAL=
+FFMPEG_PREFIX:INTERNAL=
+FFMPEG_STATIC_CFLAGS:INTERNAL=-I/usr/include/x86_64-linux-gnu
+FFMPEG_STATIC_CFLAGS_I:INTERNAL=
+FFMPEG_STATIC_CFLAGS_OTHER:INTERNAL=
+FFMPEG_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lavcodec;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lwebpmux;-pthread;-lm;-latomic;-llzma;-ldav1d;-lrsvg-2;-lm;-lgio-2.0;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0;-lcairo;-lzvbi;-lpthread;-lm;-lpng;-lz;-lsnappy;-lstdc++;-laom;-lcodec2;-lgsm;-ljxl;-ljxl_threads;-lmp3lame;-lm;-lopenjp2;-lopus;-lrav1e;-lm;-lshine;-lspeex;-lSvtAv1Enc;-ltheoraenc;-ltheoradec;-logg;-ltwolame;-lvorbis;-lvorbisenc;-lwebp;-lx264;-lx265;-lxvidcore;-lz;-lva;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-L/usr/lib/x86_64-linux-gnu;-lswresample;-lm;-lsoxr;-latomic;-L/usr/lib/x86_64-linux-gnu;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lavutil;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lavformat;-lm;-latomic;-lxml2;-lbz2;-lgme;-lopenmpt;-lstdc++;-lchromaprint;-lbluray;-lz;-lgnutls;-lrabbitmq;-lrist;-lsrt-gnutls;-lssh;-lzmq;-L/usr/lib/x86_64-linux-gnu;-lavcodec;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lwebpmux;-pthread;-lm;-latomic;-llzma;-ldav1d;-lrsvg-2;-lm;-lgio-2.0;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0;-lcairo;-lzvbi;-lpthread;-lm;-lpng;-lz;-lsnappy;-lstdc++;-laom;-lcodec2;-lgsm;-ljxl;-ljxl_threads;-lmp3lame;-lm;-lopenjp2;-lopus;-lrav1e;-lm;-lshine;-lspeex;-lSvtAv1Enc;-ltheoraenc;-ltheoradec;-logg;-ltwolame;-lvorbis;-lvorbisenc;-lwebp;-lx264;-lx265;-lxvidcore;-lz;-lva;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-L/usr/lib/x86_64-linux-gnu;-lm;-lsoxr;-latomic;-L/usr/lib/x86_64-linux-gnu;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lavutil;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lswresample;-lm;-lsoxr;-latomic;-L/usr/lib/x86_64-linux-gnu;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lavutil;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11;-lswscale;-lm;-latomic;-L/usr/lib/x86_64-linux-gnu;-lavutil;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-L/usr/lib/x86_64-linux-gnu/pkgconfig/../;-lvpl;-ldl;-lstdc++;-lOpenCL;-lva;-latomic;-lX11
+FFMPEG_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread
+FFMPEG_STATIC_LIBDIR:INTERNAL=
+FFMPEG_STATIC_LIBRARIES:INTERNAL=avcodec;vpx;m;vpx;m;vpx;m;vpx;m;webpmux;m;atomic;lzma;dav1d;rsvg-2;m;gio-2.0;gdk_pixbuf-2.0;gobject-2.0;glib-2.0;cairo;zvbi;pthread;m;png;z;snappy;stdc++;aom;codec2;gsm;jxl;jxl_threads;mp3lame;m;openjp2;opus;rav1e;m;shine;speex;SvtAv1Enc;theoraenc;theoradec;ogg;twolame;vorbis;vorbisenc;webp;x264;x265;xvidcore;z;va;vpl;dl;stdc++;swresample;m;soxr;atomic;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;avutil;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;avformat;m;atomic;xml2;bz2;gme;openmpt;stdc++;chromaprint;bluray;z;gnutls;rabbitmq;rist;srt-gnutls;ssh;zmq;avcodec;vpx;m;vpx;m;vpx;m;vpx;m;webpmux;m;atomic;lzma;dav1d;rsvg-2;m;gio-2.0;gdk_pixbuf-2.0;gobject-2.0;glib-2.0;cairo;zvbi;pthread;m;png;z;snappy;stdc++;aom;codec2;gsm;jxl;jxl_threads;mp3lame;m;openjp2;opus;rav1e;m;shine;speex;SvtAv1Enc;theoraenc;theoradec;ogg;twolame;vorbis;vorbisenc;webp;x264;x265;xvidcore;z;va;vpl;dl;stdc++;m;soxr;atomic;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;avutil;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;swresample;m;soxr;atomic;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;avutil;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11;swscale;m;atomic;avutil;va-drm;va;va-x11;va;vdpau;X11;m;drm;vpl;dl;stdc++;OpenCL;va;atomic;X11
+FFMPEG_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu/pkgconfig/../;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pkgconfig/../
+FFMPEG_STATIC_LIBS:INTERNAL=
+FFMPEG_STATIC_LIBS_L:INTERNAL=
+FFMPEG_STATIC_LIBS_OTHER:INTERNAL=
+FFMPEG_STATIC_LIBS_PATHS:INTERNAL=
+FFMPEG_VERSION:INTERNAL=
+FFMPEG_libavcodec_INCLUDEDIR:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_libavcodec_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+FFMPEG_libavcodec_MODULE_NAME:INTERNAL=libavcodec
+FFMPEG_libavcodec_PREFIX:INTERNAL=/usr
+FFMPEG_libavcodec_VERSION:INTERNAL=60.31.102
+FFMPEG_libavformat_INCLUDEDIR:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_libavformat_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+FFMPEG_libavformat_MODULE_NAME:INTERNAL=libavformat
+FFMPEG_libavformat_PREFIX:INTERNAL=/usr
+FFMPEG_libavformat_VERSION:INTERNAL=60.16.100
+FFMPEG_libavutil_INCLUDEDIR:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_libavutil_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+FFMPEG_libavutil_MODULE_NAME:INTERNAL=libavutil
+FFMPEG_libavutil_PREFIX:INTERNAL=/usr
+FFMPEG_libavutil_VERSION:INTERNAL=58.29.100
+FFMPEG_libswscale_INCLUDEDIR:INTERNAL=/usr/include/x86_64-linux-gnu
+FFMPEG_libswscale_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+FFMPEG_libswscale_MODULE_NAME:INTERNAL=libswscale
+FFMPEG_libswscale_PREFIX:INTERNAL=/usr
+FFMPEG_libswscale_VERSION:INTERNAL=7.5.100
 //Details about finding JsonCpp
 FIND_PACKAGE_MESSAGE_DETAILS_JsonCpp:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/jsoncpp][jsoncpp_lib][/usr/include/jsoncpp][v()]
 //Details about finding ObjectBoxGenerator
@@ -1428,14 +1753,22 @@ FIND_PACKAGE_MESSAGE_DETAILS_ObjectBoxGenerator:INTERNAL=[/home/subtomic/Documen
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libOpenGL.so][/usr/lib/x86_64-linux-gnu/libGLX.so][/usr/include][c ][v()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
+//Details about finding Python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3][cfound components: Interpreter ][v3.12.3()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.12.3(3)]
+//Details about finding Rust
+FIND_PACKAGE_MESSAGE_DETAILS_Rust:INTERNAL=[/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc][1.92.0][/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo][1.92.0][x86_64-unknown-linux-gnu][x86_64-unknown-linux-gnu][v1.92.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding Vulkan
+FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/usr/lib/x86_64-linux-gnu/libvulkan.so][/usr/include][cfound components: glslangValidator missing components: glslc][v1.4.313()]
 //Details about finding WrapAtomic
 FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 //Details about finding WrapOpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_WrapOpenGL:INTERNAL=[ON][v()]
+//Details about finding WrapVulkanHeaders
+FIND_PACKAGE_MESSAGE_DETAILS_WrapVulkanHeaders:INTERNAL=[/usr/include][v()]
 //Details about finding X11
 FIND_PACKAGE_MESSAGE_DETAILS_X11:INTERNAL=[/usr/include][/usr/lib/x86_64-linux-gnu/libX11.so][c ][v()]
 //ADVANCED property for variable: GITCOMMAND
@@ -2524,6 +2857,52 @@ QT_FEATURE_xmlstreamwriter:INTERNAL=ON
 QT_FEATURE_xrender:INTERNAL=OFF
 //Qt feature: zstd (from target Qt6::Core)
 QT_FEATURE_zstd:INTERNAL=ON
+//Internal cache of Rust_CARGO
+Rust_CARGO_CACHED:INTERNAL=/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo
+//Host architecture
+Rust_CARGO_HOST_ARCH:INTERNAL=x86_64
+//Host environment
+Rust_CARGO_HOST_ENV:INTERNAL=gnu
+//Host Operating System
+Rust_CARGO_HOST_OS:INTERNAL=linux
+//Internal cache of Rust_CARGO_HOST_TARGET
+Rust_CARGO_HOST_TARGET_CACHED:INTERNAL=x86_64-unknown-linux-gnu
+//Host vendor
+Rust_CARGO_HOST_VENDOR:INTERNAL=unknown
+//Target architecture
+Rust_CARGO_TARGET_ARCH:INTERNAL=x86_64
+//Internal cache of Rust_CARGO_TARGET
+Rust_CARGO_TARGET_CACHED:INTERNAL=x86_64-unknown-linux-gnu
+//Target environment
+Rust_CARGO_TARGET_ENV:INTERNAL=gnu
+//Required native libraries when linking Rust static libraries
+Rust_CARGO_TARGET_LINK_NATIVE_LIBS:INTERNAL=gcc_s;util;rt;pthread;m;dl;c
+//Required link flags when linking Rust static libraries
+Rust_CARGO_TARGET_LINK_OPTIONS:INTERNAL=
+//Target Operating System
+Rust_CARGO_TARGET_OS:INTERNAL=linux
+//Target vendor
+Rust_CARGO_TARGET_VENDOR:INTERNAL=unknown
+Rust_CARGO_VERSION:INTERNAL=1.92.0
+Rust_CARGO_VERSION_MAJOR:INTERNAL=1
+Rust_CARGO_VERSION_MINOR:INTERNAL=92
+Rust_CARGO_VERSION_PATCH:INTERNAL=0
+//Internal cache of Rust_COMPILER
+Rust_COMPILER_CACHED:INTERNAL=/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc
+//Rust is configured for cross-compiling
+Rust_CROSSCOMPILING:INTERNAL=FALSE
+Rust_IS_NIGHTLY:INTERNAL=1
+Rust_LLVM_VERSION:INTERNAL=21.1.2
+Rust_LLVM_VERSION_MAJOR:INTERNAL=21
+Rust_LLVM_VERSION_MINOR:INTERNAL=1
+Rust_LLVM_VERSION_PATCH:INTERNAL=2
+//STRINGS property for variable: Rust_TOOLCHAIN
+Rust_TOOLCHAIN-STRINGS:INTERNAL=nightly-x86_64-unknown-linux-gnu
+Rust_TOOLCHAIN_IS_RUSTUP_MANAGED:INTERNAL=TRUE
+Rust_VERSION:INTERNAL=1.92.0
+Rust_VERSION_MAJOR:INTERNAL=1
+Rust_VERSION_MINOR:INTERNAL=92
+Rust_VERSION_PATCH:INTERNAL=0
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
 //Test SUPPORTS_C_Wall
@@ -2890,13 +3269,54 @@ XCB_xcb_PREFIX:INTERNAL=
 XCB_xcb_VERSION:INTERNAL=
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
+//Path to cargo used by corrosion
+_CORROSION_CARGO:INTERNAL=/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo
+//cargo version used by corrosion
+_CORROSION_CARGO_VERSION:INTERNAL=1.92.0
+_CORROSION_QUIET_OUTPUT_FLAG:INTERNAL=--quiet
+//Path to rustc used by corrosion
+_CORROSION_RUSTC:INTERNAL=/home/subtomic/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc
+//host triple used by corrosion
+_CORROSION_RUST_CARGO_HOST_TARGET:INTERNAL=x86_64-unknown-linux-gnu
+//target triple used by corrosion
+_CORROSION_RUST_CARGO_TARGET:INTERNAL=x86_64-unknown-linux-gnu
+//lowercase target triple with underscores
+_CORROSION_RUST_CARGO_TARGET_UNDERSCORE:INTERNAL=x86_64_unknown_linux_gnu
+//target triple in uppercase with underscore
+_CORROSION_RUST_CARGO_TARGET_UPPER:INTERNAL=X86_64_UNKNOWN_LINUX_GNU
+_CORR_PROP_ALL_FEATURES:INTERNAL=CORROSION_ALL_FEATURES
+_CORR_PROP_ENV_VARS:INTERNAL=CORROSION_ENVIRONMENT_VARIABLES
+_CORR_PROP_FEATURES:INTERNAL=CORROSION_FEATURES
+_CORR_PROP_HOST_BUILD:INTERNAL=CORROSION_USE_HOST_BUILD
+_CORR_PROP_NO_DEFAULT_FEATURES:INTERNAL=CORROSION_NO_DEFAULT_FEATURES
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+//Compiler reason failure
+_Python3_Compiler_REASON_FAILURE:INTERNAL=
+//Development reason failure
+_Python3_Development_REASON_FAILURE:INTERNAL=
+//Path to a program.
+_Python3_EXECUTABLE:INTERNAL=/usr/bin/python3
+//Python3 Properties
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;12;3;64;32;;cpython-312-x86_64-linux-gnu;abi3;/usr/lib/python3.12;/usr/lib/python3.12;/usr/local/lib/python3.12/dist-packages;/usr/local/lib/python3.12/dist-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=4c8bfa8951e99fa32e4000a94f8c04a2
+//NumPy reason failure
+_Python3_NumPy_REASON_FAILURE:INTERNAL=
+__pkg_config_arguments_FFMPEG:INTERNAL=QUIET;libavcodec;libavformat;libavutil;libswscale
+__pkg_config_checked_FFMPEG:INTERNAL=1
 __pkg_config_checked_WAYLAND_CLIENT:INTERNAL=1
 __pkg_config_checked_XCB:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/home/subtomic/Qt/6.10.1/gcc_64/lib/cmake/Qt6Qml
 //ADVANCED property for variable: jsoncpp_DIR
 jsoncpp_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG_avcodec
+pkgcfg_lib_FFMPEG_avcodec-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG_avformat
+pkgcfg_lib_FFMPEG_avformat-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG_avutil
+pkgcfg_lib_FFMPEG_avutil-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG_swscale
+pkgcfg_lib_FFMPEG_swscale-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_WAYLAND_CLIENT_wayland-client
 pkgcfg_lib_WAYLAND_CLIENT_wayland-client-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_XCB_xcb

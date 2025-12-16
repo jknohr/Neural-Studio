@@ -44,6 +44,26 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/openxr-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/objectbox-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/nlohmann_json-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_build_dependencies/corrosion-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/cmake_install.cmake")
 endif()
 

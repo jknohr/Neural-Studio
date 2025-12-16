@@ -44,11 +44,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/objectbox-build/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/state/cmake_install.cmake")
 endif()
 

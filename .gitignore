@@ -2,9 +2,10 @@
 
 # Except for default project files
 !/.github
-!/build-aux
+!/build_ubuntu/
+_build_dependencies/cmake
 !/cmake
-!/deps
+!/dependencies
 !/docs
 !/frontend
 !/libobs*
@@ -55,7 +56,9 @@ build-aux/flatpak-github-action-modified-*
 
 # Exclude build artifacts (CMake generated)
 build/
+build_ubuntu/
 _deps/
+_build_dependencies/
 .cache/
 *.o
 *.a

@@ -1,0 +1,12 @@
+[workspace]
+members = []
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "GPL-2.0-or-later"
+repository = "https://github.com/jknohr/Neural-Studio"
+
+# Rust dependencies for Neural Studio
+# Add crate members as needed, e.g.:
+# members = ["wasmedge-bindings", "wasm-effects"]

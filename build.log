@@ -1,0 +1,221 @@
+ninja: Entering directory `build_ubuntu'
+[1/130] cd /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/_deps/openxr-build/src/loader && /usr/bin/cmake -E create_symlink libopenxr_loader.so.1.0.32 libopenxr_loader.so.1.0
+[2/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.obx.hpp, objectbox-model.h
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/NodeType.fbs
+[3/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/ConnectionRule.fbs
+[4/130] Building C object _deps/openxr-build/src/loader/CMakeFiles/openxr_loader.dir/__/xr_generated_dispatch_table_core.c.o
+[5/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/master/PipelineTemplate.fbs
+[6/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphNode.fbs
+[7/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/GraphEdge.fbs
+[8/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/BroadcastSettings.fbs
+[9/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/AnimationKeyframe.fbs
+[10/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/profile/SceneObject.fbs
+[11/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphEvent.fbs
+[12/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/GraphPattern.fbs
+[13/130] Generating /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.cpp, /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.obx.hpp
+Generating ObjectBox bindings for /home/subtomic/Documents/GitHub/Neural-Studio/core/src/state/schemas/ai/IntentPrediction.fbs
+[14/130] Automatic MOC for target state
+[15/129] Building CXX object _deps/openxr-build/src/loader/CMakeFiles/openxr_loader.dir/__/common/object_info.cpp.o
+[16/129] Building CXX object _deps/openxr-build/src/loader/CMakeFiles/openxr_loader.dir/xr_generated_loader.cpp.o
+[17/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/master/NodeType.obx.cpp.o
+[18/129] Building CXX object _deps/openxr-build/src/loader/CMakeFiles/openxr_loader.dir/__/common/filesystem_utils.cpp.o
+[19/129] Building CXX object core/src/compositor/CMakeFiles/neural_studio_compositor.dir/MixerEngine.cpp.o
+[20/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/profile/GraphEdge.obx.cpp.o
+[21/129] Building CXX object ui/blueprint/nodes/CMakeFiles/ui-basenode.dir/BaseNodeController.cpp.o
+[22/129] Building CXX object core/src/audio/CMakeFiles/neural_studio_audio.dir/SpatialAudioManager.cpp.o
+[23/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/master/PipelineTemplate.obx.cpp.o
+[24/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/master/ConnectionRule.obx.cpp.o
+[25/129] Building CXX object ui/blueprint/nodes/CMakeFiles/ui-basenode.dir/ui-basenode_autogen/mocs_compilation.cpp.o
+[26/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/profile/GraphNode.obx.cpp.o
+[27/129] Linking CXX static library core/src/audio/libneural_studio_audio.a
+[28/129] Linking CXX static library ui/blueprint/nodes/libui-basenode.a
+[29/129] Linking CXX shared library _deps/openxr-build/src/loader/libopenxr_loader.so.1.0.32
+[30/129] Creating library symlink _deps/openxr-build/src/loader/libopenxr_loader.so.1 _deps/openxr-build/src/loader/libopenxr_loader.so
+[31/129] Automatic MOC and UIC for target nstudio-rendering
+[32/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/profile/AnimationKeyframe.obx.cpp.o
+[33/129] Building CXX object core/src/compositor/CMakeFiles/neural_studio_compositor.dir/MixerRouter.cpp.o
+[34/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/ai/GraphEvent.obx.cpp.o
+[35/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/profile/BroadcastSettings.obx.cpp.o
+[36/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/ai/GraphPattern.obx.cpp.o
+[37/129] Building CXX object ui/blueprint/nodes/StitchNode/CMakeFiles/ui-stitchnode.dir/ui-stitchnode_autogen/mocs_compilation.cpp.o
+[38/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/profile/SceneObject.obx.cpp.o
+[39/129] Building CXX object core/src/state/CMakeFiles/state.dir/schemas/ai/IntentPrediction.obx.cpp.o
+[40/129] Linking CXX static library core/src/state/libstate.a
+[41/129] Linking CXX static library core/src/compositor/libneural_studio_compositor.a
+[42/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/VulkanRenderer.cpp.o
+[43/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/nstudio-rendering_autogen/mocs_compilation.cpp.o
+[44/129] Building CXX object ui/blueprint/nodes/StitchNode/CMakeFiles/ui-stitchnode.dir/StitchNodeController.cpp.o
+[45/129] Building CXX object core/src/usd_manager/CMakeFiles/neural_studio_usd_manager.dir/UsdStageManager.cpp.o
+In file included from /usr/include/c++/13/ext/hash_set:60,
+                 from /home/subtomic/USD/include/pxr/base/tf/hashset.h:22,
+                 from /home/subtomic/USD/include/pxr/base/tf/token.h:20,
+                 from /home/subtomic/USD/include/pxr/base/tf/staticTokens.h:64,
+                 from /home/subtomic/USD/include/pxr/usd/usd/timeCode.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/common.h:19,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:14,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/core/src/usd_manager/UsdStageManager.h:17,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/core/src/usd_manager/UsdStageManager.cpp:1:
+/usr/include/c++/13/backward/backward_warning.h:32:2: warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. [-Wcpp]
+   32 | #warning \
+      |  ^~~~~~~
+In file included from /home/subtomic/USD/include/pxr/base/work/workTBB/dispatcher_impl.h:20,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/detachedTask_impl.h:11,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/impl.h:12,
+                 from /home/subtomic/USD/include/pxr/base/work/impl.h:10,
+                 from /home/subtomic/USD/include/pxr/base/work/dispatcher.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/sdf/layer.h:29,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/types.h:13,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/node.h:12,
+                 from /home/subtomic/USD/include/pxr/usd/usd/editTarget.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:15:
+/home/subtomic/USD/include/tbb/task.h:21:139: note: ‘#pragma message: TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.’
+   21 | #pragma message("TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.")
+      |                                                                                                                                           ^
+[46/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/STMapLoader.cpp.o
+[47/129] Automatic MOC and UIC for target ui-wasmnode
+[48/129] Linking CXX static library ui/blueprint/nodes/StitchNode/libui-stitchnode.a
+[49/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/PreviewRenderer.cpp.o
+[50/129] Automatic MOC and UIC for target ui-onnxnode
+[51/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/FramebufferManager.cpp.o
+[52/129] Building CXX object core/src/usd_manager/CMakeFiles/neural_studio_usd_manager.dir/neural_studio_usd_manager_autogen/mocs_compilation.cpp.o
+In file included from /usr/include/c++/13/ext/hash_set:60,
+                 from /home/subtomic/USD/include/pxr/base/tf/hashset.h:22,
+                 from /home/subtomic/USD/include/pxr/base/tf/token.h:20,
+                 from /home/subtomic/USD/include/pxr/base/tf/staticTokens.h:64,
+                 from /home/subtomic/USD/include/pxr/usd/usd/timeCode.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/common.h:19,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:14,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/usd_manager/neural_studio_usd_manager_autogen/EWIEGA46WW/../../../../../../core/src/usd_manager/UsdStageManager.h:17,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/usd_manager/neural_studio_usd_manager_autogen/EWIEGA46WW/moc_UsdStageManager.cpp:9,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/build_ubuntu/core/src/usd_manager/neural_studio_usd_manager_autogen/mocs_compilation.cpp:2:
+/usr/include/c++/13/backward/backward_warning.h:32:2: warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. [-Wcpp]
+   32 | #warning \
+      |  ^~~~~~~
+In file included from /home/subtomic/USD/include/pxr/base/work/workTBB/dispatcher_impl.h:20,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/detachedTask_impl.h:11,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/impl.h:12,
+                 from /home/subtomic/USD/include/pxr/base/work/impl.h:10,
+                 from /home/subtomic/USD/include/pxr/base/work/dispatcher.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/sdf/layer.h:29,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/types.h:13,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/node.h:12,
+                 from /home/subtomic/USD/include/pxr/usd/usd/editTarget.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:15:
+/home/subtomic/USD/include/tbb/task.h:21:139: note: ‘#pragma message: TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.’
+   21 | #pragma message("TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.")
+      |                                                                                                                                           ^
+[53/129] Linking CXX static library core/src/usd_manager/libneural_studio_usd_manager.a
+[54/129] Automatic MOC and UIC for target nstudio-scene
+[55/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/StereoRenderer.cpp.o
+[56/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/HDRProcessor.cpp.o
+[57/129] Building CXX object core/src/rendering/CMakeFiles/nstudio-rendering.dir/RTXUpscaler.cpp.o
+[58/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ThreeDModelNode/ThreeDModelNode.cpp.o
+/home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene-graph/nodes/ThreeDModelNode/ThreeDModelNode.cpp: In member function ‘virtual NeuralStudio::SceneGraph::ExecutionResult NeuralStudio::SceneGraph::ThreeDModelNode::process(NeuralStudio::SceneGraph::ExecutionContext&)’:
+/home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene-graph/nodes/ThreeDModelNode/ThreeDModelNode.cpp:52:1: warning: control reaches end of non-void function [-Wreturn-type]
+   52 | }
+      | ^
+[59/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/CameraNode/CameraNode.cpp.o
+[60/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/VideoNode/VideoNode.cpp.o
+[61/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ThreeDModelNode/ThreeDModelNodeFactory.cpp.o
+[62/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/VideoNode/VideoNodeFactory.cpp.o
+[63/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ImageNode/ImageNodeFactory.cpp.o
+[64/129] Building CXX object ui/blueprint/nodes/HeadsetOutputNode/CMakeFiles/ui-headsetoutputnode.dir/ui-headsetoutputnode_autogen/mocs_compilation.cpp.o
+[65/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ImageNode/ImageNode.cpp.o
+[66/129] Building CXX object ui/blueprint/nodes/RTXUpscaleNode/CMakeFiles/ui-rtxupscalenode.dir/RTXUpscaleNodeController.cpp.o
+[67/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/AudioNode/AudioNode.cpp.o
+[68/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/FontNode/FontNode.cpp.o
+[69/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ShaderNode/ShaderNode.cpp.o
+[70/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/FontNode/FontNodeFactory.cpp.o
+[71/129] Building CXX object ui/blueprint/nodes/WasmNode/CMakeFiles/ui-wasmnode.dir/ui-wasmnode_autogen/mocs_compilation.cpp.o
+[72/129] Building CXX object ui/blueprint/nodes/HeadsetOutputNode/CMakeFiles/ui-headsetoutputnode.dir/HeadsetOutputNodeController.cpp.o
+[73/129] Building CXX object ui/blueprint/nodes/OnnxNode/CMakeFiles/ui-onnxnode.dir/OnnxNodeController.cpp.o
+[74/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ShaderNode/ShaderNodeFactory.cpp.o
+[75/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/AudioNode/AudioNodeFactory.cpp.o
+[76/129] Building CXX object ui/blueprint/nodes/RTXUpscaleNode/CMakeFiles/ui-rtxupscalenode.dir/ui-rtxupscalenode_autogen/mocs_compilation.cpp.o
+[77/129] Building CXX object ui/blueprint/nodes/OnnxNode/CMakeFiles/ui-onnxnode.dir/ui-onnxnode_autogen/mocs_compilation.cpp.o
+[78/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/EffectNode/EffectNode.cpp.o
+[79/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/TextureNode/TextureNodeFactory.cpp.o
+[80/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/EffectNode/EffectNodeFactory.cpp.o
+[81/129] Building CXX object ui/blueprint/nodes/WasmNode/CMakeFiles/ui-wasmnode.dir/WasmNodeController.cpp.o
+[82/129] Building CXX object core/src/scene/CMakeFiles/nstudio-scene.dir/nstudio-scene_autogen/mocs_compilation.cpp.o
+[83/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/MLNode/MLNode.cpp.o
+[84/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ScriptNode/ScriptNode.cpp.o
+[85/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/TextureNode/TextureNode.cpp.o
+[86/129] Linking CXX static library core/src/rendering/libnstudio-rendering.a
+[87/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/MLNode/MLNodeFactory.cpp.o
+[88/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/ScriptNode/ScriptNodeFactory.cpp.o
+[89/129] Linking CXX static library ui/blueprint/nodes/HeadsetOutputNode/libui-headsetoutputnode.a
+[90/129] Linking CXX static library ui/blueprint/nodes/RTXUpscaleNode/libui-rtxupscalenode.a
+[91/129] Automatic MOC and UIC for target ui-gemininode
+[92/129] Linking CXX static library ui/blueprint/nodes/WasmNode/libui-wasmnode.a
+[93/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/LLMNode/LLMNodeFactory.cpp.o
+[94/129] Linking CXX static library ui/blueprint/nodes/OnnxNode/libui-onnxnode.a
+[95/129] Automatic MOC and UIC for target ui-managers
+[96/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/LLMNode/LLMNode.cpp.o
+[97/129] Linking CXX static library ui/blueprint/preview/libui-preview.a
+[98/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/NodeFactory.cpp.o
+[99/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/BaseNodeBackend.cpp.o
+[100/129] Building CXX object core/src/scene/CMakeFiles/nstudio-scene.dir/OBJLoader.cpp.o
+[101/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/nodes/StitchNode/StitchNode.cpp.o
+[102/129] Building CXX object ui/blueprint/nodes/GeminiNode/CMakeFiles/ui-gemininode.dir/GeminiNodeController.cpp.o
+[103/129] Building CXX object core/src/scene-graph/CMakeFiles/scene-graph.dir/NodeExecutionGraph.cpp.o
+[104/129] Building CXX object ui/blueprint/nodes/GeminiNode/CMakeFiles/ui-gemininode.dir/ui-gemininode_autogen/mocs_compilation.cpp.o
+[105/129] Linking CXX static library ui/blueprint/nodes/GeminiNode/libui-gemininode.a
+[106/129] Building CXX object ui/blueprint/core/CMakeFiles/blueprint-core.dir/NodeGraphController.cpp.o
+[107/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/BaseManagerWidget.cpp.o
+[108/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/CameraManager/CameraManagerController.cpp.o
+[109/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/ThreeDAssetsManager/ThreeDAssetsManagerController.cpp.o
+[110/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/BaseManagerController.cpp.o
+[111/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/VideoManager/VideoManagerController.cpp.o
+[112/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/ui-managers_autogen/mocs_compilation.cpp.o
+[113/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/GraphicsManager/GraphicsManagerController.cpp.o
+[114/129] Building CXX object core/src/scene/CMakeFiles/nstudio-scene.dir/SceneManager.cpp.o
+In file included from /usr/include/c++/13/ext/hash_set:60,
+                 from /home/subtomic/USD/include/pxr/base/tf/hashset.h:22,
+                 from /home/subtomic/USD/include/pxr/base/tf/token.h:20,
+                 from /home/subtomic/USD/include/pxr/base/tf/staticTokens.h:64,
+                 from /home/subtomic/USD/include/pxr/usd/usd/timeCode.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/common.h:19,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:14,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene/../usd_manager/UsdStageManager.h:17,
+                 from /home/subtomic/Documents/GitHub/Neural-Studio/core/src/scene/SceneManager.cpp:2:
+/usr/include/c++/13/backward/backward_warning.h:32:2: warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. [-Wcpp]
+   32 | #warning \
+      |  ^~~~~~~
+In file included from /home/subtomic/USD/include/pxr/base/work/workTBB/dispatcher_impl.h:20,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/detachedTask_impl.h:11,
+                 from /home/subtomic/USD/include/pxr/base/work/workTBB/impl.h:12,
+                 from /home/subtomic/USD/include/pxr/base/work/impl.h:10,
+                 from /home/subtomic/USD/include/pxr/base/work/dispatcher.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/sdf/layer.h:29,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/types.h:13,
+                 from /home/subtomic/USD/include/pxr/usd/pcp/node.h:12,
+                 from /home/subtomic/USD/include/pxr/usd/usd/editTarget.h:14,
+                 from /home/subtomic/USD/include/pxr/usd/usd/stage.h:15:
+/home/subtomic/USD/include/tbb/task.h:21:139: note: ‘#pragma message: TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.’
+   21 | #pragma message("TBB Warning: tbb/task.h is deprecated. For details, please see Deprecated Features appendix in the TBB reference manual.")
+      |                                                                                                                                           ^
+[115/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/AudioManager/AudioManagerController.cpp.o
+[116/129] Linking CXX static library core/src/scene/libnstudio-scene.a
+[117/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/ShaderManager/ShaderManagerController.cpp.o
+[118/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/FontManager/FontManagerController.cpp.o
+[119/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/ScriptManager/ScriptManagerController.cpp.o
+[120/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/EffectsManager/EffectsManagerController.cpp.o
+[121/129] Linking CXX static library core/src/scene-graph/libscene-graph.a
+[122/129] Linking CXX static library ui/blueprint/core/libblueprint-core.a
+[123/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/TextureManager/TextureManagerController.cpp.o
+[124/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/ScriptManager/ScriptManagerWidget.cpp.o
+[125/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/MLManager/MLManagerController.cpp.o
+[126/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/LLMManager/LLMManagerController.cpp.o
+[127/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/MLManager/MLManagerWidget.cpp.o
+[128/129] Building CXX object ui/shared_ui/managers/CMakeFiles/ui-managers.dir/LLMManager/LLMManagerWidget.cpp.o
+[129/129] Linking CXX static library ui/shared_ui/managers/libui-managers.a

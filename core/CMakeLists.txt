@@ -16,6 +16,14 @@ set(OBJECTBOX_BUILD_SHARED OFF CACHE BOOL "Build ObjectBox as static library")
 FetchContent_MakeAvailable(objectbox)
 
 # Use Pixar's native pxrConfig.cmake if available
+# Guard: If TBB::tbb target already exists (from OpenXR SDK or other FetchContent deps),
+# we need to tell pxrConfig.cmake to use find_dependency(TBB) instead of add_library
+# This prevents the "target already exists" error
+if(TARGET TBB::tbb)
+    message(STATUS "TBB::tbb target already exists - configuring pxr to use find_dependency(TBB)")
+    set(PXR_FIND_TBB_IN_CONFIG ON)
+    set(TBB_FOUND TRUE)
+endif()
 find_package(pxr CONFIG QUIET HINTS $ENV{HOME}/USD /usr/local /opt/pixar)
 
 if(pxr_FOUND)

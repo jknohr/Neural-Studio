@@ -3,9 +3,6 @@ cmake_minimum_required(VERSION 3.16)
 
 if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "Debug")
   file(REMOVE_RECURSE
-  "_deps/openxr-build/src/loader/CMakeFiles/openxr_loader_autogen.dir/AutogenUsed.txt"
-  "_deps/openxr-build/src/loader/CMakeFiles/openxr_loader_autogen.dir/ParseCache.txt"
-  "_deps/openxr-build/src/loader/openxr_loader_autogen"
   "core/src/pipeline/CMakeFiles/nstudio-pipeline_autogen.dir/AutogenUsed.txt"
   "core/src/pipeline/CMakeFiles/nstudio-pipeline_autogen.dir/ParseCache.txt"
   "core/src/pipeline/nstudio-pipeline_autogen"

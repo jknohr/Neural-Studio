@@ -47,7 +47,7 @@ target_link_libraries(state
 target_include_directories(state
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_BINARY_DIR}/_deps/objectbox-download-src/include
+    ${CMAKE_BINARY_DIR}/_build_dependencies/objectbox-download-src/include
 )
 
 # Note: Generated files per schema:
